@@ -21,6 +21,11 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public List<InventorySlot> GetAllSlots()
+    {
+        return new List<InventorySlot>(m_slots);
+    }
+
     public InventorySlot GetRandomAvailableSlot()
     {
         List<InventorySlot> availableSlots = new List<InventorySlot>();
