@@ -6,6 +6,21 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 {
     [SerializeField] private Image m_image;
 
+    [SerializeField] private ItemData m_data;
+    public ItemData ItemData => m_data;
+
+    public DraggableItem Create(ItemData data)
+    {
+        var instance = Instantiate(this);
+        instance.m_data = data;
+        return instance;
+    }
+
+    private void Start()
+    {
+        m_image.sprite = m_data.Sprite;
+    }
+
     private Transform m_parentAfterDrag;
 
     public void SetParentAfterDrag(Transform parentAfterDrag)
