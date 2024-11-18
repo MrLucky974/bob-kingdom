@@ -1,14 +1,43 @@
+using LuckiusDev.Utils;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class MainUI : MonoBehaviour
 {
-    [SerializeField] private ItemData m_itemData;
     [SerializeField] private DraggableItem m_draggableItemPrefab;
 
     [Space]
 
+    [SerializeField] private Player m_player;
     [SerializeField] private Inventory m_inventory;
+
+    [Space]
+
+    [SerializeField] private TextMeshProUGUI m_moneyLabel;
+    [SerializeField] private TextMeshProUGUI m_itemCostLabel;
+
+    private void Awake()
+    {
+        m_player.MoneyChanged += OnMoneyChanged;
+        m_player.ItemCostChanged += OnItemCostChanged;
+    }
+
+    private void OnDestroy()
+    {
+        m_player.MoneyChanged -= OnMoneyChanged;
+        m_player.ItemCostChanged -= OnItemCostChanged;
+    }
+
+    private void OnMoneyChanged(int money)
+    {
+        m_moneyLabel.SetText(NumberFormatter.FormatNumberWithSuffix(money));
+    }
+
+    private void OnItemCostChanged(int cost)
+    {
+        m_itemCostLabel.SetText(NumberFormatter.FormatNumberWithSuffix(cost));
+    }
 
     public void MergeAllItems()
     {
@@ -74,12 +103,6 @@ public class MainUI : MonoBehaviour
             return;
         }
 
-        if (m_itemData == null)
-        {
-            Debug.LogWarning("No item data specified, make sure to reference in the inspector!");
-            return;
-        }
-
         var slot = m_inventory.GetRandomAvailableSlot();
         if (slot == null) // TODO : Disable button when no available slot
         {
@@ -87,7 +110,10 @@ public class MainUI : MonoBehaviour
             return;
         }
 
-        var instance = m_draggableItemPrefab.Create(m_itemData);
-        instance.transform.SetParent(slot.transform);
+        if (m_player.BuyItem(out var itemData))
+        {
+            var instance = m_draggableItemPrefab.Create(itemData);
+            instance.transform.SetParent(slot.transform);
+        }
     }
 }
