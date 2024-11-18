@@ -2732,8 +2732,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d46ef095604249439c863e4b27ca6b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_initialMoney: 124535
-  m_initalItemCost: 2
+  m_initialMoney: 999999
+  m_initialItemCost: 2
+  m_itemCostGrowthRate: 1.3
   m_itemData: {fileID: 11400000, guid: 9cf4d48803f8b0a47b6005a2328bd348, type: 2}
 --- !u!114 &1470759348 stripped
 MonoBehaviour:
