@@ -16,6 +16,6 @@ MonoBehaviour:
   m_description: 'Increase the chance of getting
 
     higher tier weapons when buying'
-  m_maxLevel: 4
-  m_initialCost: 50
-  m_costGrowthRate: 1.15
+  m_maxLevel: 3
+  m_initialCost: 100
+  m_costGrowthRate: 1.75

@@ -1,9 +1,10 @@
+using LuckiusDev.Utils;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class Player : MonoBehaviour
+public class Player : Singleton<Player>
 {
     [Header("Player Money")]
     [Tooltip("The starting amount of money the player has.")]
@@ -76,11 +77,8 @@ public class Player : MonoBehaviour
             return false;
         }
 
-        if (CanAfford(m_currentItemCost))
+        if (ConsumeMoney(m_currentItemCost))
         {
-            m_currentMoney -= m_currentItemCost;
-            MoneyChanged?.Invoke(m_currentMoney);
-
             m_itemPurchases++;
             m_currentItemCost = Mathf.CeilToInt(m_initialItemCost * Mathf.Pow(m_itemCostGrowthRate, m_itemPurchases));
             ItemCostChanged?.Invoke(m_currentItemCost);
@@ -91,6 +89,18 @@ public class Player : MonoBehaviour
         }
 
         itemData = null;
+        return false;
+    }
+
+    public bool ConsumeMoney(int amount)
+    {
+        if (CanAfford(amount))
+        {
+            m_currentMoney -= amount;
+            MoneyChanged?.Invoke(m_currentMoney);
+            return true;
+        }
+
         return false;
     }
 

@@ -17,6 +17,11 @@ public class MainUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI m_moneyLabel;
     [SerializeField] private TextMeshProUGUI m_itemCostLabel;
 
+    [Space]
+
+    [SerializeField] private CanvasGroup m_upgradePanel;
+    [SerializeField] private GameObject m_block;
+
     private void Awake()
     {
         m_player.MoneyChanged += OnMoneyChanged;
@@ -37,6 +42,24 @@ public class MainUI : MonoBehaviour
     private void OnItemCostChanged(int cost)
     {
         m_itemCostLabel.SetText(NumberFormatter.FormatNumberWithSuffix(cost));
+    }
+
+    public void OpenUpgradePanel()
+    {
+        m_upgradePanel.alpha = 1f;
+        m_upgradePanel.interactable = true;
+        m_upgradePanel.blocksRaycasts = true;
+        m_upgradePanel.GetComponent<RectTransform>().localScale = Vector3.one;
+        m_block.SetActive(true);
+    }
+
+    public void CloseUpgradePanel()
+    {
+        m_upgradePanel.alpha = 0f;
+        m_upgradePanel.interactable = false;
+        m_upgradePanel.blocksRaycasts = false;
+        m_upgradePanel.GetComponent<RectTransform>().localScale = Vector3.zero;
+        m_block.SetActive(false);
     }
 
     public void MergeAllItems()

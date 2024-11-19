@@ -27,8 +27,16 @@ public class UpgradeSlot : MonoBehaviour
 
     private Image[] m_upgradeIndices;
 
+    private Upgrade m_upgrade;
+
     private void Start()
     {
+        m_upgrade = UpgradeManager.Instance.GetUpgrade(m_upgradeData);
+
+        m_nameLabel.SetText(m_upgradeData.UpgradeName);
+        m_descriptionLabel.SetText(m_upgradeData.Description);
+        m_costLabel.SetText($"Cost: {m_upgrade.GetUpgradeCost()}");
+
         m_upgradeIndices = new Image[m_upgradeData.MaxLevel];
         for (int i = 0; i < m_upgradeData.MaxLevel; i++)
         {
@@ -41,27 +49,33 @@ public class UpgradeSlot : MonoBehaviour
 
     public void Upgrade()
     {
-        var upgrade = UpgradeManager.Instance.GetUpgrade(m_upgradeData);
-
-        if (upgrade.CurrentLevel >= m_upgradeData.MaxLevel)
+        if (m_upgrade.IsMaxed)
         {
             return;
         }
 
-        upgrade.ApplyUpgrade();
-        for (int i = 0; i < m_upgradeData.MaxLevel; i++)
+        int cost = m_upgrade.GetUpgradeCost();
+        bool canAfford = Player.Instance.ConsumeMoney(cost);
+        if (canAfford)
         {
-            var image = m_upgradeIndices[i];
-            if (image != null)
-            {
-                var color = i < upgrade.CurrentLevel ? m_upgradeColor : m_defaultColor;
-                image.color = color;
-            }
-        }
+            m_upgrade.ApplyUpgrade();
 
-        if (upgrade.CurrentLevel >= m_upgradeData.MaxLevel)
-        {
-            m_button.interactable = false;
+            for (int i = 0; i < m_upgradeData.MaxLevel; i++)
+            {
+                var image = m_upgradeIndices[i];
+                if (image != null)
+                {
+                    var color = i < m_upgrade.CurrentLevel ? m_upgradeColor : m_defaultColor;
+                    image.color = color;
+                }
+            }
+            m_costLabel.SetText($"Cost: {m_upgrade.GetUpgradeCost()}");
+
+            if (m_upgrade.IsMaxed)
+            {
+                m_costLabel.gameObject.SetActive(false);
+                m_button.interactable = false;
+            }
         }
     }
 }
