@@ -22,6 +22,7 @@ public class UpgradeSlot : MonoBehaviour
 
     [Space]
 
+    [SerializeField] private Image m_upgradeIcon;
     [SerializeField] private TextMeshProUGUI m_nameLabel;
     [SerializeField] private TextMeshProUGUI m_descriptionLabel;
     [SerializeField] private TextMeshProUGUI m_costLabel;
@@ -34,6 +35,7 @@ public class UpgradeSlot : MonoBehaviour
     {
         m_upgrade = UpgradeManager.Instance.GetUpgrade(m_upgradeData);
 
+        m_upgradeIcon.sprite = m_upgradeData.Icon;
         m_nameLabel.SetText(m_upgradeData.UpgradeName);
         m_descriptionLabel.SetText(m_upgradeData.Description);
         m_costLabel.SetText($"Cost: {NumberFormatter.FormatNumberWithSuffix(m_upgrade.GetUpgradeCost())}");

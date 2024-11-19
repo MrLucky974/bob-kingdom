@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 447db553d22e1bf4797611792b91d3dc, type: 3}
   m_Name: Crossbow
   m_EditorClassIdentifier: 
-  m_sprite: {fileID: 21300000, guid: 18a6a596728df844191c316b6b88b059, type: 3}
+  m_sprite: {fileID: 21300000, guid: 5568ac8f932d0ca499d3f8f68966897c, type: 3}
   m_attackDamage: 0
   m_range: 0
   m_fireRate: 0

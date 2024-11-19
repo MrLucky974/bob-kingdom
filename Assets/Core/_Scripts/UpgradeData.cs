@@ -9,6 +9,9 @@ public class UpgradeData : ScriptableObject
     [SerializeField, Multiline] private string m_description;
     public string Description => m_description;
 
+    [SerializeField] private Sprite m_icon;
+    public Sprite Icon => m_icon;
+
     [SerializeField] private int m_maxLevel = 1;
     public int MaxLevel => m_maxLevel;
 

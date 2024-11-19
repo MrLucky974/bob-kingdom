@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 447db553d22e1bf4797611792b91d3dc, type: 3}
   m_Name: Bow
   m_EditorClassIdentifier: 
-  m_sprite: {fileID: 21300000, guid: c38b0d777bc43a64aace3431ba48e7ad, type: 3}
+  m_sprite: {fileID: 21300000, guid: 2de250a285a14a143bc61869ac7053a9, type: 3}
   m_attackDamage: 0
   m_range: 0
   m_fireRate: 0
