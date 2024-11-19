@@ -2,6 +2,7 @@ using LuckiusDev.Utils;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MainUI : MonoBehaviour
 {
@@ -22,16 +23,36 @@ public class MainUI : MonoBehaviour
     [SerializeField] private CanvasGroup m_upgradePanel;
     [SerializeField] private GameObject m_block;
 
+    [Space]
+
+    [SerializeField] private UpgradeData m_autoMergeUpgradeData;
+    [SerializeField] private Button m_autoMergeButton;
+
+    private Upgrade m_autoMergeUpgrade;
+
     private void Awake()
     {
+        m_autoMergeUpgrade = UpgradeManager.Instance.GetUpgrade(m_autoMergeUpgradeData);
+        m_autoMergeUpgrade.UpgradeLevelUp += OnAutoMergeUpgrade;
+        m_autoMergeButton.interactable = false;
+
         m_player.MoneyChanged += OnMoneyChanged;
         m_player.ItemCostChanged += OnItemCostChanged;
     }
 
     private void OnDestroy()
     {
+        m_autoMergeUpgrade.UpgradeLevelUp -= OnAutoMergeUpgrade;
+
         m_player.MoneyChanged -= OnMoneyChanged;
         m_player.ItemCostChanged -= OnItemCostChanged;
+    }
+
+    #region Event Calls
+
+    private void OnAutoMergeUpgrade(Upgrade upgrade)
+    {
+        m_autoMergeButton.interactable = true;
     }
 
     private void OnMoneyChanged(int money)
@@ -43,6 +64,8 @@ public class MainUI : MonoBehaviour
     {
         m_itemCostLabel.SetText(NumberFormatter.FormatNumberWithSuffix(cost));
     }
+
+    #endregion
 
     public void OpenUpgradePanel()
     {
