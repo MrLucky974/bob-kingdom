@@ -1,8 +1,12 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UpgradeSlot : MonoBehaviour
 {
+    [Header("Upgrade")]
+    [SerializeField] private UpgradeData m_upgradeData;
+
     [Header("Interaction")]
     [SerializeField] private Button m_button;
 
@@ -15,17 +19,18 @@ public class UpgradeSlot : MonoBehaviour
     [SerializeField] private RectTransform m_indicesContainer;
     [SerializeField] private Image m_upgradeIndexTemplate;
 
-    private int m_maxUpgradeLevel;
-    private int m_currentUpgradeLevel = 0;
+    [Space]
+
+    [SerializeField] private TextMeshProUGUI m_nameLabel;
+    [SerializeField] private TextMeshProUGUI m_descriptionLabel;
+    [SerializeField] private TextMeshProUGUI m_costLabel;
 
     private Image[] m_upgradeIndices;
 
     private void Start()
     {
-        m_maxUpgradeLevel = Random.Range(1, 5);
-
-        m_upgradeIndices = new Image[m_maxUpgradeLevel];
-        for (int i = 0; i < m_maxUpgradeLevel; i++)
+        m_upgradeIndices = new Image[m_upgradeData.MaxLevel];
+        for (int i = 0; i < m_upgradeData.MaxLevel; i++)
         {
             var instance = Instantiate(m_upgradeIndexTemplate, m_indicesContainer);
             instance.name = $"Index_{i:000}";
@@ -36,27 +41,27 @@ public class UpgradeSlot : MonoBehaviour
 
     public void Upgrade()
     {
-        if (m_currentUpgradeLevel >= m_maxUpgradeLevel)
+        var upgrade = UpgradeManager.Instance.GetUpgrade(m_upgradeData);
+
+        if (upgrade.CurrentLevel >= m_upgradeData.MaxLevel)
         {
-            m_currentUpgradeLevel = m_maxUpgradeLevel;
             return;
         }
 
-        m_currentUpgradeLevel++;
-        for (int i = 0; i < m_maxUpgradeLevel; i++)
+        upgrade.ApplyUpgrade();
+        for (int i = 0; i < m_upgradeData.MaxLevel; i++)
         {
             var image = m_upgradeIndices[i];
             if (image != null)
             {
-                var color = i < m_currentUpgradeLevel ? m_upgradeColor : m_defaultColor;
+                var color = i < upgrade.CurrentLevel ? m_upgradeColor : m_defaultColor;
                 image.color = color;
             }
         }
 
-        if (m_currentUpgradeLevel >= m_maxUpgradeLevel)
+        if (upgrade.CurrentLevel >= m_upgradeData.MaxLevel)
         {
             m_button.interactable = false;
-            m_currentUpgradeLevel = m_maxUpgradeLevel;
         }
     }
 }

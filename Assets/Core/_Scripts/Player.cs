@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Player : MonoBehaviour
 {
@@ -26,9 +28,15 @@ public class Player : MonoBehaviour
     [Tooltip("The number of times the item has been purchased.")]
     private int m_itemPurchases = 0;
 
+    [Serializable]
+    public class ItemDataContainer
+    {
+        [SerializeField] public List<ItemData> items;
+    }
+
     [Header("Item Data")]
-    [Tooltip("The data associated with the item, such as its name or description.")]
-    [SerializeField] private ItemData m_itemData;
+    [SerializeField] private UpgradeData m_itemUpgradeData;
+    [SerializeField] private List<ItemDataContainer> m_containers;
 
     public event Action<int> MoneyChanged;
     public event Action<int> ItemCostChanged;
@@ -44,9 +52,26 @@ public class Player : MonoBehaviour
 
     public bool BuyItem(out ItemData itemData)
     {
-        if (m_itemData == null)
+        if (m_containers == null || m_containers.Count < 1)
         {
-            Debug.LogWarning("No item data specified, make sure to reference in the inspector!");
+            Debug.LogWarning("No containers specified, make sure to reference in the inspector!");
+            itemData = null;
+            return false;
+        }
+
+        var upgrade = UpgradeManager.Instance.GetUpgrade(m_itemUpgradeData);
+        int containerLevel = upgrade.CurrentLevel;
+        if (containerLevel >= m_containers.Count)
+        {
+            containerLevel = m_containers.Count - 1;
+        }
+
+        var currentContainer = m_containers[containerLevel];
+        var items = currentContainer.items;
+
+        if (items == null || items.Count < 1)
+        {
+            Debug.LogWarning("No items specified for current container, make sure to reference in the inspector!");
             itemData = null;
             return false;
         }
@@ -60,7 +85,8 @@ public class Player : MonoBehaviour
             m_currentItemCost = Mathf.CeilToInt(m_initialItemCost * Mathf.Pow(m_itemCostGrowthRate, m_itemPurchases));
             ItemCostChanged?.Invoke(m_currentItemCost);
 
-            itemData = m_itemData;
+            var randomIndex = Random.Range(0, items.Count);
+            itemData = items[randomIndex];
             return true;
         }
 
