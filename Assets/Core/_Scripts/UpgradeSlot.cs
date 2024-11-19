@@ -1,3 +1,4 @@
+using LuckiusDev.Utils;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -35,7 +36,7 @@ public class UpgradeSlot : MonoBehaviour
 
         m_nameLabel.SetText(m_upgradeData.UpgradeName);
         m_descriptionLabel.SetText(m_upgradeData.Description);
-        m_costLabel.SetText($"Cost: {m_upgrade.GetUpgradeCost()}");
+        m_costLabel.SetText($"Cost: {NumberFormatter.FormatNumberWithSuffix(m_upgrade.GetUpgradeCost())}");
 
         m_upgradeIndices = new Image[m_upgradeData.MaxLevel];
         for (int i = 0; i < m_upgradeData.MaxLevel; i++)
@@ -69,7 +70,7 @@ public class UpgradeSlot : MonoBehaviour
                     image.color = color;
                 }
             }
-            m_costLabel.SetText($"Cost: {m_upgrade.GetUpgradeCost()}");
+            m_costLabel.SetText($"Cost: {NumberFormatter.FormatNumberWithSuffix(m_upgrade.GetUpgradeCost())}");
 
             if (m_upgrade.IsMaxed)
             {
