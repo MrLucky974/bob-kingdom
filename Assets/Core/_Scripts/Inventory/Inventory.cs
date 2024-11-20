@@ -26,6 +26,20 @@ public class Inventory : MonoBehaviour
         return new List<InventorySlot>(m_slots);
     }
 
+    public InventorySlot GetFirstAvailableSlot()
+    {
+        for (int i = 0; i < m_slots.Count; i++)
+        {
+            var slot = m_slots[i];
+            if (slot.transform.childCount == 0)
+            {
+                return slot;
+            }
+        }
+
+        return null;
+    }
+
     public InventorySlot GetRandomAvailableSlot()
     {
         List<InventorySlot> availableSlots = new List<InventorySlot>();
