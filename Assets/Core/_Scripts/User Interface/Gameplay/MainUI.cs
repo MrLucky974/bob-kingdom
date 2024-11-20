@@ -1,4 +1,6 @@
 using LuckiusDev.Utils;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -87,13 +89,45 @@ public class MainUI : MonoBehaviour
 
     public void MergeAllItems()
     {
+        if (m_autoMergeUpgrade.CurrentLevel >= 2)
+        {
+            StartCoroutine(MergeItemsRecursively());
+        }
+        else
+        {
+            MergeItemsOnce();
+        }
+    }
+
+    private IEnumerator MergeItemsRecursively()
+    {
+        bool itemsMerged = false;
+        do
+        {
+            yield return MergeItemsStep((value) => itemsMerged = value);
+        }
+        while (itemsMerged);
+    }
+
+    private IEnumerator MergeItemsStep(Action<bool> callback)
+    {
+        callback(MergeItemsOnce());
+        yield return null;
+    }
+
+    private bool MergeItemsOnce()
+    {
+        bool itemsMerged = false; // Track if any merges happened in this iteration
         var slots = m_inventory.GetAllSlots();
 
         // Dictionary to track the count of items by their data
         Dictionary<ItemData, (GameObject slotObject, Transform parentSlot)> itemTracker = new();
 
+        int slotIndex = -1;
         foreach (var slot in slots)
         {
+            slotIndex += 1;
+
             if (slot.transform.childCount == 0) // Skip empty slots
                 continue;
 
@@ -123,6 +157,8 @@ public class MainUI : MonoBehaviour
                     // Remove from tracker to allow further merges
                     itemTracker.Remove(slotItem.ItemData);
 
+                    itemsMerged = true; // A merge happened
+
                     // Add new item to the tracker
                     itemTracker[nextItemTier] = (newInstance.gameObject, parentSlot);
                 }
@@ -133,6 +169,8 @@ public class MainUI : MonoBehaviour
                 itemTracker[slotItem.ItemData] = (slotObject, slot.transform);
             }
         }
+
+        return itemsMerged;
     }
 
     public void BuyItem()
