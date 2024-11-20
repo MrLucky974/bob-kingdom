@@ -3,12 +3,11 @@ using UnityEngine.EventSystems;
 
 public class Unit : MonoBehaviour, IDropHandler, IPointerDownHandler
 {
-    [SerializeField] private DraggableItem m_draggableItemPrefab;
-    [SerializeField] private Canvas m_canvas;
-
+    [Header("Equipment")]
     [SerializeField] private ItemData m_heldItem;
+
+    [Header("Rendering")]
     [SerializeField] private SpriteRenderer m_weaponSpriteRenderer;
-    [SerializeField] private Inventory m_inventory;
 
     private EventSystem eventSystem;
 
@@ -20,6 +19,12 @@ public class Unit : MonoBehaviour, IDropHandler, IPointerDownHandler
 
     public void OnDrop(PointerEventData eventData)
     {
+        if (SceneReferences.draggableItemPrefab == null)
+        {
+            Debug.LogWarning("No prefab specified, make sure to reference in the inspector!");
+            return;
+        }
+
         GameObject droppedObject = eventData.pointerDrag;
 
         if (!droppedObject.TryGetComponent<DraggableItem>(out var item))
@@ -28,7 +33,7 @@ public class Unit : MonoBehaviour, IDropHandler, IPointerDownHandler
         var heldItem = m_heldItem;
         if (heldItem != null)
         {
-            var instance = m_draggableItemPrefab.Create(heldItem);
+            var instance = SceneReferences.draggableItemPrefab.Create(heldItem);
             instance.transform.SetParent(item.ParentAfterDrag);
         }
 
@@ -42,11 +47,23 @@ public class Unit : MonoBehaviour, IDropHandler, IPointerDownHandler
         if (m_heldItem == null)
             return;
 
-        var slot = m_inventory.GetFirstAvailableSlot();
+        if (SceneReferences.canvas == null)
+        {
+            Debug.LogWarning("No canvas specified, make sure to reference in the inspector!", SceneReferences.Instance);
+            return;
+        }
+
+        if (SceneReferences.draggableItemPrefab == null)
+        {
+            Debug.LogWarning("No prefab specified, make sure to reference in the inspector!", SceneReferences.Instance);
+            return;
+        }
+
+        var slot = Player.Instance.Inventory.GetFirstAvailableSlot();
         if (slot != null)
         {
-            var instance = m_draggableItemPrefab.Create(m_heldItem);
-            instance.transform.SetParent(m_canvas.transform);
+            var instance = SceneReferences.draggableItemPrefab.Create(m_heldItem);
+            instance.transform.SetParent(SceneReferences.canvas.transform);
             var gameObject = instance.gameObject;
             gameObject.transform.SetParent(slot.transform);
             gameObject.transform.localPosition = Vector3.zero;

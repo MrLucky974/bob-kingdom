@@ -8,10 +8,6 @@ using UnityEngine.UI;
 
 public class MainUI : MonoBehaviour
 {
-    [SerializeField] private DraggableItem m_draggableItemPrefab;
-
-    [Space]
-
     [SerializeField] private TextMeshProUGUI m_moneyLabel;
     [SerializeField] private TextMeshProUGUI m_itemCostLabel;
 
@@ -118,6 +114,18 @@ public class MainUI : MonoBehaviour
 
     private bool MergeItemsOnce()
     {
+        if (m_inventory == null)
+        {
+            Debug.LogWarning("No inventory specified, make sure to reference in the inspector!");
+            return false;
+        }
+
+        if (SceneReferences.draggableItemPrefab == null)
+        {
+            Debug.LogWarning("No prefab specified, make sure to reference in the inspector!");
+            return false;
+        }
+
         bool itemsMerged = false; // Track if any merges happened in this iteration
         var slots = m_inventory.GetAllSlots();
 
@@ -151,7 +159,7 @@ public class MainUI : MonoBehaviour
                     Destroy(slotObject);
 
                     // Create the next tier item
-                    var newInstance = m_draggableItemPrefab.Create(nextItemTier);
+                    var newInstance = SceneReferences.draggableItemPrefab.Create(nextItemTier);
                     newInstance.transform.SetParent(parentSlot);
                     newInstance.transform.localPosition = Vector3.zero; // Reset position
 
@@ -182,9 +190,9 @@ public class MainUI : MonoBehaviour
             return;
         }
 
-        if (m_draggableItemPrefab == null)
+        if (SceneReferences.draggableItemPrefab == null)
         {
-            Debug.LogWarning("No prefab specified, make sure to reference in the inspector!");
+            Debug.LogWarning("No prefab specified, make sure to reference in the inspector!", SceneReferences.Instance);
             return;
         }
 
@@ -197,7 +205,7 @@ public class MainUI : MonoBehaviour
 
         if (m_player.BuyItem(out var itemData))
         {
-            var instance = m_draggableItemPrefab.Create(itemData);
+            var instance = SceneReferences.draggableItemPrefab.Create(itemData);
             instance.transform.SetParent(slot.transform);
         }
     }

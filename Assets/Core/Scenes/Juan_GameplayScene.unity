@@ -1896,7 +1896,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000007938594}
+  m_AnchoredPosition: {x: 0, y: -0.000020794176}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &821823199
@@ -2924,11 +2924,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 408f87a219ebea147ace78b67b476893, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_draggableItemPrefab: {fileID: 8561713397174620303, guid: 33b6fb0ff9e21b3439c1189c1b54a515, type: 3}
-  m_canvas: {fileID: 1794942670}
   m_heldItem: {fileID: 0}
   m_weaponSpriteRenderer: {fileID: 1492967582}
-  m_inventory: {fileID: 28039334}
 --- !u!1001 &1120163107
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4030,6 +4027,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1424835985}
+  - component: {fileID: 1424835988}
   - component: {fileID: 1424835986}
   - component: {fileID: 1424835987}
   m_Layer: 0
@@ -4099,6 +4097,20 @@ MonoBehaviour:
   m_upgradesData:
   - {fileID: 11400000, guid: 64c9b1b553fa0c54a8c788f209e3e22b, type: 2}
   - {fileID: 11400000, guid: ce0b0016e44533242a3cec1b12deb2e3, type: 2}
+--- !u!114 &1424835988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424835984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0421f7bac37d1e9419ccff7af8c75698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_canvas: {fileID: 1794942670}
+  m_draggableItemPrefab: {fileID: 8561713397174620303, guid: 33b6fb0ff9e21b3439c1189c1b54a515, type: 3}
 --- !u!114 &1470759348 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8533445676497049057, guid: 6c1c3e222c2cacf48ac21ec813bd0b33, type: 3}
@@ -5895,7 +5907,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c8248721c486e34b8ce63a7d0297bbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_draggableItemPrefab: {fileID: 8561713397174620303, guid: 33b6fb0ff9e21b3439c1189c1b54a515, type: 3}
   m_moneyLabel: {fileID: 1241631950}
   m_itemCostLabel: {fileID: 1344375475}
   m_upgradePanel: {fileID: 1512516765}
