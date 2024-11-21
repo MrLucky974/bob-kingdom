@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9983967b69fc7b542a8b18ce59997aee, type: 3}
   m_Name: Bat
   m_EditorClassIdentifier: 
-  _sprit: {fileID: 3321011547733022953, guid: d9b2e5a564a4ece4989880dbd0d91cac, type: 3}
+  _sprit: {fileID: 3321011547733022953, guid: 5870951123dd5f44b9b930db6770d081, type: 3}
   _health: 2
   _damage: 2
   _attacCooldown: 1

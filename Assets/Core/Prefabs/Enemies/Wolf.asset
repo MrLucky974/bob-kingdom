@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9983967b69fc7b542a8b18ce59997aee, type: 3}
   m_Name: Wolf
   m_EditorClassIdentifier: 
-  _sprit: {fileID: 3321011547733022953, guid: 1cc6dbf82e5bed24daf8cfe415dda0b4, type: 3}
+  _sprit: {fileID: 3321011547733022953, guid: 5764f4a61c0c28b4abe5f6ba6f287dbb, type: 3}
   _health: 3
   _damage: 3
   _attacCooldown: 1
