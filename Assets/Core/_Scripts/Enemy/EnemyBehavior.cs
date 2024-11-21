@@ -21,9 +21,14 @@ public class EnemyBehavior : MonoBehaviour
 
     private EnemySpawner m_spawner;
 
+    public void Initialize(EnemySpawner spawner)
+    {
+        m_spawner = spawner;
+    }
+
     private void Start()
     {
-        m_spawner = FindObjectOfType<EnemySpawner>();
+        //m_spawner = FindObjectOfType<EnemySpawner>();
         m_canAttack = true;
         m_wallContact = false;
 
@@ -37,12 +42,15 @@ public class EnemyBehavior : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        m_spawner.MarkEnemyAsKilled();
+    }
 
     private void Update()
     {
         if (m_health <= 0)
         {
-            m_spawner._enemyKilled++;
             Destroy(gameObject);
         }
 

@@ -2054,7 +2054,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.00008344578}
+  m_AnchoredPosition: {x: 0, y: 0.0000076293945}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &821823199
@@ -3472,11 +3472,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_canvas: {fileID: 1794942670}
   m_draggableItemPrefab: {fileID: 8561713397174620303, guid: 33b6fb0ff9e21b3439c1189c1b54a515, type: 3}
---- !u!4 &1430887858 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5167682726670794595, guid: 8835cf619c06793449ac163698a22876, type: 3}
-  m_PrefabInstance: {fileID: 1470935991}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1452803654
 GameObject:
   m_ObjectHideFlags: 0
@@ -3621,14 +3616,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5393565812528355840, guid: 8835cf619c06793449ac163698a22876, type: 3}
-      propertyPath: _spawnArea1
-      value: 
-      objectReference: {fileID: 1430887858}
-    - target: {fileID: 5393565812528355840, guid: 8835cf619c06793449ac163698a22876, type: 3}
-      propertyPath: _spawnArea2
-      value: 
-      objectReference: {fileID: 1699867014}
     - target: {fileID: 8944958457900491342, guid: 8835cf619c06793449ac163698a22876, type: 3}
       propertyPath: m_Name
       value: Enemy Spawner
@@ -4174,11 +4161,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4415699548400677933, guid: f25891460ecbb1e458fc62d9b34d9e67, type: 3}
   m_PrefabInstance: {fileID: 1658956086}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1699867014 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7332310430577601473, guid: 8835cf619c06793449ac163698a22876, type: 3}
-  m_PrefabInstance: {fileID: 1470935991}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1718820723
 PrefabInstance:
