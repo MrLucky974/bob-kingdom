@@ -11,6 +11,8 @@ public class Projectile : MonoBehaviour
         public AnimationCurve trajectoryAnimationCurve;
         public AnimationCurve axisCorrectionAnimationCurve;
         public AnimationCurve speedAnimationCurve;
+
+        public int damage;
     }
 
     private const float MINIMUM_TARGET_DISTANCE = 0.4f;
@@ -18,6 +20,8 @@ public class Projectile : MonoBehaviour
     [SerializeField] private ProjectileVisual m_visual;
 
     private Transform m_target;
+    private Transform m_virtualTarget;
+
     private float m_movementSpeed;
     private float m_maxMovementSpeed;
 
@@ -36,6 +40,8 @@ public class Projectile : MonoBehaviour
     private AnimationCurve m_axisCorrectionAnimationCurve;
     private AnimationCurve m_speedAnimationCurve;
 
+    private int m_damage;
+
     private void Start()
     {
         m_trajectoryStartPoint = transform.position;
@@ -43,22 +49,32 @@ public class Projectile : MonoBehaviour
 
     private void Update()
     {
-        UpdateProjectilePosition();
-
-        if (Vector3.Distance(transform.position, m_target.position) < MINIMUM_TARGET_DISTANCE)
+        if (Vector3.Distance(transform.position, m_virtualTarget.position) < MINIMUM_TARGET_DISTANCE)
         {
-            if (transform.TryGetComponent<EnemyBehavior>(out var enemy))
+            if (m_target != null)
             {
-                // TODO : Damage enemy
+                bool isEnemy = m_target.TryGetComponent<EnemyBehavior>(out var enemy);
+                if (isEnemy)
+                {
+                    enemy.Damage(m_damage);
+                }
             }
 
+            Destroy(m_virtualTarget.gameObject);
             Destroy(gameObject);
         }
+
+        if (m_target != null)
+        {
+            m_virtualTarget.position = m_target.position;
+        }
+
+        UpdateProjectilePosition();
     }
 
     private void UpdateProjectilePosition()
     {
-        m_trajectoryRange = m_target.position - m_trajectoryStartPoint;
+        m_trajectoryRange = m_virtualTarget.position - m_trajectoryStartPoint;
 
         if (Mathf.Abs(m_trajectoryRange.normalized.x) < Mathf.Abs(m_trajectoryRange.normalized.y))
         {
@@ -139,6 +155,10 @@ public class Projectile : MonoBehaviour
     public void Initialize(ProjectileData data)
     {
         m_target = data.target;
+        var gameObject = new GameObject("Projectile Target");
+        m_virtualTarget = gameObject.transform;
+        m_virtualTarget.position = m_target.position;
+
         m_maxMovementSpeed = data.maxSpeed;
 
         float xDistanceToTarget = m_target.position.x - transform.position.x;
@@ -147,7 +167,9 @@ public class Projectile : MonoBehaviour
         m_axisCorrectionAnimationCurve = data.axisCorrectionAnimationCurve;
         m_speedAnimationCurve = data.speedAnimationCurve;
 
-        m_visual.SetTarget(m_target);
+        m_visual.SetTarget(m_virtualTarget);
+
+        m_damage = data.damage;
     }
 
     public float GetNextPositionYTrajectoryAbsolute()

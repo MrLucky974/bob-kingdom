@@ -13,7 +13,7 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] private float m_damage;
     [SerializeField] private float m_attackCooldown;
     [SerializeField] private float m_movementSpeed;
-    private float m_health;
+    private int m_health;
 
     private bool m_wallContact;
     private Wall m_wall;
@@ -28,7 +28,6 @@ public class EnemyBehavior : MonoBehaviour
 
     private void Start()
     {
-        //m_spawner = FindObjectOfType<EnemySpawner>();
         m_canAttack = true;
         m_wallContact = false;
 
@@ -62,6 +61,11 @@ public class EnemyBehavior : MonoBehaviour
             m_canAttack = false;
             StartCoroutine(AttackCooldown());
         }
+    }
+
+    public void Damage(int amount)
+    {
+        m_health -= amount;
     }
 
     private IEnumerator AttackCooldown()

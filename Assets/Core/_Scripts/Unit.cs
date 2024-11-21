@@ -59,6 +59,8 @@ public class Unit : MonoBehaviour, IDropHandler, IPointerDownHandler
                 trajectoryAnimationCurve = m_heldItem.TrajectoryAnimationCurve,
                 axisCorrectionAnimationCurve = m_heldItem.AxisCorrectionAnimationCurve,
                 speedAnimationCurve = m_heldItem.SpeedAnimationCurve,
+
+                damage = m_heldItem.AttackDamage,
             };
             projectile.Initialize(data);
             m_nextAttackTime = Time.time + (1f / m_heldItem.FireRate);
