@@ -71,8 +71,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5224406832974563230}
-  - component: {fileID: 5393565812528355840}
   - component: {fileID: 2826779674793995199}
+  - component: {fileID: 5393565812528355840}
   m_Layer: 0
   m_Name: Enemy Spawner
   m_TagString: Untagged
@@ -97,6 +97,23 @@ Transform:
   - {fileID: 7332310430577601473}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2826779674793995199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8944958457900491342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77e871befa690ab40ad145d8965fc10b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_enemySpawner: {fileID: 5393565812528355840}
+  _waveFinished: 0
+  _waveCanStart: 0
+  _waveCooldown: 3
+  _waveStarted: 0
 --- !u!114 &5393565812528355840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,8 +126,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0325586c3ae354da477ed3d9ac36b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnArea1: {fileID: 8551743198470746653}
-  _spawnArea2: {fileID: 7691893951295088987}
+  m_waveSystem: {fileID: 2826779674793995199}
+  m_spawnArea1: {fileID: 5167682726670794595}
+  m_spawnArea2: {fileID: 7332310430577601473}
   _spawnCoolDown: 1
   _canSpawn: 0
   _activate: 0
@@ -174,19 +192,3 @@ MonoBehaviour:
     - {fileID: 4438582875051190313, guid: 564f10d1b6adc614ea4dc513fc3f9b63, type: 3}
     - {fileID: 8506023261756677185, guid: 57ae69b238e534f42be09d61e8814625, type: 3}
   _waveIndex: 0
---- !u!114 &2826779674793995199
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8944958457900491342}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77e871befa690ab40ad145d8965fc10b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _waveFinished: 0
-  _waveCanStart: 0
-  _waveCooldown: 3
-  _waveStarted: 0
