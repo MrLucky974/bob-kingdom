@@ -15,6 +15,10 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] private float m_movementSpeed;
     private int m_health;
 
+    [Header("Visuals")]
+    [SerializeField] private SpriteRenderer m_spriteRenderer;
+    [SerializeField] private float m_flashDuration = 0.3f;
+
     private bool m_wallContact;
     private Wall m_wall;
     private bool m_canAttack;
@@ -59,13 +63,33 @@ public class EnemyBehavior : MonoBehaviour
         {
             m_wall.TakeDamage(m_damage);
             m_canAttack = false;
-            StartCoroutine(AttackCooldown());
+            StartCoroutine(nameof(AttackCooldown));
         }
     }
 
     public void Damage(int amount)
     {
         m_health -= amount;
+        Flash();
+    }
+
+    private Coroutine m_flashCoroutine;
+
+    private void Flash()
+    {
+        if (m_flashCoroutine != null)
+        {
+            StopCoroutine(m_flashCoroutine);
+        }
+        m_flashCoroutine = StartCoroutine(nameof(FlashCoroutine));
+    }
+
+    private IEnumerator FlashCoroutine()
+    {
+        m_spriteRenderer.material.SetFloat("_Flashing", 1f);
+        yield return new WaitForSeconds(m_flashDuration);
+        m_spriteRenderer.material.SetFloat("_Flashing", 0f);
+        m_flashCoroutine = null;
     }
 
     private IEnumerator AttackCooldown()

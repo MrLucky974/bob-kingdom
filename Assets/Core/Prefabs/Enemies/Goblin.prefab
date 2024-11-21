@@ -50,6 +50,7 @@ MonoBehaviour:
   m_damage: 0
   m_attackCooldown: 0
   m_movementSpeed: 0
+  m_spriteRenderer: {fileID: 386887587695793338}
 --- !u!70 &6747842890945023446
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -137,7 +138,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: cebe495af797b2a4da542199134ccfe5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
