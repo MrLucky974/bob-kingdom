@@ -264,6 +264,7 @@ MonoBehaviour:
   m_heldItem: {fileID: 0}
   m_weaponSpriteRenderer: {fileID: 6444859111011026419}
   m_outfitSpriteRenderer: {fileID: 5383483160441977784}
+  m_target: {fileID: 0}
 --- !u!1 &8601331769208280267
 GameObject:
   m_ObjectHideFlags: 0

@@ -2054,7 +2054,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.00016382334}
+  m_AnchoredPosition: {x: 0, y: 0.0010144445}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &821823199
@@ -2730,7 +2730,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 884569430}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9999791
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3384,6 +3384,7 @@ GameObject:
   - component: {fileID: 1424835988}
   - component: {fileID: 1424835986}
   - component: {fileID: 1424835987}
+  - component: {fileID: 1424835989}
   m_Layer: 0
   m_Name: '[MANAGERS]'
   m_TagString: Untagged
@@ -3472,6 +3473,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_canvas: {fileID: 1794942670}
   m_draggableItemPrefab: {fileID: 8561713397174620303, guid: 33b6fb0ff9e21b3439c1189c1b54a515, type: 3}
+--- !u!114 &1424835989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424835984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbe55614edbc0f9408fb1da9203fcb33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1452803654
 GameObject:
   m_ObjectHideFlags: 0
@@ -4245,10 +4258,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7264374756794550769, guid: f25891460ecbb1e458fc62d9b34d9e67, type: 3}
-      propertyPath: m_target
-      value: 
-      objectReference: {fileID: 1646089902}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

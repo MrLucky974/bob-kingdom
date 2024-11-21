@@ -13,7 +13,7 @@ public class Projectile : MonoBehaviour
         public AnimationCurve speedAnimationCurve;
     }
 
-    private const float MINIMUM_TARGET_DISTANCE = 1f;
+    private const float MINIMUM_TARGET_DISTANCE = 0.4f;
 
     [SerializeField] private ProjectileVisual m_visual;
 

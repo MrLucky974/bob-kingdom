@@ -102,6 +102,10 @@ public class EnemySpawner : MonoBehaviour
         var instance = Instantiate(enemyPrefab, randomPosition, Quaternion.identity);
         if (instance.TryGetComponent<EnemyBehavior>(out var enemy))
         {
+            string instanceName = instance.name.Replace("(Clone)", "");
+            instanceName = $"{m_spawnedEnemyCount:000}_" + instanceName;
+            instance.name = instanceName;
+
             enemy.Initialize(this);
         }
         else

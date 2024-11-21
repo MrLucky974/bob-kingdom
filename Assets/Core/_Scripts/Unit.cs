@@ -10,10 +10,7 @@ public class Unit : MonoBehaviour, IDropHandler, IPointerDownHandler
     [SerializeField] private SpriteRenderer m_weaponSpriteRenderer;
     [SerializeField] private SpriteRenderer m_outfitSpriteRenderer;
 
-#if UNITY_EDITOR
-    [Header("Debug")]
     [SerializeField] private Transform m_target;
-#endif
 
     private EventSystem eventSystem;
 
@@ -30,10 +27,23 @@ public class Unit : MonoBehaviour, IDropHandler, IPointerDownHandler
     private void Update()
     {
         if (m_heldItem == null)
+        {
+            if (m_target != null)
+            {
+                SoldierCoordinator.ReleaseTarget(m_target);
+                m_target = null;
+            }
             return;
+        }
 
         if (m_target == null)
-            return;
+        {
+            var target = SoldierCoordinator.Instance.GetClosestAvailableTarget(transform, m_heldItem.Range);
+            if (target == null)
+                return;
+
+            m_target = target;
+        }
 
         if (Time.time > m_nextAttackTime)
         {
