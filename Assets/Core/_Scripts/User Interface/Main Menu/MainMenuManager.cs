@@ -1,3 +1,4 @@
+using LuckiusDev.Experiments;
 using UnityEditor;
 using UnityEngine;
 
@@ -12,6 +13,11 @@ namespace LBB.BRA1NFvCK
 
     public class MainMenuManager : UIMenuManager<MainMenuScreenType>
     {
+        public void Play()
+        {
+            SceneTransitionManager.Load("GameplayScene");
+        }
+
         public void QuitGame()
         {
 #if UNITY_EDITOR
