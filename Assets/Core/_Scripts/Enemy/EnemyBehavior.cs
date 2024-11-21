@@ -35,8 +35,6 @@ public class EnemyBehavior : MonoBehaviour
         {
             m_health = DEFAULT_MAX_HEALTH;
         }
-
-        InitializeCollider();
     }
 
 
@@ -80,12 +78,5 @@ public class EnemyBehavior : MonoBehaviour
         m_damage = m_enemyData.damage;
         m_attackCooldown = m_enemyData.attackCooldown;
         m_movementSpeed = m_enemyData.speed;
-    }
-
-    private void InitializeCollider()
-    {
-        gameObject.AddComponent<CapsuleCollider2D>();
-        GetComponent<CapsuleCollider2D>().size = new Vector2(1, 1.5f);
-        GetComponent<CapsuleCollider2D>().isTrigger = true;
     }
 }
