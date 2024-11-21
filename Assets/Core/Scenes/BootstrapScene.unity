@@ -242,7 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f847aaaf02e56742bdd8e49a24cf253, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_transitionMaterial: {fileID: 2100000, guid: 64710e1710b7f35468b903f765de0f93, type: 2}
+  m_image: {fileID: 535164663}
   m_transitionDuration: 0.6
 --- !u!1 &2058752746
 GameObject:

@@ -2,15 +2,21 @@ using LuckiusDev.Utils;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace LuckiusDev.Experiments
 {
     public class SceneTransitionManager : PersistentSingleton<SceneTransitionManager>
     {
-        [SerializeField] private Material m_transitionMaterial;
+        [SerializeField] private Image m_image;
         [SerializeField] private float m_transitionDuration = 0.6f;
 
         private bool m_isActive = false;
+
+        private void Start()
+        {
+            m_image.materialForRendering.SetFloat("_Amount", 0f); // Set the material property to zero on start
+        }
 
         public static void Load(string sceneName)
         {
@@ -23,7 +29,8 @@ namespace LuckiusDev.Experiments
         private IEnumerator LoadScene(string sceneName)
         {
             m_isActive = true;
-            m_transitionMaterial.SetFloat("_Amount", 0f); // Set the material property to zero on start
+
+            m_image.materialForRendering.SetFloat("_Amount", 0f); // Set the material property to zero on start
 
             // Animate the transition material from zero to one
             float currentTime = 0f;
@@ -31,9 +38,9 @@ namespace LuckiusDev.Experiments
             {
                 currentTime += Time.unscaledDeltaTime;
                 yield return null;
-                m_transitionMaterial.SetFloat("_Amount", currentTime / m_transitionDuration);
+                m_image.materialForRendering.SetFloat("_Amount", currentTime / m_transitionDuration);
             }
-            m_transitionMaterial.SetFloat("_Amount", 1f); // set the material property to one
+            m_image.materialForRendering.SetFloat("_Amount", 1f); // set the material property to one
 
             // Wait for the scene to load
             AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
@@ -50,10 +57,10 @@ namespace LuckiusDev.Experiments
             {
                 currentTime += Time.unscaledDeltaTime;
                 yield return null;
-                m_transitionMaterial.SetFloat("_Amount", 1f - (currentTime / m_transitionDuration));
+                m_image.materialForRendering.SetFloat("_Amount", 1f - (currentTime / m_transitionDuration));
             }
 
-            m_transitionMaterial.SetFloat("_Amount", 0f); // Set the material property to zero
+            m_image.materialForRendering.SetFloat("_Amount", 0f); // Set the material property to zero
             m_isActive = false;
         }
     }
