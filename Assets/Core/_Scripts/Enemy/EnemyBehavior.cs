@@ -6,7 +6,7 @@ public class EnemyBehavior : MonoBehaviour
     public EnemyData _enemyData;
     
     [SerializeField] GameObject _sprit;
-    [SerializeField] float _health;
+    public float _health;
     [SerializeField] float _damage;
     [SerializeField] float _attacCooldown;
     [SerializeField] float _speed;

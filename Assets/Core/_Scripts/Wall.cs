@@ -1,11 +1,9 @@
-using System.Collections;
 using UnityEngine;
 
 public class Wall : MonoBehaviour
 {
     [SerializeField] float _maxHealth;
     [SerializeField] float _currentHealth;
-    [SerializeField] float _invincibleTime;
 
     private void Start()
     {
