@@ -6,7 +6,7 @@ public class EnemyBehavior : MonoBehaviour
     public EnemyData _enemyData;
     
     [SerializeField] GameObject _sprit;
-    [SerializeField] float _health;
+    public float _health;
     [SerializeField] float _damage;
     [SerializeField] float _attacCooldown;
     [SerializeField] float _speed;
@@ -15,9 +15,12 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] Wall _wall;
     [SerializeField] bool _canAttac;
 
+    EnemySpawner _spawner;
+
 
     private void Start()
     {
+        _spawner = FindObjectOfType<EnemySpawner>();
         _canAttac = true;
         _wallContact = false;
         if (_enemyData != null)
@@ -33,6 +36,7 @@ public class EnemyBehavior : MonoBehaviour
         {
             if (_health <= 0)
             {
+                _spawner._enemyKilled++;
                 Destroy(gameObject);
             }
         }
