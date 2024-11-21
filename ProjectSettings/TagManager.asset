@@ -42,9 +42,15 @@ TagManager:
   - name: Background
     uniqueID: 726138419
     locked: 0
+  - name: Shadow
+    uniqueID: 2945960643
+    locked: 0
   - name: Decorations
     uniqueID: 1356390911
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Projectiles
+    uniqueID: 315840147
     locked: 0
