@@ -2021,7 +2021,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000001106749}
+  m_AnchoredPosition: {x: 0, y: 0.000034220328}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &821823199
@@ -2696,7 +2696,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 884569430}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9999979
+  m_Size: 0.9999933
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3584,7 +3584,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8944958457900491342, guid: 8835cf619c06793449ac163698a22876, type: 3}
       propertyPath: m_Name
-      value: EnemySpawner
+      value: Enemy Spawner
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

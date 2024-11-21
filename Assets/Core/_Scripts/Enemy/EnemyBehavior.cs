@@ -3,83 +3,87 @@ using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour
 {
-    public EnemyData _enemyData;
-    
-    [SerializeField] GameObject _sprit;
-    public float _health;
-    [SerializeField] float _damage;
-    [SerializeField] float _attacCooldown;
-    [SerializeField] float _speed;
-    
-    [SerializeField] bool _wallContact;
-    [SerializeField] Wall _wall;
-    [SerializeField] bool _canAttac;
+    private const int DEFAULT_MAX_HEALTH = 10;
 
-    EnemySpawner _spawner;
+    [Header("Stats")]
+    [SerializeField] private EnemyData m_enemyData;
 
+    [Space]
+
+    [SerializeField] private float m_damage;
+    [SerializeField] private float m_attackCooldown;
+    [SerializeField] private float m_movementSpeed;
+    private float m_health;
+
+    private bool m_wallContact;
+    private Wall m_wall;
+    private bool m_canAttack;
+
+    private EnemySpawner m_spawner;
 
     private void Start()
     {
-        _spawner = FindObjectOfType<EnemySpawner>();
-        _canAttac = true;
-        _wallContact = false;
-        if (_enemyData != null)
+        m_spawner = FindObjectOfType<EnemySpawner>();
+        m_canAttack = true;
+        m_wallContact = false;
+
+        if (m_enemyData != null)
         {
             LoadEnemyData();
         }
+        else
+        {
+            m_health = DEFAULT_MAX_HEALTH;
+        }
+
+        InitializeCollider();
     }
 
 
     private void Update()
     {
-        if (_enemyData != null)
+        if (m_health <= 0)
         {
-            if (_health <= 0)
-            {
-                _spawner._enemyKilled++;
-                Destroy(gameObject);
-            }
+            m_spawner._enemyKilled++;
+            Destroy(gameObject);
         }
-        transform.Translate(new Vector3(-_speed * Time.deltaTime/2, 0,0));
-        if(_wallContact == true)
+
+        transform.Translate(new Vector3(-m_movementSpeed * Time.deltaTime, 0, 0));
+
+        if (m_wallContact && m_canAttack)
         {
-            if(_canAttac == true)
-            {
-                _wall.TakeDamage(_damage);
-                _canAttac = false;
-                StartCoroutine(AttacCooldown());
-            }
+            m_wall.TakeDamage(m_damage);
+            m_canAttack = false;
+            StartCoroutine(AttackCooldown());
         }
     }
 
-    IEnumerator AttacCooldown()
+    private IEnumerator AttackCooldown()
     {
-        yield return new WaitForSeconds(_attacCooldown);
-        _canAttac = true;
+        yield return new WaitForSeconds(m_attackCooldown);
+        m_canAttack = true;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision != null)
+        if (collision != null && collision.CompareTag("Wall"))
         {
-            if (collision.tag == "Wall")
-            {
-                _speed = 0;
-                _wallContact = true;
-                _wall = collision.GetComponent<Wall>();
-            }
+            m_movementSpeed = 0;
+            m_wallContact = true;
+            m_wall = collision.GetComponent<Wall>();
         }
     }
 
     private void LoadEnemyData()
     {
-        _sprit = _enemyData._sprit;
-        _health = _enemyData._health;
-        _damage = _enemyData._damage;
-        _attacCooldown = _enemyData._attacCooldown;
-        _speed = _enemyData._speed;
+        m_health = m_enemyData.maxHealth;
+        m_damage = m_enemyData.damage;
+        m_attackCooldown = m_enemyData.attackCooldown;
+        m_movementSpeed = m_enemyData.speed;
+    }
 
-        Instantiate(_sprit, transform);
+    private void InitializeCollider()
+    {
         gameObject.AddComponent<CapsuleCollider2D>();
         GetComponent<CapsuleCollider2D>().size = new Vector2(1, 1.5f);
         GetComponent<CapsuleCollider2D>().isTrigger = true;

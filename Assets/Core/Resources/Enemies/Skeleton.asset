@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9983967b69fc7b542a8b18ce59997aee, type: 3}
   m_Name: Skeleton
   m_EditorClassIdentifier: 
-  _sprit: {fileID: 3321011547733022953, guid: 1cc6dbf82e5bed24daf8cfe415dda0b4, type: 3}
-  _health: 2
-  _damage: 2
-  _attacCooldown: 1
-  _speed: 2.5
+  maxHealth: 2
+  damage: 2
+  attackCooldown: 1
+  speed: 1.25

@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9983967b69fc7b542a8b18ce59997aee, type: 3}
   m_Name: Knight
   m_EditorClassIdentifier: 
-  _sprit: {fileID: 3321011547733022953, guid: 1cc6dbf82e5bed24daf8cfe415dda0b4, type: 3}
-  _health: 20
-  _damage: 5
-  _attacCooldown: 2
-  _speed: 1.5
+  maxHealth: 20
+  damage: 5
+  attackCooldown: 2
+  speed: 0.75
