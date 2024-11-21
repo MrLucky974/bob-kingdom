@@ -22,6 +22,7 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     }
 
     private Transform m_parentAfterDrag;
+    public Transform ParentAfterDrag => m_parentAfterDrag;
 
     public void SetParentAfterDrag(Transform parentAfterDrag)
     {

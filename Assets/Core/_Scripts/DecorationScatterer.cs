@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DecorationScatterer : MonoBehaviour
 {
+    [SerializeField] private Transform m_parent;
     [SerializeField] private List<GameObject> m_prefabs = new();
     [SerializeField] private float m_radius = 1f;
     [SerializeField] private Vector2 m_regionSize;
@@ -17,7 +18,7 @@ public class DecorationScatterer : MonoBehaviour
             var prefabIndex = Random.Range(0, m_prefabs.Count);
             var prefab = m_prefabs[prefabIndex];
             var instance = Instantiate(prefab, point - m_regionSize * 0.5f, Quaternion.identity);
-            instance.transform.SetParent(transform);
+            instance.transform.SetParent(m_parent != null ? m_parent : transform);
         }
     }
 }

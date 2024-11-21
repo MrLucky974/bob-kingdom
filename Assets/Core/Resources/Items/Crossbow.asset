@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Crossbow
   m_EditorClassIdentifier: 
   m_sprite: {fileID: 21300000, guid: 5568ac8f932d0ca499d3f8f68966897c, type: 3}
+  m_outfit: {fileID: 21300000, guid: e1ffed8b1f0b3e74c9dfa695a1d8a5fe, type: 3}
   m_attackDamage: 0
   m_range: 0
   m_fireRate: 0

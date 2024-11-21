@@ -6,6 +6,10 @@ using Random = UnityEngine.Random;
 
 public class Player : Singleton<Player>
 {
+    [Header("References")]
+    [SerializeField] private Inventory m_inventory;
+    public Inventory Inventory => m_inventory;
+
     [Header("Player Money")]
     [Tooltip("The starting amount of money the player has.")]
     [SerializeField] private int m_initialMoney;
