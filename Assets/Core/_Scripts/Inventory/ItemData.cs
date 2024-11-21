@@ -6,6 +6,9 @@ public class ItemData : ScriptableObject
     [SerializeField] private Sprite m_sprite;
     public Sprite Sprite => m_sprite;
 
+    [SerializeField] private Sprite m_outfit;
+    public Sprite Outfit => m_outfit;
+
     [SerializeField] private int m_attackDamage;
     public int AttackDamage => m_attackDamage;
 

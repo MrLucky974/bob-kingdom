@@ -8,6 +8,7 @@ public class Unit : MonoBehaviour, IDropHandler, IPointerDownHandler
 
     [Header("Rendering")]
     [SerializeField] private SpriteRenderer m_weaponSpriteRenderer;
+    [SerializeField] private SpriteRenderer m_outfitSpriteRenderer;
 
     private EventSystem eventSystem;
 
@@ -15,6 +16,7 @@ public class Unit : MonoBehaviour, IDropHandler, IPointerDownHandler
     {
         eventSystem = EventSystem.current;
         UpdateWeaponSprite();
+        UpdateOutfitSprite();
     }
 
     public void OnDrop(PointerEventData eventData)
@@ -40,6 +42,7 @@ public class Unit : MonoBehaviour, IDropHandler, IPointerDownHandler
         Destroy(droppedObject);
         m_heldItem = item.ItemData;
         UpdateWeaponSprite();
+        UpdateOutfitSprite();
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -70,11 +73,17 @@ public class Unit : MonoBehaviour, IDropHandler, IPointerDownHandler
 
             m_heldItem = null;
             UpdateWeaponSprite();
+            UpdateOutfitSprite();
         }
     }
 
     private void UpdateWeaponSprite()
     {
         m_weaponSpriteRenderer.sprite = m_heldItem != null ? m_heldItem.Sprite : null;
+    }
+
+    private void UpdateOutfitSprite()
+    {
+        m_outfitSpriteRenderer.sprite = m_heldItem != null ? m_heldItem.Outfit : null;
     }
 }

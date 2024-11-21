@@ -17,6 +17,6 @@ MonoBehaviour:
 
     higher tier weapons when buying'
   m_icon: {fileID: 21300000, guid: 2de250a285a14a143bc61869ac7053a9, type: 3}
-  m_maxLevel: 3
+  m_maxLevel: 6
   m_initialCost: 100
   m_costGrowthRate: 1.75

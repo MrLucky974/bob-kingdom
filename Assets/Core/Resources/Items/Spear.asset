@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Spear
   m_EditorClassIdentifier: 
   m_sprite: {fileID: 21300000, guid: d35eb541554f9064f96eef1d65fae76c, type: 3}
+  m_outfit: {fileID: 21300000, guid: abc8fd242294c2747b3f96318aa0e172, type: 3}
   m_attackDamage: 0
   m_range: 0
   m_fireRate: 0
