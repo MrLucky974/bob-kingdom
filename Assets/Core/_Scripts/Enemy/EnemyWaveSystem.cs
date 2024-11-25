@@ -36,7 +36,7 @@ public class EnemyWaveSystem : MonoBehaviour
     [SerializeField] private float m_waveCooldownTime = 3f; // Temps d'attente (en secondes) entre deux vagues.
     public float WaveCooldownTime => m_waveCooldownTime; // Accès en lecture au temps de pause entre les vagues.
 
-    private int m_currentWaveIndex = 0; // Indice de la vague actuelle.
+    public int m_currentWaveIndex = 0; // Indice de la vague actuelle.
     public int CurrentWaveIndex => m_currentWaveIndex; // Accès en lecture à l'indice de la vague actuelle.
 
     private WaveState m_waveState; // État actuel de la vague.
