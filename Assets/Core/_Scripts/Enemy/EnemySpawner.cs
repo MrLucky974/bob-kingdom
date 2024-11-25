@@ -4,7 +4,6 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 using System.Text;
 
-
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -183,31 +182,17 @@ public class EnemySpawner : MonoBehaviour
 #if UNITY_EDITOR
 
 [CustomEditor(typeof(EnemySpawner)), CanEditMultipleObjects]
-public class EnemySpawnerInspector : Editor
+public class EnemySpawnerInspector : AutoRepaintingEditor
 {
-    private void OnEnable()
-    {
-        // Subscribe to the update event
-        EditorApplication.update += OnEditorUpdate;
-    }
-
-    private void OnDisable()
-    {
-        // Unsubscribe from the update event
-        EditorApplication.update -= OnEditorUpdate;
-    }
-
-    private void OnEditorUpdate()
-    {
-        // Force the inspector to repaint
-        Repaint();
-    }
-
     public override void OnInspectorGUI()
     {
         DrawDefaultInspector();
 
+        EditorGUILayout.Space(5);
+        EditorGUILayout.LabelField("Debug", EditorStyles.boldLabel);
+
         EnemySpawner spawner = (EnemySpawner)target;
+
         StringBuilder sb = new StringBuilder();
         sb.AppendLine($"Composition Index: {spawner.CurrentCompositionIndex}");
         sb.AppendLine($"Target Enemy Count: {spawner.TargetEnemyCount}");

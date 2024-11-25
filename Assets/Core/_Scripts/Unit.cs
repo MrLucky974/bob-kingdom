@@ -1,5 +1,10 @@
+using System.Text;
 using UnityEngine;
 using UnityEngine.EventSystems;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class Unit : MonoBehaviour, IDropHandler, IPointerDownHandler
 {
@@ -10,16 +15,13 @@ public class Unit : MonoBehaviour, IDropHandler, IPointerDownHandler
     [SerializeField] private SpriteRenderer m_weaponSpriteRenderer;
     [SerializeField] private SpriteRenderer m_outfitSpriteRenderer;
 
-    [SerializeField] private Transform m_target;
-
-    private EventSystem eventSystem;
+    private Transform m_target;
+    public Transform Target => m_target;
 
     private float m_nextAttackTime;
 
     private void Start()
     {
-        eventSystem = EventSystem.current;
-
         UpdateWeaponSprite();
         UpdateOutfitSprite();
     }
@@ -135,3 +137,27 @@ public class Unit : MonoBehaviour, IDropHandler, IPointerDownHandler
         m_outfitSpriteRenderer.sprite = m_heldItem != null ? m_heldItem.Outfit : null;
     }
 }
+
+#if UNITY_EDITOR
+
+[CustomEditor(typeof(Unit)), CanEditMultipleObjects]
+public class UnitInspector : AutoRepaintingEditor
+{
+    public override void OnInspectorGUI()
+    {
+        DrawDefaultInspector();
+
+        EditorGUILayout.Space(5);
+        EditorGUILayout.LabelField("Debug", EditorStyles.boldLabel);
+
+        Unit unit = (Unit)target;
+
+        StringBuilder sb = new StringBuilder();
+        var unitTarget = unit.Target;
+        sb.Append($"Current Target: {(unitTarget != null ? unitTarget.name : "None")}");
+
+        EditorGUILayout.HelpBox(sb.ToString(), MessageType.None);
+    }
+}
+
+#endif

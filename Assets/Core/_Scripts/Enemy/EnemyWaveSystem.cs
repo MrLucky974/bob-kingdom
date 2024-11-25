@@ -129,31 +129,17 @@ public class EnemyWaveSystem : MonoBehaviour
 #if UNITY_EDITOR
 
 [CustomEditor(typeof(EnemyWaveSystem)), CanEditMultipleObjects]
-public class EnemyWaveSystemInspector : Editor
+public class EnemyWaveSystemInspector : AutoRepaintingEditor
 {
-    private void OnEnable()
-    {
-        // Subscribe to the update event
-        EditorApplication.update += OnEditorUpdate;
-    }
-
-    private void OnDisable()
-    {
-        // Unsubscribe from the update event
-        EditorApplication.update -= OnEditorUpdate;
-    }
-
-    private void OnEditorUpdate()
-    {
-        // Force the inspector to repaint
-        Repaint();
-    }
-
     public override void OnInspectorGUI()
     {
         DrawDefaultInspector();
 
+        EditorGUILayout.Space(5);
+        EditorGUILayout.LabelField("Debug", EditorStyles.boldLabel);
+
         EnemyWaveSystem waveSystem = (EnemyWaveSystem)target;
+
         StringBuilder sb = new StringBuilder();
         sb.AppendLine($"Current Wave: {waveSystem.CurrentWaveIndex}");
         sb.Append($"Wave State: {waveSystem.CurrentWaveState}");
