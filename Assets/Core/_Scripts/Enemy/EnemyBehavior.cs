@@ -25,6 +25,7 @@ public class EnemyBehavior : MonoBehaviour
     private bool m_canAttack;
 
     private EnemySpawner m_spawner;
+    private EnemyWaveSystem m_wave;
 
     public void Initialize(EnemySpawner spawner)
     {
@@ -33,6 +34,7 @@ public class EnemyBehavior : MonoBehaviour
 
     private void Start()
     {
+        m_wave = FindObjectOfType<EnemyWaveSystem>();
         m_canAttack = true;
         m_wallContact = false;
 
@@ -44,6 +46,8 @@ public class EnemyBehavior : MonoBehaviour
         {
             m_health = DEFAULT_MAX_HEALTH;
         }
+        m_health = Mathf.FloorToInt(m_health + (m_wave.m_currentWaveIndex/2));
+        m_Gold = m_health * 5;
     }
 
     private void Update()

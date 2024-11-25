@@ -15,7 +15,7 @@ namespace LBB.BRA1NFvCK
     {
         public void Play()
         {
-            SceneTransitionManager.Load("GameplayScene");
+            SceneTransitionManager.Load("Juan_GameplayScene");
         }
 
         public void QuitGame()
