@@ -50,16 +50,12 @@ public class EnemyBehavior : MonoBehaviour
         m_Gold = m_health * 5;
     }
 
-    private void OnDestroy()
-    {
-        m_spawner.MarkEnemyAsKilled();
-    }
-
     private void Update()
     {
         if (m_health <= 0)
         {
             Death();
+            return;
         }
 
         transform.Translate(new Vector3(-m_movementSpeed * Time.deltaTime, 0, 0));
@@ -107,6 +103,7 @@ public class EnemyBehavior : MonoBehaviour
     {
         //TODO : rajouter un VFX avec le sprite de coin et un SFX !
         Player.Instance.GiveMoney(m_Gold);
+        m_spawner.MarkEnemyAsKilled();
         Destroy(gameObject);
     }
 

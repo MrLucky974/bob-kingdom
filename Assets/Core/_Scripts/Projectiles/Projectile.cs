@@ -15,7 +15,7 @@ public class Projectile : MonoBehaviour
         public int damage;
     }
 
-    private const float MINIMUM_TARGET_DISTANCE = 0.4f;
+    private const float MINIMUM_TARGET_DISTANCE = 1f;
 
     [SerializeField] private ProjectileVisual m_visual;
 
@@ -154,25 +154,30 @@ public class Projectile : MonoBehaviour
 
     public void Initialize(ProjectileData data)
     {
+        #region Initialize Projectile Movement
         m_target = data.target;
         var gameObject = new GameObject("Projectile Target");
         m_virtualTarget = gameObject.transform;
         m_virtualTarget.position = m_target.position;
 
         m_maxMovementSpeed = data.maxSpeed;
+        m_visual.SetTarget(m_virtualTarget);
+
 
         float xDistanceToTarget = m_target.position.x - transform.position.x;
         m_trajectoryMaxRelativeHeight = Mathf.Abs(xDistanceToTarget) * data.trajectoryMaxHeight;
+        #endregion
+
+        m_damage = data.damage;
+
+        #region Initialize Projectile Animation Curves
         m_trajectoryAnimationCurve = data.trajectoryAnimationCurve;
         m_axisCorrectionAnimationCurve = data.axisCorrectionAnimationCurve;
         m_speedAnimationCurve = data.speedAnimationCurve;
-
-        m_visual.SetTarget(m_virtualTarget);
-
-        m_damage = data.damage;
+        #endregion
     }
 
-    public float GetNextPositionYTrajectoryAbsolute()
+    public float GetNextPositionYCorrectionAbsolute()
     {
         return m_nextPositionYCorrectionAbsolute;
     }
@@ -182,7 +187,7 @@ public class Projectile : MonoBehaviour
         return m_nextYTrajectoryPosition;
     }
 
-    public float GetNextPositionXTrajectoryAbsolute()
+    public float GetNextPositionXCorrectionAbsolute()
     {
         return m_nextPositionXCorrectionAbsolute;
     }
@@ -192,5 +197,5 @@ public class Projectile : MonoBehaviour
         return m_nextXTrajectoryPosition;
     }
 
-    public Vector3 MovementDirection => m_projectileMovementDirection;
+    public Vector3 GetMovementDirection() { return m_projectileMovementDirection; }
 }

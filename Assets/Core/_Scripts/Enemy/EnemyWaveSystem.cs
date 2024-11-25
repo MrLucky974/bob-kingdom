@@ -75,6 +75,11 @@ public class EnemyWaveSystem : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
+    }
+
     /// <summary>
     /// Coroutine pour gérer le délai entre deux vagues.
     /// </summary>
