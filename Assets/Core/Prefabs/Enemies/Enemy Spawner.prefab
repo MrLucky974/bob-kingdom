@@ -112,7 +112,7 @@ MonoBehaviour:
   m_enemySpawner: {fileID: 5393565812528355840}
   m_autoStart: 1
   m_initialWaveIndex: 0
-  m_waveCooldownTime: 3
+  m_waveCooldownTime: 10
 --- !u!114 &5393565812528355840
 MonoBehaviour:
   m_ObjectHideFlags: 0

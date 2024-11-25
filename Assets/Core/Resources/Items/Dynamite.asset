@@ -13,6 +13,27 @@ MonoBehaviour:
   m_Name: Dynamite
   m_EditorClassIdentifier: 
   m_sprite: {fileID: 21300000, guid: 3868b9c1dfb981847b75a0279dbca3b4, type: 3}
+  m_outfit: {fileID: 0}
+  m_projectilePrefab: {fileID: 8114252734412359783, guid: 3207b5c416c276240ac9d3f2227549f9, type: 3}
+  m_trajectoryMaxHeight: 1
+  m_trajectoryAnimationCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_axisCorrectionAnimationCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_speedAnimationCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   m_attackDamage: 0
   m_range: 0
   m_fireRate: 0

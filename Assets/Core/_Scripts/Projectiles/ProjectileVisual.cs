@@ -4,9 +4,12 @@ public class ProjectileVisual : MonoBehaviour
 {
     private const float SHADOW_POSITION_Y_DIVIDER = 6f;
 
+    [SerializeField] private Projectile m_projectile;
+
+    [Space]
+
     [SerializeField] private Transform m_projectileVisual;
     [SerializeField] private Transform m_projectileShadow;
-    [SerializeField] private Projectile m_projectile;
 
     private Transform m_target;
     private Vector3 m_trajectoryStartPoint;
@@ -25,10 +28,11 @@ public class ProjectileVisual : MonoBehaviour
         float trajectoryMagnitude = (m_target.position - m_trajectoryStartPoint).magnitude;
 
         float trajectoryProgressNormalized = trajectoryProgressMagnitude / trajectoryMagnitude;
-        if (trajectoryProgressNormalized < 0.7f)
-        {
-            UpdateProjectileShadowRotation();
-        }
+        //if (trajectoryProgressNormalized < 0.7f)
+        //{
+        //    UpdateProjectileShadowRotation();
+        //}
+        UpdateProjectileShadowRotation();
     }
 
     private void UpdateShadowPosition()
