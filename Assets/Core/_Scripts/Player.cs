@@ -96,6 +96,14 @@ public class Player : Singleton<Player>
         return false;
     }
 
+    public void GiveMoney(int amount)
+    {
+        if (amount < 0)
+        {
+            m_currentMoney += amount;
+        }
+    }
+
     public bool ConsumeMoney(int amount)
     {
         if (CanAfford(amount))

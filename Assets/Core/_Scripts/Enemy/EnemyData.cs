@@ -7,4 +7,5 @@ public class EnemyData : ScriptableObject
     public float damage;
     public float attackCooldown;
     public float speed;
+    public int GoldOnDeath;
 }

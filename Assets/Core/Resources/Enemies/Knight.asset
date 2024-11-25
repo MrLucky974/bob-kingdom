@@ -16,3 +16,4 @@ MonoBehaviour:
   damage: 5
   attackCooldown: 2
   speed: 0.75
+  GoldOnDeath: 100

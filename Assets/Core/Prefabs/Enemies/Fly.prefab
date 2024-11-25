@@ -135,6 +135,7 @@ MonoBehaviour:
   m_attackCooldown: 0
   m_movementSpeed: 0
   m_spriteRenderer: {fileID: 794540382855664618}
+  m_flashDuration: 0.3
 --- !u!58 &7876517761738376828
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -169,4 +170,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.3
+  m_Radius: 0.25
