@@ -1,8 +1,13 @@
 using LuckiusDev.Utils;
 using System;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 using Random = UnityEngine.Random;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class Player : Singleton<Player>
 {
@@ -24,14 +29,18 @@ public class Player : Singleton<Player>
     [Header("Item Costs")]
     [Tooltip("The initial cost of the item.")]
     [SerializeField] private int m_initialItemCost;
+    public int InitialItemCost => m_initialItemCost;
 
     [Tooltip("The growth rate of the item's cost after each purchase (e.g., 1.15 for a 15% increase).")]
     [SerializeField] private float m_itemCostGrowthRate = 1.15f;
+    public float ItemCostGrowthRate => m_itemCostGrowthRate;
 
     private int m_currentItemCost;
+    public int CurrentItemCost => m_currentItemCost;
 
     [Tooltip("The number of times the item has been purchased.")]
     private int m_itemPurchases = 0;
+    public int ItemPurchases => m_itemPurchases;
 
     [Serializable]
     public class ItemDataContainer
@@ -121,3 +130,34 @@ public class Player : Singleton<Player>
         return m_currentMoney >= cost;
     }
 }
+
+#if UNITY_EDITOR
+
+[CustomEditor(typeof(Player)), CanEditMultipleObjects]
+public class PlayerInspector : AutoRepaintingEditor
+{
+    public override void OnInspectorGUI()
+    {
+        DrawDefaultInspector();
+
+        EditorGUILayout.Space(5);
+        EditorGUILayout.LabelField("Debug", EditorStyles.boldLabel);
+
+        Player player = (Player)target;
+
+        StringBuilder sb = new StringBuilder();
+        sb.AppendLine($"Current Money: {player.CurrentMoney}");
+
+        int initialCost = player.InitialItemCost;
+        int purchases = player.ItemPurchases;
+        float costGrowthRate = player.ItemCostGrowthRate;
+        int cost = Mathf.CeilToInt(initialCost * Mathf.Pow(costGrowthRate, purchases));
+        int nextCost = Mathf.CeilToInt(initialCost * Mathf.Pow(costGrowthRate, purchases + 1));
+        sb.AppendLine($"Current Item Cost: {initialCost} * {costGrowthRate} ^ {purchases} = {cost}");
+        sb.Append($"Next Item Cost: {initialCost} * {costGrowthRate} ^ {purchases + 1} = {nextCost}");
+
+        EditorGUILayout.HelpBox(sb.ToString(), MessageType.None);
+    }
+}
+
+#endif

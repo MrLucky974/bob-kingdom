@@ -10,7 +10,7 @@ public class EnemyBehavior : MonoBehaviour
 
     [Space]
 
-    [SerializeField] private float m_damage;
+    [SerializeField] private int m_damage;
     [SerializeField] private float m_attackCooldown;
     [SerializeField] private float m_movementSpeed;
     private int m_health;
