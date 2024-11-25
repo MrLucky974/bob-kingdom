@@ -14,6 +14,7 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] private float m_attackCooldown;
     [SerializeField] private float m_movementSpeed;
     private int m_health;
+    [SerializeField] private int m_Gold;
 
     [Header("Visuals")]
     [SerializeField] private SpriteRenderer m_spriteRenderer;
@@ -54,7 +55,7 @@ public class EnemyBehavior : MonoBehaviour
     {
         if (m_health <= 0)
         {
-            Destroy(gameObject);
+            Death();
         }
 
         transform.Translate(new Vector3(-m_movementSpeed * Time.deltaTime, 0, 0));
@@ -98,6 +99,13 @@ public class EnemyBehavior : MonoBehaviour
         m_canAttack = true;
     }
 
+    private void Death()
+    {
+        //TODO : rajouter un VFX avec le sprite de coin et un SFX !
+        Player.Instance.GiveMoney(m_Gold);
+        Destroy(gameObject);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision != null && collision.CompareTag("Wall"))
@@ -114,5 +122,6 @@ public class EnemyBehavior : MonoBehaviour
         m_damage = m_enemyData.damage;
         m_attackCooldown = m_enemyData.attackCooldown;
         m_movementSpeed = m_enemyData.speed;
+        m_Gold = m_enemyData.GoldOnDeath;
     }
 }
