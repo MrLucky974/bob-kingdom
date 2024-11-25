@@ -1,4 +1,6 @@
+using LuckiusDev.Experiments;
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class Wall : MonoBehaviour
@@ -27,8 +29,19 @@ public class Wall : MonoBehaviour
     {
         if (_currentHealth <= 0)
         {
-            Debug.Log("GAME OVER !");
-            enabled = false;
+            GameOver();
         }
+    }
+
+    public void GameOver()
+    {
+        Debug.Log("GAME OVER !");
+        StartCoroutine(Defeat());
+    }
+    IEnumerator Defeat()
+    {
+        yield return new WaitForSeconds(3);
+        SceneTransitionManager.Load("GameOver");
+        enabled = false;
     }
 }
