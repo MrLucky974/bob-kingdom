@@ -107,9 +107,10 @@ public class Player : Singleton<Player>
 
     public void GiveMoney(int amount)
     {
-        if (amount < 0)
+        if (amount > 0)
         {
             m_currentMoney += amount;
+            MoneyChanged?.Invoke(m_currentMoney);
         }
     }
 
