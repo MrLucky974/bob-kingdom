@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ProjectileVisual : MonoBehaviour
 {
-    private const float SHADOW_POSITION_Y_DIVIDER = 6f;
+    private const float SHADOW_POSITION_DIVIDER = 6f;
 
     [SerializeField] private Projectile m_projectile;
 
@@ -28,11 +28,11 @@ public class ProjectileVisual : MonoBehaviour
         float trajectoryMagnitude = (m_target.position - m_trajectoryStartPoint).magnitude;
 
         float trajectoryProgressNormalized = trajectoryProgressMagnitude / trajectoryMagnitude;
-        //if (trajectoryProgressNormalized < 0.7f)
-        //{
-        //    UpdateProjectileShadowRotation();
-        //}
-        UpdateProjectileShadowRotation();
+        Debug.Log(trajectoryProgressNormalized);
+        if (trajectoryProgressNormalized < 0.7f)
+        {
+            UpdateProjectileShadowRotation();
+        }
     }
 
     private void UpdateShadowPosition()
@@ -42,11 +42,11 @@ public class ProjectileVisual : MonoBehaviour
 
         if (Mathf.Abs(trajectoryRange.normalized.x) < Mathf.Abs(trajectoryRange.normalized.y))
         {
-            targetPosition.x = m_trajectoryStartPoint.x + m_projectile.GetNextXTrajectoryPosition() / SHADOW_POSITION_Y_DIVIDER + m_projectile.GetNextPositionXTrajectoryAbsolute();
+            targetPosition.x = m_trajectoryStartPoint.x + m_projectile.GetNextXTrajectoryPosition() / SHADOW_POSITION_DIVIDER + m_projectile.GetNextPositionXCorrectionAbsolute();
         }
         else
         {
-            targetPosition.y = m_trajectoryStartPoint.y + m_projectile.GetNextYTrajectoryPosition() / SHADOW_POSITION_Y_DIVIDER + m_projectile.GetNextPositionYTrajectoryAbsolute();
+            targetPosition.y = m_trajectoryStartPoint.y + m_projectile.GetNextYTrajectoryPosition() / SHADOW_POSITION_DIVIDER + m_projectile.GetNextPositionYCorrectionAbsolute();
         }
 
         m_projectileShadow.position = targetPosition;
@@ -54,14 +54,14 @@ public class ProjectileVisual : MonoBehaviour
 
     private void UpdateProjectileRotation()
     {
-        Vector3 projectileMovementDirection = m_projectile.MovementDirection;
-        m_projectileVisual.transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Atan2(projectileMovementDirection.y, projectileMovementDirection.x) * Mathf.Rad2Deg);
+        Vector3 projectileMovementDirection = m_projectile.GetMovementDirection();
+        m_projectileVisual.transform.localRotation = Quaternion.Euler(0f, 0f, Mathf.Atan2(projectileMovementDirection.y, projectileMovementDirection.x) * Mathf.Rad2Deg);
     }
 
     private void UpdateProjectileShadowRotation()
     {
-        Vector3 projectileMovementDirection = m_projectile.MovementDirection;
-        m_projectileShadow.transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Atan2(projectileMovementDirection.y, projectileMovementDirection.x) * Mathf.Rad2Deg);
+        Vector3 projectileMovementDirection = m_projectile.GetMovementDirection();
+        m_projectileShadow.transform.localRotation = Quaternion.Euler(0f, 0f, Mathf.Atan2(projectileMovementDirection.y, projectileMovementDirection.x) * Mathf.Rad2Deg);
     }
 
     public void SetTarget(Transform target)
