@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 447db553d22e1bf4797611792b91d3dc, type: 3}
-  m_Name: Flintlock
+  m_Name: Blunderbuss
   m_EditorClassIdentifier: 
-  m_sprite: {fileID: 21300000, guid: 4225a86a13d0caa4389a6d6f457956f8, type: 3}
+  m_sprite: {fileID: 21300000, guid: 561cfcdedab86364bb517955a21bdbca, type: 3}
   m_outfit: {fileID: 21300000, guid: c5818def7e75d5b4c8310c26a12e906f, type: 3}
-  m_projectilePrefab: {fileID: 8114252734412359783, guid: 79a43fc9f05895d45a090537c953205a, type: 3}
+  m_projectilePrefab: {fileID: 8114252734412359783, guid: f9bc0360bd2034b489af0061d1a88925, type: 3}
   m_trajectoryMaxHeight: 0.175
   m_trajectoryAnimationCurve:
     serializedVersion: 2
@@ -109,4 +109,4 @@ MonoBehaviour:
   m_attackDamage: 10
   m_range: 10
   m_fireRate: 2.75
-  m_nextItemTier: {fileID: 11400000, guid: 41265cd78cddbd1449411767d9ad29a7, type: 2}
+  m_nextItemTier: {fileID: 11400000, guid: 81f0ca786eb841242a5032d9936e9e89, type: 2}
