@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Rock
   m_EditorClassIdentifier: 
   m_sprite: {fileID: 21300000, guid: f98d0a95255bc344d854141f523ec013, type: 3}
-  m_outfit: {fileID: 0}
+  m_outfit: {fileID: 21300000, guid: abc8fd242294c2747b3f96318aa0e172, type: 3}
   m_projectilePrefab: {fileID: 8114252734412359783, guid: 59674eee02161b549a64887f82d8fbd6, type: 3}
   m_trajectoryMaxHeight: 0.2
   m_trajectoryAnimationCurve:

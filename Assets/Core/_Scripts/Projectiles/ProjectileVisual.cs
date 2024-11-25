@@ -28,7 +28,6 @@ public class ProjectileVisual : MonoBehaviour
         float trajectoryMagnitude = (m_target.position - m_trajectoryStartPoint).magnitude;
 
         float trajectoryProgressNormalized = trajectoryProgressMagnitude / trajectoryMagnitude;
-        Debug.Log(trajectoryProgressNormalized);
         if (trajectoryProgressNormalized < 0.7f)
         {
             UpdateProjectileShadowRotation();
