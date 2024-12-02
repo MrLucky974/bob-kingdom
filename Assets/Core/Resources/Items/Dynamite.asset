@@ -107,6 +107,6 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   m_attackDamage: 20
-  m_range: 5
+  m_range: 10
   m_fireRate: 1
   m_nextItemTier: {fileID: 0}
