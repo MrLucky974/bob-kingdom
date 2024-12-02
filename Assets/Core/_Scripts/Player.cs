@@ -50,6 +50,8 @@ public class Player : Singleton<Player>
 
     [Header("Item Data")]
     [SerializeField] private UpgradeData m_itemUpgradeData;
+    private Upgrade m_itemUpgrade;
+
     [SerializeField] private List<ItemDataContainer> m_containers;
 
     public event Action<int> MoneyChanged;
@@ -57,10 +59,24 @@ public class Player : Singleton<Player>
 
     public void Start()
     {
+        m_itemUpgrade = UpgradeManager.Instance.GetUpgrade(m_itemUpgradeData);
+        m_itemUpgrade.UpgradeLevelUp += HandleItemUpgradeLevelUp;
+
         m_currentMoney = m_initialMoney;
         MoneyChanged?.Invoke(m_currentMoney);
 
         m_currentItemCost = m_initialItemCost;
+        ItemCostChanged?.Invoke(m_currentItemCost);
+    }
+
+    private void OnDestroy()
+    {
+        m_itemUpgrade.UpgradeLevelUp -= HandleItemUpgradeLevelUp;
+    }
+
+    private void HandleItemUpgradeLevelUp()
+    {
+        m_currentItemCost = Mathf.RoundToInt(m_initialItemCost * Mathf.Pow(m_itemCostGrowthRate, m_itemUpgrade.CurrentLevel));
         ItemCostChanged?.Invoke(m_currentItemCost);
     }
 
@@ -93,9 +109,6 @@ public class Player : Singleton<Player>
         if (ConsumeMoney(m_currentItemCost))
         {
             m_itemPurchases++;
-            m_currentItemCost = Mathf.CeilToInt(m_initialItemCost * Mathf.Pow(m_itemCostGrowthRate, m_itemPurchases));
-            ItemCostChanged?.Invoke(m_currentItemCost);
-
             var randomIndex = Random.Range(0, items.Count);
             itemData = items[randomIndex];
             return true;
@@ -147,15 +160,7 @@ public class PlayerInspector : AutoRepaintingEditor
         Player player = (Player)target;
 
         StringBuilder sb = new StringBuilder();
-        sb.AppendLine($"Current Money: {player.CurrentMoney}");
-
-        int initialCost = player.InitialItemCost;
-        int purchases = player.ItemPurchases;
-        float costGrowthRate = player.ItemCostGrowthRate;
-        int cost = Mathf.CeilToInt(initialCost * Mathf.Pow(costGrowthRate, purchases));
-        int nextCost = Mathf.CeilToInt(initialCost * Mathf.Pow(costGrowthRate, purchases + 1));
-        sb.AppendLine($"Current Item Cost: {initialCost} * {costGrowthRate} ^ {purchases} = {cost}");
-        sb.Append($"Next Item Cost: {initialCost} * {costGrowthRate} ^ {purchases + 1} = {nextCost}");
+        sb.Append($"Current Money: {player.CurrentMoney}");
 
         EditorGUILayout.HelpBox(sb.ToString(), MessageType.None);
     }

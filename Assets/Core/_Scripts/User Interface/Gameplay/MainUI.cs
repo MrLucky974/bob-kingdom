@@ -49,7 +49,7 @@ public class MainUI : MonoBehaviour
 
     #region Event Calls
 
-    private void OnAutoMergeUpgrade(Upgrade upgrade)
+    private void OnAutoMergeUpgrade()
     {
         m_autoMergeButton.interactable = true;
     }

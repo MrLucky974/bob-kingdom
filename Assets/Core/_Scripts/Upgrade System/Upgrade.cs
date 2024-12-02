@@ -8,7 +8,7 @@ public class Upgrade
 
     public bool IsMaxed => CurrentLevel >= Data.MaxLevel;
 
-    public event Action<Upgrade> UpgradeLevelUp;
+    public event Action UpgradeLevelUp;
 
     public Upgrade(UpgradeData data)
     {
@@ -24,7 +24,7 @@ public class Upgrade
         }
 
         CurrentLevel++;
-        UpgradeLevelUp?.Invoke(this);
+        UpgradeLevelUp?.Invoke();
     }
 
     public int GetUpgradeCost()
