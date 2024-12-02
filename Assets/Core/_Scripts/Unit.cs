@@ -49,7 +49,7 @@ public class Unit : MonoBehaviour, IDropHandler, IPointerDownHandler
 
         if (Time.time > m_nextAttackTime)
         {
-            Debug.Log($"[{name}]: Shoot", this);
+            //Debug.Log($"[{name}]: Shoot", this);
 
             var projectile = Instantiate(m_heldItem.ProjectilePrefab, transform.position, Quaternion.identity);
             var data = new Projectile.ProjectileData()
