@@ -57,7 +57,7 @@ public class UpgradeSlot : MonoBehaviour
             return;
         }
 
-        int cost = m_upgrade.GetUpgradeCost();
+        ulong cost = (ulong)m_upgrade.GetUpgradeCost();
         bool canAfford = Player.Instance.ConsumeMoney(cost);
         if (canAfford)
         {

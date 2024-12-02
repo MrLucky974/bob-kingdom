@@ -11,7 +11,7 @@ public class TrashInventorySlot : MonoBehaviour, IDropHandler
         if (droppedObject.TryGetComponent<DraggableItem>(out _))
         {
             var currentItemCost = Player.Instance.CurrentItemCost;
-            Player.Instance.GiveMoney(Mathf.RoundToInt(currentItemCost * COST_MULTIPLIER));
+            Player.Instance.GiveMoney((ulong)Mathf.RoundToInt(currentItemCost * COST_MULTIPLIER));
             Destroy(droppedObject);
         }
     }

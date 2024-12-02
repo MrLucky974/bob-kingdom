@@ -14,7 +14,7 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] private float m_attackCooldown;
     [SerializeField] private float m_movementSpeed;
     private int m_health;
-    [SerializeField] private int m_Gold;
+    [SerializeField] private ulong m_Gold;
 
     [Header("Visuals")]
     [SerializeField] private SpriteRenderer m_spriteRenderer;
@@ -46,8 +46,8 @@ public class EnemyBehavior : MonoBehaviour
         {
             m_health = DEFAULT_MAX_HEALTH;
         }
-        m_health = Mathf.FloorToInt(m_health + (m_wave.m_currentWaveIndex/2));
-        m_Gold = m_health * 5;
+        m_health = Mathf.FloorToInt(m_health + (m_wave.m_currentWaveIndex / 2));
+        m_Gold = (ulong)(m_health * 5);
     }
 
     private void Update()
