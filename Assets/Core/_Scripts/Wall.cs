@@ -5,8 +5,14 @@ using UnityEngine;
 
 public class Wall : MonoBehaviour
 {
+    [Header("Settings")]
     [SerializeField] private int _maxHealth;
-    [SerializeField] private int _currentHealth;
+    private int _currentHealth;
+
+    [Header("Upgrades")]
+    [SerializeField] private UpgradeData m_healUpgradeData;
+    private Upgrade m_healUpgrade;
+
     public int MaxHealth => _maxHealth;
     public int CurrentHealth => _currentHealth;
     public float HealthRatio => (float)_currentHealth / _maxHealth;
@@ -15,14 +21,37 @@ public class Wall : MonoBehaviour
 
     private void Start()
     {
+        m_healUpgrade = UpgradeManager.Instance.GetUpgrade(m_healUpgradeData);
+        m_healUpgrade.SetCustomApplicationCheck(() =>
+        {
+            return (CurrentHealth >= MaxHealth, "Health is full!");
+        });
+        m_healUpgrade.UpgradeLevelUp += HandleHealUpgrade;
+
         _currentHealth = _maxHealth;
         HealthChanged?.Invoke();
+        m_healUpgrade.Refresh();
+    }
+
+    private void OnDestroy()
+    {
+        m_healUpgrade.UpgradeLevelUp -= HandleHealUpgrade;
+    }
+
+    private void HandleHealUpgrade()
+    {
+        Debug.Log($"[{name}] Healing wall!", this);
+        const int healAmount = 5;
+        _currentHealth += healAmount;
+        HealthChanged?.Invoke();
+        m_healUpgrade.Refresh();
     }
 
     public void TakeDamage(int damage)
     {
         _currentHealth -= damage;
         HealthChanged?.Invoke();
+        m_healUpgrade.Refresh();
     }
 
     public void Update()
