@@ -85,16 +85,16 @@ public class Projectile : MonoBehaviour
     private void Explode()
     {
         const int maxCollisions = 10;
-        RaycastHit2D[] hits = new RaycastHit2D[maxCollisions];
-        int collisionCount = Physics2D.CircleCastNonAlloc(transform.position, m_blastRadius, Vector3.right, hits);
+        Collider2D[] colliders = new Collider2D[maxCollisions];
+        int collisionCount = Physics2D.OverlapCircleNonAlloc(transform.position, m_blastRadius, colliders);
         if (collisionCount > 0)
         {
             for (int i = maxCollisions - 1; i >= 0; i--)
             {
-                RaycastHit2D hit = hits[i];
+                Collider2D hit = colliders[i];
 
                 // Safeguard to prevent null exception errors
-                if (hit.transform == null)
+                if (hit == null)
                     continue;
 
                 // If the target is an enemy, damage it
