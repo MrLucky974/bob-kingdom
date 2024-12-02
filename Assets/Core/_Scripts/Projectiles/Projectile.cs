@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -17,7 +18,12 @@ public class Projectile : MonoBehaviour
 
     private const float MINIMUM_TARGET_DISTANCE = 1f;
 
+    [Header("References")]
     [SerializeField] private ProjectileVisual m_visual;
+
+    [Header("Settings")]
+    [SerializeField] private bool m_hasBlastRadius;
+    [SerializeField] private float m_blastRadius = 1f;
 
     private Transform m_target;
     private Transform m_virtualTarget;
@@ -49,31 +55,79 @@ public class Projectile : MonoBehaviour
 
     private void Update()
     {
+        CheckTarget();
+        UpdateProjectilePosition();
+    }
+
+    private void CheckTarget()
+    {
+        // If the projectile is near the target position
         if (Vector3.Distance(transform.position, m_virtualTarget.position) < MINIMUM_TARGET_DISTANCE)
         {
-            if (m_target != null)
+            if (m_target != null) // Check that the actual target is not already destroyed
             {
-                bool isEnemy = m_target.TryGetComponent<EnemyBehavior>(out var enemy);
+                bool isEnemy = m_target.TryGetComponent<EnemyBehavior>(out var enemy); // If the target is an enemy, damage it
                 if (isEnemy)
                 {
                     enemy.Damage(m_damage);
                 }
             }
 
-            Destroy(m_virtualTarget.gameObject);
-            Destroy(gameObject);
-        }
+            if (m_hasBlastRadius)
+            {
+                Explode();
+            }
 
+            KillProjectile();
+        }
+    }
+
+    private void Explode()
+    {
+        const int maxCollisions = 10;
+        RaycastHit2D[] hits = new RaycastHit2D[maxCollisions];
+        int collisionCount = Physics2D.CircleCastNonAlloc(transform.position, m_blastRadius, Vector3.right, hits);
+        if (collisionCount > 0)
+        {
+            for (int i = maxCollisions - 1; i >= 0; i--)
+            {
+                RaycastHit2D hit = hits[i];
+
+                // Safeguard to prevent null exception errors
+                if (hit.transform == null)
+                    continue;
+
+                // If the target is an enemy, damage it
+                bool isEnemy = hit.transform.TryGetComponent<EnemyBehavior>(out var enemy);
+                if (isEnemy)
+                {
+                    enemy.Damage(m_damage);
+                }
+            }
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Handles.color = Color.red;
+        Handles.DrawWireDisc(transform.position, Vector3.forward, m_blastRadius);
+    }
+
+    private void KillProjectile()
+    {
+        // TODO : Add particle effects here
+        Destroy(m_virtualTarget.gameObject);
+        Destroy(gameObject);
+    }
+
+    #region Projectile Movement Methods
+    private void UpdateProjectilePosition()
+    {
         if (m_target != null)
         {
             m_virtualTarget.position = m_target.position;
         }
 
-        UpdateProjectilePosition();
-    }
-
-    private void UpdateProjectilePosition()
-    {
         m_trajectoryRange = m_virtualTarget.position - m_trajectoryStartPoint;
 
         if (Mathf.Abs(m_trajectoryRange.normalized.x) < Mathf.Abs(m_trajectoryRange.normalized.y))
@@ -198,4 +252,5 @@ public class Projectile : MonoBehaviour
     }
 
     public Vector3 GetMovementDirection() { return m_projectileMovementDirection; }
+    #endregion
 }
