@@ -22,26 +22,17 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 2
-      outSlope: 2
+      inSlope: 0
+      outSlope: 0
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.5
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -2
-      outSlope: -2
+      inSlope: 0
+      outSlope: 0
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -78,27 +69,18 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
-      inSlope: -0.79999995
-      outSlope: -0.79999995
+      value: 1.5000151
+      inSlope: -0.25001514
+      outSlope: -0.25001514
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.5
-      value: 0.6
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
       time: 1
-      value: 1
-      inSlope: 0.79999995
-      outSlope: 0.79999995
+      value: 1.25
+      inSlope: -0.25001514
+      outSlope: -0.25001514
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -106,7 +88,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_attackDamage: 10
-  m_range: 10
-  m_fireRate: 2.75
+  m_attackDamage: 60
+  m_range: 12
+  m_fireRate: 0.5
   m_nextItemTier: {fileID: 11400000, guid: 81f0ca786eb841242a5032d9936e9e89, type: 2}

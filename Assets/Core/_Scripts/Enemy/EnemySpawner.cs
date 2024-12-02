@@ -20,7 +20,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private Transform m_spawnArea2;
 
     [Header("Status")]
-    [SerializeField] private float _spawnCoolDown;
+    [SerializeField] private float m_spawnCoolDown = 1;
 
     [Header("Enemies")]
     [SerializeField] private int m_initialEnemyCount = 3;
@@ -31,6 +31,8 @@ public class EnemySpawner : MonoBehaviour
     private int m_targetEnemyCount;
     private int m_spawnedEnemyCount;
     private int m_enemiesKilledCount;
+    
+    private EnemyWaveSystem m_wave;
 
     private void Awake()
     {
@@ -46,6 +48,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
+        m_wave = FindObjectOfType<EnemyWaveSystem>();
         InitializeComposition();
     }
 
@@ -124,8 +127,10 @@ public class EnemySpawner : MonoBehaviour
             {
                 m_spawnActive = false;
             }
-
-            yield return new WaitForSeconds(_spawnCoolDown);
+            float newSpawnCoolDown = m_spawnCoolDown - (m_wave.m_currentWaveIndex / 100f);
+            yield return new WaitForSeconds(newSpawnCoolDown);
+            Debug.Log("spawn cooldown: " + m_spawnCoolDown + " - wave index: " + m_wave.m_currentWaveIndex + " /100");
+            Debug.Log("Wave cooldown == " + newSpawnCoolDown);
         }
     }
 
