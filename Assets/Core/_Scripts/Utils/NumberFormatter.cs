@@ -1,3 +1,5 @@
+using System;
+
 namespace LuckiusDev.Utils
 {
     public static class NumberFormatter
@@ -21,7 +23,6 @@ namespace LuckiusDev.Utils
         public static string FormatNumberWithSuffix(int number)
         {
             string[] suffixes = { "", "k", "m", "b", "t" }; // Add more suffixes as needed
-
             int suffixIndex = 0;
             double formattedNumber = number;
 
@@ -31,11 +32,16 @@ namespace LuckiusDev.Utils
                 suffixIndex++;
             }
 
-            string formattedString = (suffixIndex == 0)
-                ? formattedNumber.ToString("F0") // No decimal precision for numbers below 1000
-                : formattedNumber.ToString("F2").Replace('.', ','); // Two decimals with comma separator
-
-            return formattedString + suffixes[suffixIndex];
+            if (suffixIndex == 0)
+            {
+                return formattedNumber.ToString("F0"); // No decimal for numbers below 1000
+            }
+            else
+            {
+                // Use custom rounding and formatting
+                string formatted = Math.Round(formattedNumber, 2).ToString("0.##");
+                return formatted + suffixes[suffixIndex];
+            }
         }
     }
 }
