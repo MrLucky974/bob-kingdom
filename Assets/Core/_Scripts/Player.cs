@@ -17,26 +17,27 @@ public class Player : Singleton<Player>
 
     [Header("Player Money")]
     [Tooltip("The starting amount of money the player has.")]
-    [SerializeField] private int m_initialMoney;
+    [SerializeField] private ulong m_initialMoney;
+    public ulong InitialMoney => m_initialMoney;
 
-    private int m_currentMoney;
+    private ulong m_currentMoney;
 
     /// <summary>
     /// The current amount of money the player has.
     /// </summary>
-    public int CurrentMoney => m_currentMoney;
+    public ulong CurrentMoney => m_currentMoney;
 
     [Header("Item Costs")]
     [Tooltip("The initial cost of the item.")]
-    [SerializeField] private int m_initialItemCost;
-    public int InitialItemCost => m_initialItemCost;
+    [SerializeField] private ulong m_initialItemCost;
+    public ulong InitialItemCost => m_initialItemCost;
 
     [Tooltip("The growth rate of the item's cost after each purchase (e.g., 1.15 for a 15% increase).")]
     [SerializeField] private float m_itemCostGrowthRate = 1.15f;
     public float ItemCostGrowthRate => m_itemCostGrowthRate;
 
-    private int m_currentItemCost;
-    public int CurrentItemCost => m_currentItemCost;
+    private ulong m_currentItemCost;
+    public ulong CurrentItemCost => m_currentItemCost;
 
     [Tooltip("The number of times the item has been purchased.")]
     private int m_itemPurchases = 0;
@@ -54,8 +55,8 @@ public class Player : Singleton<Player>
 
     [SerializeField] private List<ItemDataContainer> m_containers;
 
-    public event Action<int> MoneyChanged;
-    public event Action<int> ItemCostChanged;
+    public event Action<ulong> MoneyChanged;
+    public event Action<ulong> ItemCostChanged;
 
     public void Start()
     {
@@ -76,7 +77,7 @@ public class Player : Singleton<Player>
 
     private void HandleItemUpgradeLevelUp()
     {
-        m_currentItemCost = Mathf.RoundToInt(m_initialItemCost * Mathf.Pow(m_itemCostGrowthRate, m_itemUpgrade.CurrentLevel));
+        m_currentItemCost = (ulong)Mathf.RoundToInt(m_initialItemCost * Mathf.Pow(m_itemCostGrowthRate, m_itemUpgrade.CurrentLevel));
         ItemCostChanged?.Invoke(m_currentItemCost);
     }
 
@@ -118,7 +119,7 @@ public class Player : Singleton<Player>
         return false;
     }
 
-    public void GiveMoney(int amount)
+    public void GiveMoney(ulong amount)
     {
         if (amount > 0)
         {
@@ -127,7 +128,7 @@ public class Player : Singleton<Player>
         }
     }
 
-    public bool ConsumeMoney(int amount)
+    public bool ConsumeMoney(ulong amount)
     {
         if (CanAfford(amount))
         {
@@ -139,7 +140,7 @@ public class Player : Singleton<Player>
         return false;
     }
 
-    public bool CanAfford(int cost)
+    public bool CanAfford(ulong cost)
     {
         return m_currentMoney >= cost;
     }
@@ -159,8 +160,9 @@ public class PlayerInspector : AutoRepaintingEditor
 
         Player player = (Player)target;
 
-        StringBuilder sb = new StringBuilder();
-        sb.Append($"Current Money: {player.CurrentMoney}");
+        StringBuilder sb = new();
+        sb.AppendLine($"Initial Money: {NumberFormatter.FormatNumberWithSuffix(player.InitialMoney)} ({player.InitialMoney})");
+        sb.Append($"Current Money: {NumberFormatter.FormatNumberWithSuffix(player.CurrentMoney)} ({player.CurrentMoney})");
 
         EditorGUILayout.HelpBox(sb.ToString(), MessageType.None);
     }

@@ -54,12 +54,12 @@ public class MainUI : MonoBehaviour
         m_autoMergeButton.interactable = true;
     }
 
-    private void OnMoneyChanged(int money)
+    private void OnMoneyChanged(ulong money)
     {
         m_moneyLabel.SetText(NumberFormatter.FormatNumberWithSuffix(money));
     }
 
-    private void OnItemCostChanged(int cost)
+    private void OnItemCostChanged(ulong cost)
     {
         m_itemCostLabel.SetText(NumberFormatter.FormatNumberWithSuffix(cost));
     }
