@@ -49,13 +49,15 @@ public class Wall : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (_currentHealth <= 0)
+        {
+            return;
+        }
+
         _currentHealth -= damage;
         HealthChanged?.Invoke();
         m_healUpgrade.Refresh();
-    }
 
-    public void Update()
-    {
         if (_currentHealth <= 0)
         {
             GameOver();
@@ -65,12 +67,13 @@ public class Wall : MonoBehaviour
     public void GameOver()
     {
         Debug.Log("GAME OVER !");
-        StartCoroutine(Defeat());
+        StartCoroutine(nameof(Defeat));
     }
-    IEnumerator Defeat()
+
+    private IEnumerator Defeat()
     {
         yield return new WaitForSeconds(3);
-        SceneTransitionManager.Load("GameOver");
+        SceneTransitionManager.Load("GameOverScene");
         enabled = false;
     }
 }
