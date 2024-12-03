@@ -132,11 +132,16 @@ public class EnemyBehavior : MonoBehaviour
             // Get the current level of the Vampirism upgrade
             int currentLevel = vampirismUpgrade.CurrentLevel;
 
+            if (currentLevel < 1)
+            {
+                return;
+            }
+
             // Define the chance of success for each level (index corresponds to level - 1)
             float[] chance = new float[3] { 5f, 10f, 15f };
 
             // Validate the current level of the Vampirism upgrade
-            if (currentLevel < 1 || currentLevel > chance.Length)
+            if (currentLevel > chance.Length)
             {
                 Debug.LogError("Invalid vampirism upgrade level.");
                 return;
