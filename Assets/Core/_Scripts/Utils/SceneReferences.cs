@@ -17,4 +17,7 @@ public class SceneReferences : Singleton<SceneReferences>
     [Header("Upgrades")]
     [SerializeField] private UpgradeData m_vampirismUpgradeData;
     public static UpgradeData VampirismUpgradeData => Instance.m_vampirismUpgradeData;
+
+    [SerializeField] private UpgradeData m_gunpowderUpgradeData;
+    public static UpgradeData GunpowderUpgradeData => Instance.m_gunpowderUpgradeData;
 }
