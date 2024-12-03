@@ -42,7 +42,18 @@ public class Wall : MonoBehaviour
     {
         Debug.Log($"[{name}] Healing wall!", this);
         const int healAmount = 5;
-        _currentHealth += healAmount;
+        Heal(healAmount);
+    }
+
+    public void Heal(int amount)
+    {
+        if (_currentHealth >= _maxHealth)
+        {
+            if (_currentHealth > _maxHealth) { _currentHealth = _maxHealth; }
+            return;
+        }
+
+        _currentHealth += amount;
         HealthChanged?.Invoke();
         m_healUpgrade.Refresh();
     }
