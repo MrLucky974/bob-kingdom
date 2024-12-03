@@ -6,16 +6,19 @@ using UnityEngine;
 public class Wall : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] private int _maxHealth;
-    private int _currentHealth;
+    [SerializeField] private int m_initialMaxHealth = 100;
+    private int m_maxHealth = 100;
+    private int m_currentHealth;
 
     [Header("Upgrades")]
     [SerializeField] private UpgradeData m_healUpgradeData;
     private Upgrade m_healUpgrade;
+    [SerializeField] private UpgradeData m_sturdyWallUpgradeData;
+    private Upgrade m_sturdyWallUpgrade;
 
-    public int MaxHealth => _maxHealth;
-    public int CurrentHealth => _currentHealth;
-    public float HealthRatio => (float)_currentHealth / _maxHealth;
+    public int MaxHealth => m_maxHealth;
+    public int CurrentHealth => m_currentHealth;
+    public float HealthRatio => (float)m_currentHealth / m_maxHealth;
 
     public Action HealthChanged;
 
@@ -28,7 +31,11 @@ public class Wall : MonoBehaviour
         });
         m_healUpgrade.UpgradeLevelUp += HandleHealUpgrade;
 
-        _currentHealth = _maxHealth;
+        m_sturdyWallUpgrade = UpgradeManager.Instance.GetUpgrade(m_sturdyWallUpgradeData);
+        m_sturdyWallUpgrade.UpgradeLevelUp += HandleSturdyWallUpgrade;
+
+        m_maxHealth = m_initialMaxHealth;
+        m_currentHealth = m_maxHealth;
         HealthChanged?.Invoke();
         m_healUpgrade.Refresh();
     }
@@ -36,6 +43,19 @@ public class Wall : MonoBehaviour
     private void OnDestroy()
     {
         m_healUpgrade.UpgradeLevelUp -= HandleHealUpgrade;
+        m_sturdyWallUpgrade.UpgradeLevelUp -= HandleSturdyWallUpgrade;
+    }
+
+    private void HandleSturdyWallUpgrade()
+    {
+        int currentLevel = m_sturdyWallUpgrade.CurrentLevel;
+        float additionalHealth = m_maxHealth * 0.25f;
+        m_maxHealth = m_maxHealth + Mathf.RoundToInt(additionalHealth * currentLevel);
+        m_currentHealth += Mathf.RoundToInt((m_maxHealth - m_initialMaxHealth) * 0.5f);
+        HealthChanged?.Invoke();
+        m_healUpgrade.Refresh();
+
+        Debug.Log($"[{name}] New wall max health: {m_maxHealth}", this);
     }
 
     private void HandleHealUpgrade()
@@ -47,29 +67,29 @@ public class Wall : MonoBehaviour
 
     public void Heal(int amount)
     {
-        if (_currentHealth >= _maxHealth)
+        if (m_currentHealth >= m_maxHealth)
         {
-            if (_currentHealth > _maxHealth) { _currentHealth = _maxHealth; }
+            if (m_currentHealth > m_maxHealth) { m_currentHealth = m_maxHealth; }
             return;
         }
 
-        _currentHealth += amount;
+        m_currentHealth += amount;
         HealthChanged?.Invoke();
         m_healUpgrade.Refresh();
     }
 
     public void TakeDamage(int damage)
     {
-        if (_currentHealth <= 0)
+        if (m_currentHealth <= 0)
         {
             return;
         }
 
-        _currentHealth -= damage;
+        m_currentHealth -= damage;
         HealthChanged?.Invoke();
         m_healUpgrade.Refresh();
 
-        if (_currentHealth <= 0)
+        if (m_currentHealth <= 0)
         {
             GameOver();
         }
