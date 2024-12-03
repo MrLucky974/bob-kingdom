@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using System.Collections;
+
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -55,6 +57,12 @@ public class Player : Singleton<Player>
 
     [SerializeField] private List<ItemDataContainer> m_containers;
 
+    [Space]
+
+    [SerializeField] private UpgradeData m_hearthUpgradeData;
+    private Upgrade m_hearthUpgrade;
+    private Coroutine m_hearthTaxCoroutine;
+
     public event Action<ulong> MoneyChanged;
     public event Action<ulong> ItemCostChanged;
 
@@ -62,6 +70,9 @@ public class Player : Singleton<Player>
     {
         m_itemUpgrade = UpgradeManager.Instance.GetUpgrade(m_itemUpgradeData);
         m_itemUpgrade.UpgradeLevelUp += HandleItemUpgradeLevelUp;
+
+        m_hearthUpgrade = UpgradeManager.Instance.GetUpgrade(m_hearthUpgradeData);
+        m_hearthUpgrade.UpgradeLevelUp += HandleHearthTaxLevelUp;
 
         m_currentMoney = m_initialMoney;
         MoneyChanged?.Invoke(m_currentMoney);
@@ -73,6 +84,42 @@ public class Player : Singleton<Player>
     private void OnDestroy()
     {
         m_itemUpgrade.UpgradeLevelUp -= HandleItemUpgradeLevelUp;
+        m_hearthUpgrade.UpgradeLevelUp -= HandleHearthTaxLevelUp;
+    }
+
+    private void HandleHearthTaxLevelUp()
+    {
+        if (m_hearthUpgrade.CurrentLevel < 1)
+        {
+            if (m_hearthTaxCoroutine != null)
+            {
+                StopCoroutine(m_hearthTaxCoroutine);
+                m_hearthTaxCoroutine = null;
+            }
+            return;
+        }
+
+        m_hearthTaxCoroutine ??= StartCoroutine(nameof(HearthTaxLoop));
+    }
+
+    private IEnumerator HearthTaxLoop()
+    {
+        float[] values = new float[5] { 25f, 20f, 16f, 13f, 10f };
+        while (true)
+        {
+            float waitTime = values[m_hearthUpgrade.CurrentLevel - 1];
+            float currentTime = 0f;
+
+            while (currentTime < waitTime)
+            {
+                waitTime = values[m_hearthUpgrade.CurrentLevel - 1];
+                yield return null;
+                currentTime += Time.deltaTime;
+            }
+
+            GiveMoney(1);
+            Debug.Log($"[{name}] Gave 1 coin from hearth tax!", this);
+        }
     }
 
     private void HandleItemUpgradeLevelUp()
