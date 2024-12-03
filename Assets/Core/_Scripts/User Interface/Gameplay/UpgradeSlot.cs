@@ -35,49 +35,68 @@ public class UpgradeSlot : MonoBehaviour
     {
         m_upgrade = UpgradeManager.Instance.GetUpgrade(m_upgradeData);
 
+        m_upgrade.UpgradeRefresh += HandleRefresh;
+
         m_upgradeIcon.sprite = m_upgradeData.Icon;
         m_nameLabel.SetText(m_upgradeData.UpgradeName);
         m_descriptionLabel.SetText(m_upgradeData.Description);
         m_costLabel.SetText($"Cost: {NumberFormatter.FormatNumberWithSuffix(m_upgrade.GetUpgradeCost())}");
 
-        m_upgradeIndices = new Image[m_upgradeData.MaxLevel];
-        for (int i = 0; i < m_upgradeData.MaxLevel; i++)
+        if (m_upgradeData.MaxLevel > 0)
         {
-            var instance = Instantiate(m_upgradeIndexTemplate, m_indicesContainer);
-            instance.name = $"Index_{i:000}";
-            instance.gameObject.SetActive(true);
-            m_upgradeIndices[i] = instance;
+            m_upgradeIndices = new Image[m_upgradeData.MaxLevel];
+            for (int i = 0; i < m_upgradeData.MaxLevel; i++)
+            {
+                var instance = Instantiate(m_upgradeIndexTemplate, m_indicesContainer);
+                instance.name = $"Index_{i:000}";
+                instance.gameObject.SetActive(true);
+                m_upgradeIndices[i] = instance;
+            }
         }
+    }
+
+    private void HandleRefresh()
+    {
+        m_costLabel.gameObject.SetActive(m_upgrade.CanUpgrade());
+        m_button.interactable = m_upgrade.CanUpgrade();
     }
 
     public void Upgrade()
     {
-        if (m_upgrade.IsMaxed)
+        if (!m_upgrade.CanUpgrade())
         {
             return;
         }
+
+        if (!m_costLabel.gameObject.activeInHierarchy)
+            m_costLabel.gameObject.SetActive(true);
+
+        if (!m_button.interactable)
+            m_button.interactable = true;
 
         ulong cost = (ulong)m_upgrade.GetUpgradeCost();
         bool canAfford = Player.Instance.ConsumeMoney(cost);
         if (canAfford)
         {
-            m_upgrade.ApplyUpgrade();
-
-            for (int i = 0; i < m_upgradeData.MaxLevel; i++)
+            bool couldApply = m_upgrade.ApplyUpgrade();
+            if (couldApply)
             {
-                var image = m_upgradeIndices[i];
-                if (image != null)
+                for (int i = 0; i < m_upgradeData.MaxLevel; i++)
                 {
-                    var color = i < m_upgrade.CurrentLevel ? m_upgradeColor : m_defaultColor;
-                    image.color = color;
+                    var image = m_upgradeIndices[i];
+                    if (image != null)
+                    {
+                        var color = i < m_upgrade.CurrentLevel ? m_upgradeColor : m_defaultColor;
+                        image.color = color;
+                    }
                 }
-            }
-            m_costLabel.SetText($"Cost: {NumberFormatter.FormatNumberWithSuffix(m_upgrade.GetUpgradeCost())}");
+                m_costLabel.SetText($"Cost: {NumberFormatter.FormatNumberWithSuffix(m_upgrade.GetUpgradeCost())}");
 
-            if (m_upgrade.IsMaxed)
-            {
-                m_costLabel.gameObject.SetActive(false);
-                m_button.interactable = false;
+                if (!m_upgrade.CanUpgrade())
+                {
+                    m_costLabel.gameObject.SetActive(false);
+                    m_button.interactable = false;
+                }
             }
         }
     }

@@ -10,13 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a82bb637a2593d43a7d3716addb9086, type: 3}
-  m_Name: Auto Merge
+  m_Name: Heal Wall
   m_EditorClassIdentifier: 
-  m_upgradeName: Auto Merge
-  m_description: 'Enable the ability to merge
-
-    your inventory once'
-  m_icon: {fileID: 21300000, guid: 037089a62ac986a4a84df997a79277b7, type: 3}
-  m_maxLevel: 2
-  m_initialCost: 750
-  m_costGrowthRate: 2.2
+  m_upgradeName: Heal Wall
+  m_description: Replenish the wall's health by a tiny bit
+  m_icon: {fileID: 21300000, guid: e8e2d0096bf7b4e40aa51c3e22cfe5a1, type: 3}
+  m_maxLevel: -1
+  m_initialCost: 50
+  m_costGrowthRate: 1.15
