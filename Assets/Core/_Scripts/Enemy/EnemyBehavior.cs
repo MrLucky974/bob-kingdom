@@ -14,7 +14,7 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] private float m_attackCooldown;
     [SerializeField] private float m_movementSpeed;
     private int m_health;
-    [SerializeField] private ulong m_Gold;
+    [SerializeField] private ulong m_gold;
 
     [Header("Visuals")]
     [SerializeField] private SpriteRenderer m_spriteRenderer;
@@ -47,7 +47,7 @@ public class EnemyBehavior : MonoBehaviour
             m_health = DEFAULT_MAX_HEALTH;
         }
         m_health = Mathf.FloorToInt(m_health + (m_wave.m_currentWaveIndex / 2));
-        m_Gold = (ulong)(m_health * 5);
+        m_gold = (ulong)(m_health * 5);
     }
 
     private void Update()
@@ -101,13 +101,23 @@ public class EnemyBehavior : MonoBehaviour
 
     private void Death()
     {
-        //TODO : rajouter un VFX avec le sprite de coin et un SFX !
-        Player.Instance.GiveMoney(m_Gold);
+        //TODO : rajouter un SFX !
+
+        Instantiate(SceneReferences.coinExplosionPrefab, transform.position, Quaternion.identity);
+        GiveCoins();
+        ApplyVampirism();
         m_spawner.MarkEnemyAsKilled();
 
-        ApplyVampirism();
-
         Destroy(gameObject);
+    }
+
+    private void GiveCoins()
+    {
+        var midasTouchUpgrade = UpgradeManager.Instance.GetUpgrade(SceneReferences.midasTouchUpgradeData);
+        float[] values = { 0f, 0.25f, 0.5f };
+
+        ulong money = (ulong)Mathf.RoundToInt(m_gold * (1f + values[midasTouchUpgrade.CurrentLevel]));
+        Player.Instance.GiveMoney(money);
     }
 
     /// <summary>
@@ -124,7 +134,7 @@ public class EnemyBehavior : MonoBehaviour
     private void ApplyVampirism()
     {
         // Retrieve the Vampirism upgrade data from the Upgrade Manager
-        var vampirismUpgrade = UpgradeManager.Instance.GetUpgrade(SceneReferences.VampirismUpgradeData);
+        var vampirismUpgrade = UpgradeManager.Instance.GetUpgrade(SceneReferences.vampirismUpgradeData);
 
         // Ensure the Vampirism upgrade data exists
         if (vampirismUpgrade != null)
@@ -165,7 +175,7 @@ public class EnemyBehavior : MonoBehaviour
                 int healValue = Random.Range(minHealAmount, maxHealAmount + 1);
 
                 // Apply healing to the wall
-                SceneReferences.Wall.Heal(healValue);
+                SceneReferences.wall.Heal(healValue);
 
                 // Log the healing action for debugging purposes
                 Debug.Log($"[{name}] Healing {healValue} HP to wall.", this);
@@ -193,6 +203,6 @@ public class EnemyBehavior : MonoBehaviour
         m_damage = m_enemyData.damage;
         m_attackCooldown = m_enemyData.attackCooldown;
         m_movementSpeed = m_enemyData.speed;
-        m_Gold = m_enemyData.GoldOnDeath;
+        m_gold = m_enemyData.GoldOnDeath;
     }
 }
