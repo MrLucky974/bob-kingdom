@@ -8659,7 +8659,7 @@ MonoBehaviour:
   m_inventory: {fileID: 1297890875}
   m_initialMoney: 15
   m_initialItemCost: 10
-  m_itemCostGrowthRate: 3
+  m_itemCostGrowthRate: 1.7
   m_itemUpgradeData: {fileID: 11400000, guid: 64c9b1b553fa0c54a8c788f209e3e22b, type: 2}
   m_containers:
   - items:
