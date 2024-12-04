@@ -63,6 +63,7 @@ public class EnemyBehavior : MonoBehaviour
         if (m_wallContact && m_canAttack)
         {
             m_wall.TakeDamage(m_damage);
+            SoundManager.Play(SoundBank.WallHitSFX, 0.1f, 0.1f);
             m_canAttack = false;
             StartCoroutine(nameof(AttackCooldown));
         }
@@ -101,9 +102,10 @@ public class EnemyBehavior : MonoBehaviour
 
     private void Death()
     {
-        //TODO : rajouter un VFX avec le sprite de coin et un SFX !
         Player.Instance.GiveMoney(m_Gold);
+        SoundManager.Play(SoundBank.CoinSFX,0.1f,0.1f);
         m_spawner.MarkEnemyAsKilled();
+        SoundManager.Play(SoundBank.MobDeathSFX,0.1f,0.1f);
         Destroy(gameObject);
     }
 

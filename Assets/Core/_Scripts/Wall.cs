@@ -19,6 +19,7 @@ public class Wall : MonoBehaviour
 
     public Action HealthChanged;
 
+
     private void Start()
     {
         m_healUpgrade = UpgradeManager.Instance.GetUpgrade(m_healUpgradeData);
@@ -67,6 +68,7 @@ public class Wall : MonoBehaviour
     public void GameOver()
     {
         Debug.Log("GAME OVER !");
+        SoundManager.Play(SoundBank.WallColapsingSFX, 0.1f, 0.1f);
         StartCoroutine(nameof(Defeat));
     }
 

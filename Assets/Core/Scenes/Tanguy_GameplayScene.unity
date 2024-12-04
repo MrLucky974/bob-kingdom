@@ -712,7 +712,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
-  _currentHealth: 0
+  m_healUpgradeData: {fileID: 0}
 --- !u!50 &105268431
 Rigidbody2D:
   serializedVersion: 4
@@ -7106,6 +7106,7 @@ GameObject:
   - component: {fileID: 1424835986}
   - component: {fileID: 1424835987}
   - component: {fileID: 1424835989}
+  - component: {fileID: 1424835990}
   m_Layer: 0
   m_Name: '[MANAGERS]'
   m_TagString: Untagged
@@ -7206,6 +7207,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbe55614edbc0f9408fb1da9203fcb33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1424835990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424835984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2f473e5721705d478629b602e6fb341, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rockSFX: {fileID: 8300000, guid: e52974fb51978904a9144c7ad40affbf, type: 3}
+  _spearSFX: {fileID: 8300000, guid: 2c911adb2d25b8d40a6eb9dd235b0020, type: 3}
+  _bowSFX: {fileID: 8300000, guid: 06638a2ea1b81f44dbc69891a43b4f34, type: 3}
+  _crossbowSFX: {fileID: 8300000, guid: 0da13ecc10f199f4082deac6e5d32c26, type: 3}
+  _armoredCrossbowSFX: {fileID: 8300000, guid: a5e87cf7f7ff1ac41afcde3d7c771bcd, type: 3}
+  _bombSFX: {fileID: 8300000, guid: 5ed708c8f33a22f4f975d8b1fecbb81c, type: 3}
+  _flintlockSFX: {fileID: 8300000, guid: 599579eda8b494244b64618136e6e84b, type: 3}
+  _blunderbussSFX: {fileID: 8300000, guid: 422eef9d85766414ab1dacc421f914ad, type: 3}
+  _dynamiteSFX: {fileID: 8300000, guid: 5ed708c8f33a22f4f975d8b1fecbb81c, type: 3}
+  _revolverSFX: {fileID: 8300000, guid: 4f2322ac3609dc94fb14cd254c149a4a, type: 3}
+  _rifleSFX: {fileID: 8300000, guid: b935ded88bc895540b15ba04866ab694, type: 3}
+  _grenadeSFX: {fileID: 8300000, guid: 5ed708c8f33a22f4f975d8b1fecbb81c, type: 3}
+  _gunSFX: {fileID: 8300000, guid: 1f63fbe6be13d2d448ada03dd4c142b4, type: 3}
+  _smgSFX: {fileID: 8300000, guid: fb4f147c43ac5f14b8d99976fbb074f9, type: 3}
+  _assaultRifleSFX: {fileID: 8300000, guid: c0f1f56e748683f4bbe4cdfcf775c4e0, type: 3}
+  _sniperRifleSFX: {fileID: 8300000, guid: dbcc2b24f89ff804b92e7cd0e1c6b3bd, type: 3}
+  _railgunSFX: {fileID: 8300000, guid: 58e4cda3f14c05d43a37e65533635d91, type: 3}
+  _projectileHitSFX: {fileID: 8300000, guid: 170f9cf0ef9ef07499ad2798771ac76e, type: 3}
+  _menuButonsSFX: {fileID: 8300000, guid: 1711332c3fdbb114ab5beac4382cd0ad, type: 3}
+  _buyingItemsSFX: {fileID: 8300000, guid: 7d9bcbec868c57d4498e50e1095a07c1, type: 3}
+  _mergingSFX: {fileID: 8300000, guid: 642c35843e786494dbc0946c1860cdb9, type: 3}
+  _upgradeSFX: {fileID: 8300000, guid: 1e762f06ce95ce949b6c08a546ae13de, type: 3}
+  _waveIncomingSFX: {fileID: 8300000, guid: 819064664024ec144823aa2548a55427, type: 3}
+  _mobDeathSFX: {fileID: 8300000, guid: 013ec7de6dd6bf040867926d73820230, type: 3}
+  _coinSFX: {fileID: 8300000, guid: 5a10f29064224a74e919bfa2977c7f52, type: 3}
+  _wallHitSFX: {fileID: 8300000, guid: 4a25a6313b29f4d48bed4a2e58a6f75a, type: 3}
+  _wallColapsingSFX: {fileID: 8300000, guid: 485d0edb70ed68847bdcba39c7bafef5, type: 3}
+  _Ingame: {fileID: 8300000, guid: 14fa73ca8e89f2d4ab12c3971f3f1a9f, type: 3}
 --- !u!1 &1450363597
 GameObject:
   m_ObjectHideFlags: 0

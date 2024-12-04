@@ -9,6 +9,10 @@ public class ItemData : ScriptableObject
 
     [SerializeField] private Sprite m_outfit;
     public Sprite Outfit => m_outfit;
+    
+    [Header("Sounds")]
+    [SerializeField] private AudioClip m_shotSFX;
+    public AudioClip ShotSFX => m_shotSFX;
 
     [Header("Projectile")]
     [SerializeField] private Projectile m_projectilePrefab;

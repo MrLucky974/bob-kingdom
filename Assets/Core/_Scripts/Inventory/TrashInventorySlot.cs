@@ -7,6 +7,7 @@ public class TrashInventorySlot : MonoBehaviour, IDropHandler
 
     public void OnDrop(PointerEventData eventData)
     {
+        SoundManager.Play(SoundBank.CoinSFX, 0.1f, 0.1f);
         GameObject droppedObject = eventData.pointerDrag;
         if (droppedObject.TryGetComponent<DraggableItem>(out _))
         {

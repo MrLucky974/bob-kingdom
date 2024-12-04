@@ -68,6 +68,7 @@ public class MainUI : MonoBehaviour
 
     public void OpenUpgradePanel()
     {
+        SoundManager.Play(SoundBank.MenuButonsSFX, 0.1f, 0.1f);
         m_upgradePanel.alpha = 1f;
         m_upgradePanel.interactable = true;
         m_upgradePanel.blocksRaycasts = true;
@@ -77,6 +78,7 @@ public class MainUI : MonoBehaviour
 
     public void CloseUpgradePanel()
     {
+        SoundManager.Play(SoundBank.MenuButonsSFX, 0.1f, 0.1f);
         m_upgradePanel.alpha = 0f;
         m_upgradePanel.interactable = false;
         m_upgradePanel.blocksRaycasts = false;
@@ -93,6 +95,7 @@ public class MainUI : MonoBehaviour
         else
         {
             MergeItemsOnce();
+            SoundManager.Play(SoundBank.MergingSFX, 0.1f, 0.1f);
         }
     }
 
@@ -104,6 +107,7 @@ public class MainUI : MonoBehaviour
             yield return MergeItemsStep((value) => itemsMerged = value);
         }
         while (itemsMerged);
+        SoundManager.Play(SoundBank.MergingSFX, 0.1f, 0.1f);
     }
 
     private IEnumerator MergeItemsStep(Action<bool> callback)
@@ -150,7 +154,6 @@ public class MainUI : MonoBehaviour
             {
                 // Merge items if another one of the same type exists
                 var (existingObject, parentSlot) = itemTracker[slotItem.ItemData];
-
                 var nextItemTier = slotItem.ItemData.NextItemTier;
                 if (nextItemTier != null)
                 {
@@ -178,7 +181,6 @@ public class MainUI : MonoBehaviour
                 itemTracker[slotItem.ItemData] = (slotObject, slot.transform);
             }
         }
-
         return itemsMerged;
     }
 
@@ -208,5 +210,6 @@ public class MainUI : MonoBehaviour
             var instance = SceneReferences.draggableItemPrefab.Create(itemData);
             instance.transform.SetParent(slot.transform);
         }
+        SoundManager.Play(SoundBank.BuyingSFX, 0.1f, 0.1f);
     }
 }

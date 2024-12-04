@@ -108,6 +108,7 @@ public class EnemyWaveSystem : MonoBehaviour
     /// </summary>
     private void StartWave()
     {
+        SoundManager.Play(SoundBank.WaveSFX);
         // Change l'état en "InProgress" et informe les abonnés via l'événement.
         m_waveState = WaveState.InProgress;
         WaveStatusChanged?.Invoke(m_waveState);

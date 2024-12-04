@@ -115,6 +115,7 @@ public class Projectile : MonoBehaviour
 
     private void KillProjectile()
     {
+        SoundManager.Play(SoundBank.ProjectilHitSFX, 0.1f, 0.1f);
         // TODO : Add particle effects here
         Destroy(m_virtualTarget.gameObject);
         Destroy(gameObject);

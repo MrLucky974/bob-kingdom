@@ -3,7 +3,9 @@ guid: b630fe5b98ffffe448a6b8544c310054
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - m_healUpgradeData: {instanceID: 0}
+  - m_wallColapsingSFX: {fileID: 8300000, guid: 485d0edb70ed68847bdcba39c7bafef5, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

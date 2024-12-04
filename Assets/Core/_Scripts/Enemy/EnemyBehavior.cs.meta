@@ -3,7 +3,12 @@ guid: 6d1c986ba5f5682479d983e7135ba1e4
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - m_enemyData: {instanceID: 0}
+  - m_spriteRenderer: {instanceID: 0}
+  - m_coinSFX: {fileID: 8300000, guid: 5a10f29064224a74e919bfa2977c7f52, type: 3}
+  - m_mobDeathSFX: {fileID: 8300000, guid: 013ec7de6dd6bf040867926d73820230, type: 3}
+  - m_wallHitSFX: {fileID: 8300000, guid: 4a25a6313b29f4d48bed4a2e58a6f75a, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
