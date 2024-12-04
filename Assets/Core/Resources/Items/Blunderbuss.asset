@@ -15,15 +15,15 @@ MonoBehaviour:
   m_sprite: {fileID: 21300000, guid: 561cfcdedab86364bb517955a21bdbca, type: 3}
   m_outfit: {fileID: 21300000, guid: c5818def7e75d5b4c8310c26a12e906f, type: 3}
   m_projectilePrefab: {fileID: 8114252734412359783, guid: f9bc0360bd2034b489af0061d1a88925, type: 3}
-  m_trajectoryMaxHeight: 0.175
+  m_trajectoryMaxHeight: 1
   m_trajectoryAnimationCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
+      value: 0.05070755
+      inSlope: -0.05070755
+      outSlope: -0.05070755
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
@@ -31,8 +31,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: -0.05070755
+      outSlope: -0.05070755
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -70,17 +70,17 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 1.5000151
-      inSlope: -0.25001514
-      outSlope: -0.25001514
+      inSlope: -0.050002933
+      outSlope: -0.050002933
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: 1.25
-      inSlope: -0.25001514
-      outSlope: -0.25001514
+      value: 1.4500122
+      inSlope: -0.050002933
+      outSlope: -0.050002933
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -89,6 +89,6 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   m_attackDamage: 30
-  m_range: 15
+  m_range: 12
   m_fireRate: 0.5
   m_nextItemTier: {fileID: 11400000, guid: 81f0ca786eb841242a5032d9936e9e89, type: 2}
