@@ -10,13 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a82bb637a2593d43a7d3716addb9086, type: 3}
-  m_Name: Auto Merge
+  m_Name: Midas Touch
   m_EditorClassIdentifier: 
-  m_upgradeName: Auto Merge
-  m_description: 'Enable the ability to merge
-
-    your inventory once'
-  m_icon: {fileID: 21300000, guid: f662cab5bec122c489cc6a2b9f085757, type: 3}
+  m_upgradeName: Midas Touch
+  m_description: Multiply income from killing enemies by [25|50]%
+  m_icon: {fileID: 21300000, guid: 066acdb98bcf4554ca3f8ddedd2ca20a, type: 3}
   m_maxLevel: 2
-  m_initialCost: 750
-  m_costGrowthRate: 2.2
+  m_initialCost: 500
+  m_costGrowthRate: 2

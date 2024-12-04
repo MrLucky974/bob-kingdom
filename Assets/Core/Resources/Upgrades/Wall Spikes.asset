@@ -10,13 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a82bb637a2593d43a7d3716addb9086, type: 3}
-  m_Name: Auto Merge
+  m_Name: Wall Spikes
   m_EditorClassIdentifier: 
-  m_upgradeName: Auto Merge
-  m_description: 'Enable the ability to merge
+  m_upgradeName: Wall Spikes
+  m_description: 'Install sharp spikes on the wall, damaging enemies that get too
+    close.
 
-    your inventory once'
-  m_icon: {fileID: 21300000, guid: f662cab5bec122c489cc6a2b9f085757, type: 3}
-  m_maxLevel: 2
-  m_initialCost: 750
-  m_costGrowthRate: 2.2
+    Damage: [1|2|3|5|8]
+
+'
+  m_icon: {fileID: 21300000, guid: fa139c0fe80615b44b0f66e4ea7b7e99, type: 3}
+  m_maxLevel: 5
+  m_initialCost: 150
+  m_costGrowthRate: 1.5
