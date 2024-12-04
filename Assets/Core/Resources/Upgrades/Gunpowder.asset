@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a82bb637a2593d43a7d3716addb9086, type: 3}
   m_Name: Gunpowder
   m_EditorClassIdentifier: 
-  m_upgradeName: Gunpowder
+  m_upgradeName: Kaboom Kapacity
   m_description: "Increase explosive projectiles' default \nblast radius by [20|40]%"
   m_icon: {fileID: 21300000, guid: 3868b9c1dfb981847b75a0279dbca3b4, type: 3}
   m_maxLevel: 2
-  m_initialCost: 100
-  m_costGrowthRate: 1.15
+  m_initialCost: 500
+  m_costGrowthRate: 1.8

@@ -16,5 +16,5 @@ MonoBehaviour:
   m_description: Multiply income from killing enemies by [25|50]%
   m_icon: {fileID: 21300000, guid: 066acdb98bcf4554ca3f8ddedd2ca20a, type: 3}
   m_maxLevel: 2
-  m_initialCost: 100
-  m_costGrowthRate: 1.15
+  m_initialCost: 500
+  m_costGrowthRate: 2
