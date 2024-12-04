@@ -1,5 +1,8 @@
-using UnityEditor;
 using UnityEngine;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class Projectile : MonoBehaviour
 {
@@ -59,6 +62,20 @@ public class Projectile : MonoBehaviour
         UpdateProjectilePosition();
     }
 
+    private void OnDrawGizmos()
+    {
+#if UNITY_EDITOR
+        if (m_hasBlastRadius)
+        {
+            Handles.color = Color.red;
+            var gunpowderUpgrade = UpgradeManager.Instance.GetUpgrade(SceneReferences.gunpowderUpgradeData);
+            float[] values = new float[3] { 0f, 0.2f, 0.4f };
+            float actualBlastRadius = gunpowderUpgrade != null ? m_blastRadius * (1f + values[gunpowderUpgrade.CurrentLevel]) : m_blastRadius;
+            Handles.DrawWireDisc(transform.position, Vector3.forward, actualBlastRadius);
+        }
+#endif
+    }
+
     private void CheckTarget()
     {
         // If the projectile is near the target position
@@ -84,9 +101,13 @@ public class Projectile : MonoBehaviour
 
     private void Explode()
     {
-        const int maxCollisions = 10;
+        var gunpowderUpgrade = UpgradeManager.Instance.GetUpgrade(SceneReferences.gunpowderUpgradeData);
+        float[] values = new float[3] { 0f, 0.2f, 0.4f };
+
+        float actualBlastRadius = gunpowderUpgrade != null ? m_blastRadius * (1f + values[gunpowderUpgrade.CurrentLevel]) : m_blastRadius;
+        const int maxCollisions = 25;
         Collider2D[] colliders = new Collider2D[maxCollisions];
-        int collisionCount = Physics2D.OverlapCircleNonAlloc(transform.position, m_blastRadius, colliders);
+        int collisionCount = Physics2D.OverlapCircleNonAlloc(transform.position, actualBlastRadius, colliders);
         if (collisionCount > 0)
         {
             for (int i = maxCollisions - 1; i >= 0; i--)
@@ -105,12 +126,6 @@ public class Projectile : MonoBehaviour
                 }
             }
         }
-    }
-
-    private void OnDrawGizmos()
-    {
-        Handles.color = Color.red;
-        Handles.DrawWireDisc(transform.position, Vector3.forward, m_blastRadius);
     }
 
     private void KillProjectile()

@@ -114,6 +114,13 @@ public class EnemyWaveSystem : MonoBehaviour
         WaveStatusChanged?.Invoke(m_waveState);
     }
 
+    public void SkipWave()
+    {
+        StopCoroutine(nameof(WaveCooldown));
+        m_remainingCooldownTime = 0f;
+        StartWave();
+    }
+
     /// <summary>
     /// Termine la vague actuelle et passe à la suivante après un délai.
     /// </summary>

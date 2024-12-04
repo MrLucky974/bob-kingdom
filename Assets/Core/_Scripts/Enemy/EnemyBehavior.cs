@@ -14,7 +14,7 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] private float m_attackCooldown;
     [SerializeField] private float m_movementSpeed;
     private int m_health;
-    [SerializeField] private ulong m_Gold;
+    [SerializeField] private ulong m_gold;
 
     [Header("Visuals")]
     [SerializeField] private SpriteRenderer m_spriteRenderer;
@@ -47,7 +47,7 @@ public class EnemyBehavior : MonoBehaviour
             m_health = DEFAULT_MAX_HEALTH;
         }
         m_health = Mathf.FloorToInt(m_health + (m_wave.m_currentWaveIndex / 2));
-        m_Gold = (ulong)(m_health);
+        m_gold = (ulong)(m_health * 5);
     }
 
     private void Update()
@@ -62,8 +62,15 @@ public class EnemyBehavior : MonoBehaviour
 
         if (m_wallContact && m_canAttack)
         {
+            if (m_wall.HasSpikes)
+            {
+                const int baseDamage = 1;
+                const float damageMultiplier = 1.5f;
+                int selfDamage = Mathf.RoundToInt(baseDamage * Mathf.Pow(damageMultiplier, m_wall.WallSpikesLevel - 1));
+                Damage(selfDamage);
+            }
+
             m_wall.TakeDamage(m_damage);
-            SoundManager.Play(SoundBank.WallHitSFX, 0.1f, 0.1f);
             m_canAttack = false;
             StartCoroutine(nameof(AttackCooldown));
         }
@@ -102,11 +109,90 @@ public class EnemyBehavior : MonoBehaviour
 
     private void Death()
     {
-        Player.Instance.GiveMoney(m_Gold);
-        SoundManager.Play(SoundBank.CoinSFX,0.1f,0.1f);
+        //TODO : rajouter un SFX !
+
+        Instantiate(SceneReferences.coinExplosionPrefab, transform.position, Quaternion.identity);
+        GiveCoins();
+        ApplyVampirism();
         m_spawner.MarkEnemyAsKilled();
-        SoundManager.Play(SoundBank.MobDeathSFX,0.1f,0.1f);
+
         Destroy(gameObject);
+    }
+
+    private void GiveCoins()
+    {
+        var midasTouchUpgrade = UpgradeManager.Instance.GetUpgrade(SceneReferences.midasTouchUpgradeData);
+        float[] values = { 0f, 0.25f, 0.5f };
+
+        ulong money = (ulong)Mathf.RoundToInt(m_gold * (1f + values[midasTouchUpgrade.CurrentLevel]));
+        Player.Instance.GiveMoney(money);
+    }
+
+    /// <summary>
+    /// Attempts to apply the "Vampirism" effect, which provides a chance to heal a wall 
+    /// based on the current level of the Vampirism upgrade.
+    /// </summary>
+    /// <remarks>
+    /// - The Vampirism effect uses a predefined success chance array corresponding to 
+    ///   upgrade levels.
+    /// - If the Vampirism effect is successful, it heals the wall for a random amount 
+    ///   between a minimum and maximum value.
+    /// - The method validates the upgrade level before attempting to apply the effect.
+    /// </remarks>
+    private void ApplyVampirism()
+    {
+        // Retrieve the Vampirism upgrade data from the Upgrade Manager
+        var vampirismUpgrade = UpgradeManager.Instance.GetUpgrade(SceneReferences.vampirismUpgradeData);
+
+        // Ensure the Vampirism upgrade data exists
+        if (vampirismUpgrade != null)
+        {
+            // Get the current level of the Vampirism upgrade
+            int currentLevel = vampirismUpgrade.CurrentLevel;
+
+            if (currentLevel < 1)
+            {
+                return;
+            }
+
+            // Define the chance of success for each level (index corresponds to level - 1)
+            float[] chance = new float[3] { 5f, 10f, 15f };
+
+            // Validate the current level of the Vampirism upgrade
+            if (currentLevel > chance.Length)
+            {
+                Debug.LogError("Invalid vampirism upgrade level.");
+                return;
+            }
+
+            // Retrieve the success chance based on the current level
+            float value = chance[currentLevel - 1];
+
+            // Roll a random value between 0 and 100 to determine success
+            float roll = Random.Range(0f, 100f);
+            bool isSuccessful = roll < value;
+
+            // If the Vampirism effect succeeds, heal the wall
+            if (isSuccessful)
+            {
+                // Define the range of healing values
+                const int minHealAmount = 2;
+                const int maxHealAmount = 4;
+
+                // Calculate a random heal value within the range
+                int healValue = Random.Range(minHealAmount, maxHealAmount + 1);
+
+                // Apply healing to the wall
+                SceneReferences.wall.Heal(healValue);
+
+                // Log the healing action for debugging purposes
+                Debug.Log($"[{name}] Healing {healValue} HP to wall.", this);
+            }
+        }
+        else
+        {
+            Debug.LogError("Vampirism upgrade data is null or not found.");
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -125,6 +211,6 @@ public class EnemyBehavior : MonoBehaviour
         m_damage = m_enemyData.damage;
         m_attackCooldown = m_enemyData.attackCooldown;
         m_movementSpeed = m_enemyData.speed;
-        m_Gold = m_enemyData.GoldOnDeath;
+        m_gold = m_enemyData.GoldOnDeath;
     }
 }

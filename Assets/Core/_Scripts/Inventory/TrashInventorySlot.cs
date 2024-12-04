@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 public class TrashInventorySlot : MonoBehaviour, IDropHandler
 {
-    private const float COST_MULTIPLIER = 0.5f;
+    private const float COST_MULTIPLIER = 1f;
 
     public void OnDrop(PointerEventData eventData)
     {
