@@ -91,4 +91,4 @@ MonoBehaviour:
   m_attackDamage: 25
   m_range: 12
   m_fireRate: 10
-  m_nextItemTier: {fileID: 0}
+  m_nextItemTier: {fileID: 11400000, guid: 0db7e2f0e1f380a4e9d37c4fb135d41a, type: 2}
