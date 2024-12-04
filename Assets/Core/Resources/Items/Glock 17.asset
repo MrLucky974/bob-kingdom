@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 447db553d22e1bf4797611792b91d3dc, type: 3}
-  m_Name: Ugly Ass Machinegun
+  m_Name: Glock 17
   m_EditorClassIdentifier: 
-  m_sprite: {fileID: 21300000, guid: 149d6314b68ed6646b2c972c6a33c070, type: 3}
+  m_sprite: {fileID: 21300000, guid: 01d7be5e1b943ac43a28ee9922d70ca4, type: 3}
   m_outfit: {fileID: 0}
   m_projectilePrefab: {fileID: 8114252734412359783, guid: f9bc0360bd2034b489af0061d1a88925, type: 3}
   m_trajectoryMaxHeight: 1
@@ -37,4 +37,4 @@ MonoBehaviour:
   m_attackDamage: 0
   m_range: 0
   m_fireRate: 0
-  m_nextItemTier: {fileID: 11400000, guid: 0db7e2f0e1f380a4e9d37c4fb135d41a, type: 2}
+  m_nextItemTier: {fileID: 11400000, guid: cb319836b6d21234cbe6c0ef88e171e2, type: 2}
