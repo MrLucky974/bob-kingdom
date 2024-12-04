@@ -127,9 +127,9 @@ public class EnemySpawner : MonoBehaviour
             {
                 m_spawnActive = false;
             }
-            float newSpawnCoolDown = m_spawnCoolDown - (m_wave.m_currentWaveIndex / 100f);
+            float newSpawnCoolDown = m_spawnCoolDown - (m_wave.m_currentWaveIndex / 50f);
             yield return new WaitForSeconds(newSpawnCoolDown);
-            Debug.Log("spawn cooldown: " + m_spawnCoolDown + " - wave index: " + m_wave.m_currentWaveIndex + " /100");
+            Debug.Log("spawn cooldown: " + m_spawnCoolDown + " - wave index: " + m_wave.m_currentWaveIndex + " /50");
             Debug.Log("Wave cooldown == " + newSpawnCoolDown);
         }
     }

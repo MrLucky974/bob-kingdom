@@ -47,7 +47,7 @@ public class EnemyBehavior : MonoBehaviour
             m_health = DEFAULT_MAX_HEALTH;
         }
         m_health = Mathf.FloorToInt(m_health + (m_wave.m_currentWaveIndex / 2));
-        m_Gold = (ulong)(m_health * 5);
+        m_Gold = (ulong)(m_health);
     }
 
     private void Update()
