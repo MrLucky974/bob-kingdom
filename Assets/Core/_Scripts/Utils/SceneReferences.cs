@@ -10,6 +10,9 @@ public class SceneReferences : Singleton<SceneReferences>
     [SerializeField] private Wall m_wall;
     public static Wall wall => Instance.m_wall;
 
+    [SerializeField] private EnemyWaveSystem m_enemyWaveSystem;
+    public static EnemyWaveSystem enemyWaveSystem => Instance.m_enemyWaveSystem;
+
     [Header("Prefabs")]
     [SerializeField] private DraggableItem m_draggableItemPrefab;
     public static DraggableItem draggableItemPrefab => Instance.m_draggableItemPrefab;
