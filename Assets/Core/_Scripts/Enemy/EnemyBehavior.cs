@@ -62,6 +62,14 @@ public class EnemyBehavior : MonoBehaviour
 
         if (m_wallContact && m_canAttack)
         {
+            if (m_wall.HasSpikes)
+            {
+                const int baseDamage = 1;
+                const float damageMultiplier = 1.5f;
+                int selfDamage = Mathf.RoundToInt(baseDamage * Mathf.Pow(damageMultiplier, m_wall.WallSpikesLevel - 1));
+                Damage(selfDamage);
+            }
+
             m_wall.TakeDamage(m_damage);
             m_canAttack = false;
             StartCoroutine(nameof(AttackCooldown));

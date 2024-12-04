@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class Wall : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] private GameObject m_spikesObject;
+
     [Header("Settings")]
     [SerializeField] private int m_initialMaxHealth = 100;
     private int m_maxHealth = 100;
@@ -15,6 +18,11 @@ public class Wall : MonoBehaviour
     private Upgrade m_healUpgrade;
     [SerializeField] private UpgradeData m_sturdyWallUpgradeData;
     private Upgrade m_sturdyWallUpgrade;
+    [SerializeField] private UpgradeData m_wallSpikesUpgradeData;
+    private Upgrade m_wallSpikesUpgrade;
+    private bool m_hasSpikes;
+    public bool HasSpikes => m_hasSpikes;
+    public int WallSpikesLevel => m_wallSpikesUpgrade == null ? 0 : m_wallSpikesUpgrade.CurrentLevel;
 
     public int MaxHealth => m_maxHealth;
     public int CurrentHealth => m_currentHealth;
@@ -34,6 +42,9 @@ public class Wall : MonoBehaviour
         m_sturdyWallUpgrade = UpgradeManager.Instance.GetUpgrade(m_sturdyWallUpgradeData);
         m_sturdyWallUpgrade.UpgradeLevelUp += HandleSturdyWallUpgrade;
 
+        m_wallSpikesUpgrade = UpgradeManager.Instance.GetUpgrade(m_wallSpikesUpgradeData);
+        m_wallSpikesUpgrade.UpgradeLevelUp += HandleSpikesUpgrade;
+
         m_maxHealth = m_initialMaxHealth;
         m_currentHealth = m_maxHealth;
         HealthChanged?.Invoke();
@@ -44,6 +55,13 @@ public class Wall : MonoBehaviour
     {
         m_healUpgrade.UpgradeLevelUp -= HandleHealUpgrade;
         m_sturdyWallUpgrade.UpgradeLevelUp -= HandleSturdyWallUpgrade;
+        m_wallSpikesUpgrade.UpgradeLevelUp -= HandleSpikesUpgrade;
+    }
+
+    private void HandleSpikesUpgrade()
+    {
+        m_hasSpikes = m_wallSpikesUpgrade.CurrentLevel > 0;
+        m_spikesObject.SetActive(m_hasSpikes);
     }
 
     private void HandleSturdyWallUpgrade()
