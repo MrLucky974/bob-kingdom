@@ -33,7 +33,7 @@ public class WaveCountdownUI : MonoBehaviour
         int currentWaveIndex = SceneReferences.enemyWaveSystem.CurrentWaveIndex;
         float remainingCooldownTime = SceneReferences.enemyWaveSystem.RemainingCooldownTime;
         string cooldown = remainingCooldownTime > 1f ? remainingCooldownTime.ToString("F0") : remainingCooldownTime.ToString("F2");
-        m_waveTimerText.SetText(string.Format(WAVE_TIMER_TEXT, currentWaveIndex, cooldown));
+        m_waveTimerText.SetText(string.Format(WAVE_TIMER_TEXT, currentWaveIndex + 1, cooldown));
     }
 
     private void LateUpdate()
