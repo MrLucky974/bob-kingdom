@@ -21,6 +21,10 @@ public class MainUI : MonoBehaviour
     [SerializeField] private UpgradeData m_autoMergeUpgradeData;
     [SerializeField] private Button m_autoMergeButton;
 
+    [Space]
+
+    [SerializeField] private CanvasGroup m_healUpgradeShortcut;
+
     private Upgrade m_autoMergeUpgrade;
 
     private Player m_player;
@@ -37,6 +41,8 @@ public class MainUI : MonoBehaviour
 
         m_player.MoneyChanged += OnMoneyChanged;
         m_player.ItemCostChanged += OnItemCostChanged;
+
+        SceneReferences.enemyWaveSystem.WaveStatusChanged += HandleWaveStatusChanged;
     }
 
     private void OnDestroy()
@@ -45,9 +51,27 @@ public class MainUI : MonoBehaviour
 
         m_player.MoneyChanged -= OnMoneyChanged;
         m_player.ItemCostChanged -= OnItemCostChanged;
+
+        SceneReferences.enemyWaveSystem.WaveStatusChanged -= HandleWaveStatusChanged;
     }
 
     #region Event Calls
+
+    private void HandleWaveStatusChanged(EnemyWaveSystem.WaveState state)
+    {
+        if (state == EnemyWaveSystem.WaveState.InProgress)
+        {
+            m_healUpgradeShortcut.alpha = 1f;
+            m_healUpgradeShortcut.interactable = true;
+            m_healUpgradeShortcut.blocksRaycasts = true;
+        }
+        else if (state == EnemyWaveSystem.WaveState.Cooldown)
+        {
+            m_healUpgradeShortcut.alpha = 0f;
+            m_healUpgradeShortcut.interactable = false;
+            m_healUpgradeShortcut.blocksRaycasts = false;
+        }
+    }
 
     private void OnAutoMergeUpgrade()
     {
