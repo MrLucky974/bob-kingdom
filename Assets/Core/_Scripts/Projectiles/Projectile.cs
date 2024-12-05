@@ -131,6 +131,7 @@ public class Projectile : MonoBehaviour
                 }
             }
         }
+        SoundManager.Play(SoundBank.ExplosionSFX, 0.1f, 0.1f);
     }
 
     private void KillProjectile()

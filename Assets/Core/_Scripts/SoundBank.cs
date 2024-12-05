@@ -23,6 +23,7 @@ public class SoundBank : PersistentSingleton<SoundBank>
     [SerializeField] private AudioClip _railgunSFX;
 
     [SerializeField] private AudioClip _projectileHitSFX;
+    [SerializeField] private AudioClip _explosionSFX;
 
     [Header("UiSFX")]
     [SerializeField] private AudioClip _menuButonsSFX;
@@ -63,7 +64,9 @@ public class SoundBank : PersistentSingleton<SoundBank>
     public static AudioClip AssaultRifleSFX => Instance._assaultRifleSFX;
     public static AudioClip SniperRifleSFX => Instance._sniperRifleSFX;
     public static AudioClip RailgunSFX => Instance._railgunSFX;
+    
     public static AudioClip ProjectilHitSFX => Instance._projectileHitSFX;
+    public static AudioClip ExplosionSFX => Instance._explosionSFX;
     
     public static AudioClip MenuButonsSFX => Instance._menuButonsSFX;
     public static AudioClip BuyingSFX => Instance._buyingItemsSFX;
