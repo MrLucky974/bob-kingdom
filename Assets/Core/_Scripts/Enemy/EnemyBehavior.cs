@@ -59,7 +59,16 @@ public class EnemyBehavior : MonoBehaviour
             return;
         }
 
-        transform.Translate(new Vector3(-m_movementSpeed * Time.deltaTime, 0, 0));
+        transform.Translate(new Vector3(-m_movementSpeed * Time.deltaTime, 0, 0), Space.World);
+
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+            OnClick(Input.GetTouch(0).position);
+        }
+        else if (Input.GetButtonDown("Fire1"))
+        {
+            OnClick(Input.mousePosition);
+        }
 
         if (m_wallContact && m_canAttack)
         {
@@ -74,6 +83,21 @@ public class EnemyBehavior : MonoBehaviour
             m_wall.TakeDamage(m_damage);
             m_canAttack = false;
             StartCoroutine(nameof(AttackCooldown));
+        }
+    }
+
+    private void OnClick(Vector3 screenClickPosition)
+    {
+        // Convert screen position to world position.
+        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(screenClickPosition);
+
+        // Perform a 2D raycast at the click/tap position.
+        RaycastHit2D hit = Physics2D.Raycast(worldPosition, Vector2.zero, Mathf.Infinity);
+
+        if (hit.transform == transform)
+        {
+            Debug.Log($"Clicked on object: {hit.collider.gameObject.name}");
+            Damage(1);
         }
     }
 
