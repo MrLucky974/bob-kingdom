@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 3320801214641165857}
   - component: {fileID: 554449730116388322}
   - component: {fileID: 6889291236259236630}
+  - component: {fileID: 2989511920066551208}
   m_Layer: 0
   m_Name: Upgrade Slot
   m_TagString: Untagged
@@ -193,6 +194,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2989511920066551208}
+        m_TargetAssemblyTypeName: Oscillator, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 10
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6889291236259236630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,6 +228,24 @@ MonoBehaviour:
   m_nameLabel: {fileID: 8277564650505936631}
   m_descriptionLabel: {fileID: 7732375092970601693}
   m_costLabel: {fileID: 1005202104036248173}
+--- !u!114 &2989511920066551208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718288193167697091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56b5070a2f00e1e42b65356b87607c45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_target: {fileID: 1718288193167697091}
+  m_spring: 1000
+  m_damp: 50
+  m_displacementMultiplierX: 2
+  m_displacementMultiplierY: -2
+  m_displacementMultiplierZ: 0
 --- !u!1 &1941138348433433073
 GameObject:
   m_ObjectHideFlags: 0

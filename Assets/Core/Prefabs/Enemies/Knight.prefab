@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1078736831980828269}
   - component: {fileID: 8181620795090050817}
   - component: {fileID: 6747842890945023446}
+  - component: {fileID: 8279079018222942059}
   m_Layer: 0
   m_Name: Knight
   m_TagString: Untagged
@@ -50,8 +51,10 @@ MonoBehaviour:
   m_damage: 0
   m_attackCooldown: 0
   m_movementSpeed: 0
+  m_gold: 0
   m_spriteRenderer: {fileID: 386887587695793338}
   m_flashDuration: 0.3
+  m_hitRotationOscillator: {fileID: 8279079018222942059}
 --- !u!70 &6747842890945023446
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -87,6 +90,24 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 1.4}
   m_Direction: 0
+--- !u!114 &8279079018222942059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2621674386326201336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a305fa3c602e38a45a473064e6fa9d1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_target: {fileID: 2621674386326201336}
+  m_spring: 200
+  m_damp: 50
+  m_displacementMultiplierX: 0
+  m_displacementMultiplierY: 0
+  m_displacementMultiplierZ: -1
 --- !u!1 &4235451958783507061
 GameObject:
   m_ObjectHideFlags: 0

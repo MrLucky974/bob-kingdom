@@ -19,6 +19,7 @@ public class EnemyBehavior : MonoBehaviour
     [Header("Visuals")]
     [SerializeField] private SpriteRenderer m_spriteRenderer;
     [SerializeField] private float m_flashDuration = 0.3f;
+    [SerializeField] private OscillatorRotation m_hitRotationOscillator;
 
     private bool m_wallContact;
     private Wall m_wall;
@@ -79,6 +80,7 @@ public class EnemyBehavior : MonoBehaviour
     public void Damage(int amount)
     {
         m_health -= amount;
+        m_hitRotationOscillator.Play(1000f);
         Flash();
     }
 
