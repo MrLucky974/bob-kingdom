@@ -29,6 +29,7 @@ public class MainUI : MonoBehaviour
 
     private Player m_player;
     private Inventory m_inventory;
+    private EnemyWaveSystem m_enemyWaveSystem;
 
     private void Awake()
     {
@@ -42,7 +43,8 @@ public class MainUI : MonoBehaviour
         m_player.MoneyChanged += OnMoneyChanged;
         m_player.ItemCostChanged += OnItemCostChanged;
 
-        SceneReferences.enemyWaveSystem.WaveStatusChanged += HandleWaveStatusChanged;
+        m_enemyWaveSystem = SceneReferences.enemyWaveSystem;
+        m_enemyWaveSystem.WaveStatusChanged += HandleWaveStatusChanged;
     }
 
     private void OnDestroy()
@@ -52,7 +54,7 @@ public class MainUI : MonoBehaviour
         m_player.MoneyChanged -= OnMoneyChanged;
         m_player.ItemCostChanged -= OnItemCostChanged;
 
-        SceneReferences.enemyWaveSystem.WaveStatusChanged -= HandleWaveStatusChanged;
+        m_enemyWaveSystem.WaveStatusChanged -= HandleWaveStatusChanged;
     }
 
     #region Event Calls

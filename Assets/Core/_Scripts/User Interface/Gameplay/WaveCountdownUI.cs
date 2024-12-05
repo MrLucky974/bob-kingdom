@@ -18,20 +18,23 @@ public class WaveCountdownUI : MonoBehaviour
     private float m_progress;
     private bool m_isHolding = false;
 
+    private EnemyWaveSystem m_enemyWaveSystem;
+
     private void Start()
     {
-        SceneReferences.enemyWaveSystem.WaveStatusChanged += HandleWaveStatusChanged;
+        m_enemyWaveSystem = SceneReferences.enemyWaveSystem;
+        m_enemyWaveSystem.WaveStatusChanged += HandleWaveStatusChanged;
     }
 
     private void OnDestroy()
     {
-        SceneReferences.enemyWaveSystem.WaveStatusChanged -= HandleWaveStatusChanged;
+        m_enemyWaveSystem.WaveStatusChanged -= HandleWaveStatusChanged;
     }
 
     private void Update()
     {
-        int currentWaveIndex = SceneReferences.enemyWaveSystem.CurrentWaveIndex;
-        float remainingCooldownTime = SceneReferences.enemyWaveSystem.RemainingCooldownTime;
+        int currentWaveIndex = m_enemyWaveSystem.CurrentWaveIndex;
+        float remainingCooldownTime = m_enemyWaveSystem.RemainingCooldownTime;
         string cooldown = remainingCooldownTime > 1f ? remainingCooldownTime.ToString("F0") : remainingCooldownTime.ToString("F2");
         m_waveTimerText.SetText(string.Format(WAVE_TIMER_TEXT, currentWaveIndex + 1, cooldown));
     }
