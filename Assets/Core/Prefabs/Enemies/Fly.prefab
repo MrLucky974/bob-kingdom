@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 8326034556046930864}
   - component: {fileID: 5836351610145852161}
   - component: {fileID: 7876517761738376828}
+  - component: {fileID: -738775653105969321}
   m_Layer: 0
   m_Name: Fly
   m_TagString: Untagged
@@ -134,8 +135,10 @@ MonoBehaviour:
   m_damage: 0
   m_attackCooldown: 0
   m_movementSpeed: 0
+  m_gold: 0
   m_spriteRenderer: {fileID: 794540382855664618}
   m_flashDuration: 0.3
+  m_hitRotationOscillator: {fileID: -738775653105969321}
 --- !u!58 &7876517761738376828
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -171,3 +174,21 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.25
+--- !u!114 &-738775653105969321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5420125435938489590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a305fa3c602e38a45a473064e6fa9d1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_target: {fileID: 5420125435938489590}
+  m_spring: 200
+  m_damp: 50
+  m_displacementMultiplierX: 0
+  m_displacementMultiplierY: 0
+  m_displacementMultiplierZ: -1

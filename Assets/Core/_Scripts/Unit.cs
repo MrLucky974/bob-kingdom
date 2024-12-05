@@ -15,6 +15,9 @@ public class Unit : MonoBehaviour, IDropHandler, IPointerDownHandler
     [SerializeField] private SpriteRenderer m_weaponSpriteRenderer;
     [SerializeField] private SpriteRenderer m_outfitSpriteRenderer;
 
+    [Header("Animation")]
+    [SerializeField] private OscillatorScale m_oscillator;
+
     private Transform m_target;
     public Transform Target => m_target;
 
@@ -66,6 +69,8 @@ public class Unit : MonoBehaviour, IDropHandler, IPointerDownHandler
             };
             projectile.Initialize(data);
             m_nextAttackTime = Time.time + (1f / m_heldItem.FireRate);
+
+            m_oscillator.Play(10f);
         }
     }
 

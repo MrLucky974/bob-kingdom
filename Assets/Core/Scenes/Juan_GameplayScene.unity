@@ -5981,6 +5981,7 @@ GameObject:
   - component: {fileID: 936077589}
   - component: {fileID: 936077588}
   - component: {fileID: 936077587}
+  - component: {fileID: 936077592}
   m_Layer: 5
   m_Name: Pause Button
   m_TagString: Untagged
@@ -6098,6 +6099,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 936077592}
+        m_TargetAssemblyTypeName: Oscillator, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 10
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &936077590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6136,6 +6149,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 936077585}
   m_CullTransparentMesh: 1
+--- !u!114 &936077592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936077585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56b5070a2f00e1e42b65356b87607c45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_target: {fileID: 936077585}
+  m_useUnscaledDeltaTime: 1
+  m_spring: 1000
+  m_damp: 50
+  m_displacementMultiplierX: 2
+  m_displacementMultiplierY: -2
+  m_displacementMultiplierZ: 0
 --- !u!1 &939791988
 GameObject:
   m_ObjectHideFlags: 0
@@ -6457,6 +6489,7 @@ GameObject:
   - component: {fileID: 1011103799}
   - component: {fileID: 1011103798}
   - component: {fileID: 1011103797}
+  - component: {fileID: 1011103801}
   m_Layer: 0
   m_Name: Settings Button
   m_TagString: Untagged
@@ -6541,6 +6574,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1011103801}
+        m_TargetAssemblyTypeName: Oscillator, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 10
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1011103798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6605,6 +6650,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1011103794}
   m_CullTransparentMesh: 1
+--- !u!114 &1011103801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011103794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56b5070a2f00e1e42b65356b87607c45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_target: {fileID: 1011103794}
+  m_useUnscaledDeltaTime: 1
+  m_spring: 1000
+  m_damp: 50
+  m_displacementMultiplierX: 2
+  m_displacementMultiplierY: -2
+  m_displacementMultiplierZ: 0
 --- !u!1 &1054029238
 GameObject:
   m_ObjectHideFlags: 0
@@ -9783,6 +9847,7 @@ GameObject:
   - component: {fileID: 1544086131}
   - component: {fileID: 1544086130}
   - component: {fileID: 1544086129}
+  - component: {fileID: 1544086133}
   m_Layer: 5
   m_Name: Merge Button
   m_TagString: Untagged
@@ -9892,6 +9957,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1544086133}
+        m_TargetAssemblyTypeName: Oscillator, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 10
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1544086131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9930,6 +10007,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1544086127}
   m_CullTransparentMesh: 1
+--- !u!114 &1544086133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1544086127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56b5070a2f00e1e42b65356b87607c45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_target: {fileID: 1544086127}
+  m_useUnscaledDeltaTime: 0
+  m_spring: 200
+  m_damp: 50
+  m_displacementMultiplierX: 2
+  m_displacementMultiplierY: -2
+  m_displacementMultiplierZ: 0
 --- !u!1 &1562655357
 GameObject:
   m_ObjectHideFlags: 0
@@ -11152,6 +11248,7 @@ GameObject:
   - component: {fileID: 1823213789}
   - component: {fileID: 1823213788}
   - component: {fileID: 1823213787}
+  - component: {fileID: 1823213791}
   m_Layer: 5
   m_Name: Buy Button
   m_TagString: Untagged
@@ -11262,6 +11359,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1823213791}
+        m_TargetAssemblyTypeName: Oscillator, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 10
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1823213789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11300,6 +11409,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1823213785}
   m_CullTransparentMesh: 1
+--- !u!114 &1823213791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823213785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56b5070a2f00e1e42b65356b87607c45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_target: {fileID: 1823213785}
+  m_useUnscaledDeltaTime: 0
+  m_spring: 1000
+  m_damp: 50
+  m_displacementMultiplierX: 2
+  m_displacementMultiplierY: -2
+  m_displacementMultiplierZ: 0
 --- !u!1 &1835061331
 GameObject:
   m_ObjectHideFlags: 0
@@ -11632,6 +11760,7 @@ GameObject:
   - component: {fileID: 1859850337}
   - component: {fileID: 1859850336}
   - component: {fileID: 1859850335}
+  - component: {fileID: 1859850339}
   m_Layer: 0
   m_Name: Resume Button
   m_TagString: Untagged
@@ -11716,6 +11845,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1859850339}
+        m_TargetAssemblyTypeName: Oscillator, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 10
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1859850336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11780,6 +11921,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1859850333}
   m_CullTransparentMesh: 1
+--- !u!114 &1859850339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859850333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56b5070a2f00e1e42b65356b87607c45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_target: {fileID: 1859850333}
+  m_useUnscaledDeltaTime: 1
+  m_spring: 1000
+  m_damp: 50
+  m_displacementMultiplierX: 2
+  m_displacementMultiplierY: -2
+  m_displacementMultiplierZ: 0
 --- !u!1 &1889030218
 GameObject:
   m_ObjectHideFlags: 0
@@ -12109,8 +12269,9 @@ GameObject:
   - component: {fileID: 1911051423}
   - component: {fileID: 1911051427}
   - component: {fileID: 1911051426}
-  - component: {fileID: 1911051425}
   - component: {fileID: 1911051424}
+  - component: {fileID: 1911051425}
+  - component: {fileID: 1911051428}
   m_Layer: 0
   m_Name: Quit Button
   m_TagString: Untagged
@@ -12221,6 +12382,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1911051428}
+        m_TargetAssemblyTypeName: Oscillator, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 10
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1911051426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12259,6 +12432,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1911051422}
   m_CullTransparentMesh: 1
+--- !u!114 &1911051428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911051422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56b5070a2f00e1e42b65356b87607c45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_target: {fileID: 1911051422}
+  m_useUnscaledDeltaTime: 1
+  m_spring: 1000
+  m_damp: 50
+  m_displacementMultiplierX: 2
+  m_displacementMultiplierY: -2
+  m_displacementMultiplierZ: 0
 --- !u!1001 &1915147550
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12430,6 +12622,7 @@ GameObject:
   - component: {fileID: 1934282941}
   - component: {fileID: 1934282940}
   - component: {fileID: 1934282943}
+  - component: {fileID: 1934282944}
   m_Layer: 5
   m_Name: Upgrade Button
   m_TagString: Untagged
@@ -12513,6 +12706,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1934282944}
+        m_TargetAssemblyTypeName: Oscillator, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 10
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1934282941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12577,6 +12782,25 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1934282944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934282938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56b5070a2f00e1e42b65356b87607c45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_target: {fileID: 1934282938}
+  m_useUnscaledDeltaTime: 0
+  m_spring: 1000
+  m_damp: 50
+  m_displacementMultiplierX: 2
+  m_displacementMultiplierY: -2
+  m_displacementMultiplierZ: 0
 --- !u!1001 &1935052342
 PrefabInstance:
   m_ObjectHideFlags: 0
