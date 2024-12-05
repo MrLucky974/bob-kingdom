@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Sturdy Wall
   m_EditorClassIdentifier: 
   m_upgradeName: Sturdy Wall
-  m_description: Increase the wall's maximum health by 25%
+  m_description: Increase the wall's maximum health by 5%
   m_icon: {fileID: 21300000, guid: 2dc3cf1bba1bc16428cdf3c21bac5359, type: 3}
   m_maxLevel: 10
   m_initialCost: 250

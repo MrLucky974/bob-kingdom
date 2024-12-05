@@ -67,9 +67,12 @@ public class Wall : MonoBehaviour
     private void HandleSturdyWallUpgrade()
     {
         int currentLevel = m_sturdyWallUpgrade.CurrentLevel;
-        float additionalHealth = m_maxHealth * 0.25f;
+
+        const float multiplier = 0.05f;
+        float additionalHealth = m_maxHealth * multiplier;
         m_maxHealth = m_maxHealth + Mathf.RoundToInt(additionalHealth * currentLevel);
         m_currentHealth += Mathf.RoundToInt((m_maxHealth - m_initialMaxHealth) * 0.5f);
+
         HealthChanged?.Invoke();
         m_healUpgrade.Refresh();
 
