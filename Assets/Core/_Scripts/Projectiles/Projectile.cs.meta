@@ -3,7 +3,9 @@ guid: e69263fbaf680cf41bf2c5a200abd793
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - m_visual: {instanceID: 0}
+  - m_projectilHitSFX: {fileID: 8300000, guid: 170f9cf0ef9ef07499ad2798771ac76e, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
