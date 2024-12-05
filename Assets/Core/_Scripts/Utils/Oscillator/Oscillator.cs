@@ -3,6 +3,9 @@ using UnityEngine;
 public class Oscillator : MonoBehaviour
 {
     [SerializeField] protected GameObject m_target;
+    [SerializeField] private bool m_useUnscaledDeltaTime = false;
+
+    [Space]
 
     [SerializeField] protected float m_spring;
     [SerializeField] protected float m_damp;
@@ -11,9 +14,11 @@ public class Oscillator : MonoBehaviour
 
     protected virtual void Update()
     {
+        float deltaTime = m_useUnscaledDeltaTime ? Time.unscaledDeltaTime : Time.deltaTime;
+
         float force = -m_spring * m_displacement - m_damp * m_velocity;
-        m_velocity += force * Time.deltaTime;
-        m_displacement += m_velocity * Time.deltaTime;
+        m_velocity += force * deltaTime;
+        m_displacement += m_velocity * deltaTime;
     }
 
     private void Reset()
