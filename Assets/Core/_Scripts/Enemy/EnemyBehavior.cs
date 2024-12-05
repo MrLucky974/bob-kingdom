@@ -19,6 +19,7 @@ public class EnemyBehavior : MonoBehaviour
     [Header("Visuals")]
     [SerializeField] private SpriteRenderer m_spriteRenderer;
     [SerializeField] private float m_flashDuration = 0.3f;
+    [SerializeField] private OscillatorRotation m_hitRotationOscillator;
 
     private bool m_wallContact;
     private Wall m_wall;
@@ -58,7 +59,16 @@ public class EnemyBehavior : MonoBehaviour
             return;
         }
 
-        transform.Translate(new Vector3(-m_movementSpeed * Time.deltaTime, 0, 0));
+        transform.Translate(new Vector3(-m_movementSpeed * Time.deltaTime, 0, 0), Space.World);
+
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+            OnClick(Input.GetTouch(0).position);
+        }
+        else if (Input.GetButtonDown("Fire1"))
+        {
+            OnClick(Input.mousePosition);
+        }
 
         if (m_wallContact && m_canAttack)
         {
@@ -77,9 +87,25 @@ public class EnemyBehavior : MonoBehaviour
         }
     }
 
+    private void OnClick(Vector3 screenClickPosition)
+    {
+        // Convert screen position to world position.
+        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(screenClickPosition);
+
+        // Perform a 2D raycast at the click/tap position.
+        RaycastHit2D hit = Physics2D.Raycast(worldPosition, Vector2.zero, Mathf.Infinity);
+
+        if (hit.transform == transform)
+        {
+            Debug.Log($"Clicked on object: {hit.collider.gameObject.name}");
+            Damage(1);
+        }
+    }
+
     public void Damage(int amount)
     {
         m_health -= amount;
+        m_hitRotationOscillator.Play(1000f);
         Flash();
     }
 

@@ -68,9 +68,14 @@ public class Projectile : MonoBehaviour
         if (m_hasBlastRadius)
         {
             Handles.color = Color.red;
-            var gunpowderUpgrade = UpgradeManager.Instance.GetUpgrade(SceneReferences.gunpowderUpgradeData);
-            float[] values = new float[3] { 0f, 0.2f, 0.4f };
-            float actualBlastRadius = gunpowderUpgrade != null ? m_blastRadius * (1f + values[gunpowderUpgrade.CurrentLevel]) : m_blastRadius;
+
+            float actualBlastRadius = m_blastRadius;
+            if (UpgradeManager.Instance)
+            {
+                var gunpowderUpgrade = UpgradeManager.Instance.GetUpgrade(SceneReferences.gunpowderUpgradeData);
+                float[] values = new float[3] { 0f, 0.2f, 0.4f };
+                actualBlastRadius = gunpowderUpgrade != null ? m_blastRadius * (1f + values[gunpowderUpgrade.CurrentLevel]) : m_blastRadius;
+            }
             Handles.DrawWireDisc(transform.position, Vector3.forward, actualBlastRadius);
         }
 #endif

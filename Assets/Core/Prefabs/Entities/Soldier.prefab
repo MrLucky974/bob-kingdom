@@ -179,6 +179,7 @@ GameObject:
   - component: {fileID: 4415699548400677933}
   - component: {fileID: 3367974142428952816}
   - component: {fileID: 7264374756794550769}
+  - component: {fileID: 6804693464911806328}
   m_Layer: 0
   m_Name: Soldier
   m_TagString: Untagged
@@ -264,7 +265,25 @@ MonoBehaviour:
   m_heldItem: {fileID: 0}
   m_weaponSpriteRenderer: {fileID: 6444859111011026419}
   m_outfitSpriteRenderer: {fileID: 5383483160441977784}
-  m_target: {fileID: 0}
+  m_oscillator: {fileID: 6804693464911806328}
+--- !u!114 &6804693464911806328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2181769160713215377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56b5070a2f00e1e42b65356b87607c45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_target: {fileID: 2181769160713215377}
+  m_spring: 200
+  m_damp: 10
+  m_displacementMultiplierX: 1
+  m_displacementMultiplierY: -1
+  m_displacementMultiplierZ: 0
 --- !u!1 &8601331769208280267
 GameObject:
   m_ObjectHideFlags: 0
