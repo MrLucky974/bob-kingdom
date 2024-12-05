@@ -10,32 +10,41 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 447db553d22e1bf4797611792b91d3dc, type: 3}
-  m_Name: Revolver
+  m_Name: Grenade
   m_EditorClassIdentifier: 
-  m_sprite: {fileID: 21300000, guid: 315d9de28518c0d4d844a10fa1d3a156, type: 3}
+  m_sprite: {fileID: 21300000, guid: f2ae4b143fc874f45b7c72ad03afbcfb, type: 3}
   m_outfit: {fileID: 0}
-  m_projectilePrefab: {fileID: 8114252734412359783, guid: f9bc0360bd2034b489af0061d1a88925, type: 3}
-  m_trajectoryMaxHeight: 1
+  m_projectilePrefab: {fileID: 8114252734412359783, guid: 251ae83f47f73b147b294371d99d92c3, type: 3}
+  m_trajectoryMaxHeight: 0.2
   m_trajectoryAnimationCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.05070755
-      inSlope: -0.05070755
-      outSlope: -0.05070755
-      tangentMode: 34
-      weightedMode: 0
+      value: 0
+      inSlope: Infinity
+      outSlope: 6.869598
+      tangentMode: 1
+      weightedMode: 3
       inWeight: 0
-      outWeight: 0.33333334
+      outWeight: 0.00044455903
+    - serializedVersion: 3
+      time: 0.5
+      value: 1.0000015
+      inSlope: 0.0018747505
+      outSlope: 0.0018747505
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0.8006699
+      outWeight: 0.7995398
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -0.05070755
-      outSlope: -0.05070755
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
+      inSlope: -5.1262717
+      outSlope: -5.1262717
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0.00044691563
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -69,26 +78,35 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 2
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 34
-      weightedMode: 0
+      value: 0.9998441
+      inSlope: Infinity
+      outSlope: 6.869598
+      tangentMode: 1
+      weightedMode: 3
       inWeight: 0
-      outWeight: 0.33333334
+      outWeight: 0.00044455903
+    - serializedVersion: 3
+      time: 0.5
+      value: 0.75128484
+      inSlope: 0.0018747505
+      outSlope: 0.0018747505
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0.8006699
+      outWeight: 0.7995398
     - serializedVersion: 3
       time: 1
-      value: 2
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
+      value: 0.9998441
+      inSlope: -5.1262717
+      outSlope: -5.1262717
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0.00044691563
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_attackDamage: 15
+  m_attackDamage: 20
   m_range: 7
-  m_fireRate: 1.5
-  m_nextItemTier: {fileID: 11400000, guid: acc7a14a4367f6348b6ddb9ba23dd6af, type: 2}
+  m_fireRate: 1
+  m_nextItemTier: {fileID: 11400000, guid: 0f53494a09bc322499eea07e35844066, type: 2}
