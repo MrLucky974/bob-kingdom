@@ -30,7 +30,6 @@ public class UpgradeShortcut : MonoBehaviour
 
     private void HandleRefresh()
     {
-        //m_costLabel.gameObject.SetActive(m_upgrade.CanUpgrade());
         m_button.interactable = m_upgrade.CanUpgrade();
     }
 
@@ -40,9 +39,6 @@ public class UpgradeShortcut : MonoBehaviour
         {
             return;
         }
-
-        //if (!m_costLabel.gameObject.activeInHierarchy)
-        //    m_costLabel.gameObject.SetActive(true);
 
         if (!m_button.interactable)
             m_button.interactable = true;
@@ -54,11 +50,10 @@ public class UpgradeShortcut : MonoBehaviour
             bool couldApply = m_upgrade.ApplyUpgrade();
             if (couldApply)
             {
-                m_costLabel.SetText($"Cost: {NumberFormatter.FormatNumberWithSuffix(m_upgrade.GetUpgradeCost())}");
+                m_costLabel.SetText($"{NumberFormatter.FormatNumberWithSuffix(m_upgrade.GetUpgradeCost())}");
 
                 if (!m_upgrade.CanUpgrade())
                 {
-                    //m_costLabel.gameObject.SetActive(false);
                     m_button.interactable = false;
                 }
             }
