@@ -50,7 +50,7 @@ public class Unit : MonoBehaviour, IDropHandler, IPointerDownHandler
         if (Time.time > m_nextAttackTime)
         {
             //Debug.Log($"[{name}]: Shoot", this);
-
+            SoundManager.Play(m_heldItem.ShotSFX,0.1f,0.1f);
             var projectile = Instantiate(m_heldItem.ProjectilePrefab, transform.position, Quaternion.identity);
             var data = new Projectile.ProjectileData()
             {
@@ -91,6 +91,7 @@ public class Unit : MonoBehaviour, IDropHandler, IPointerDownHandler
 
         Destroy(droppedObject);
         m_heldItem = item.ItemData;
+        SoundManager.Play(SoundBank.GeraUpSFX, 0.1f, 0.1f);
         UpdateWeaponSprite();
         UpdateOutfitSprite();
     }

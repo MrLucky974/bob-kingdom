@@ -58,8 +58,6 @@ public class PauseMenuUI : MonoBehaviour
 
     public void Quit()
     {
-        SoundManager.Play(SoundBank.MenuButonsSFX, 0.1f, 0.1f);
-        CloseSettingsMenu();
         ClosePauseMenu();
         Time.timeScale = 1f;
 

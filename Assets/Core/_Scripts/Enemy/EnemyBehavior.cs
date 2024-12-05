@@ -47,7 +47,7 @@ public class EnemyBehavior : MonoBehaviour
             m_health = DEFAULT_MAX_HEALTH;
         }
         m_health = Mathf.FloorToInt(m_health + (m_wave.m_currentWaveIndex / 2));
-        m_gold = (ulong)(m_health * 5);
+        m_gold = (ulong)(m_health);
     }
 
     private void Update()
@@ -71,6 +71,7 @@ public class EnemyBehavior : MonoBehaviour
             }
 
             m_wall.TakeDamage(m_damage);
+            SoundManager.Play(SoundBank.WallHitSFX, 0.1f, 0.1f);
             m_canAttack = false;
             StartCoroutine(nameof(AttackCooldown));
         }
@@ -109,8 +110,8 @@ public class EnemyBehavior : MonoBehaviour
 
     private void Death()
     {
-        //TODO : rajouter un SFX !
-
+        SoundManager.Play(SoundBank.MobDeathSFX,0.1f,0.1f);
+        SoundManager.Play(SoundBank.CoinSFX,0.1f,0.1f);
         Instantiate(SceneReferences.coinExplosionPrefab, transform.position, Quaternion.identity);
         GiveCoins();
         ApplyVampirism();

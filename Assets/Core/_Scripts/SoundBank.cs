@@ -29,6 +29,7 @@ public class SoundBank : PersistentSingleton<SoundBank>
     [SerializeField] private AudioClip _buyingItemsSFX;
     [SerializeField] private AudioClip _mergingSFX;
     [SerializeField] private AudioClip _upgradeSFX;
+    [SerializeField] private AudioClip _gearUpSFX;
 
     [Header("EnemySFX")]
     [SerializeField] private AudioClip _waveIncomingSFX;
@@ -41,6 +42,9 @@ public class SoundBank : PersistentSingleton<SoundBank>
 
     [Header("Music")]
     [SerializeField] private AudioClip _Ingame;
+
+    [Header("Ambiant")]
+    [SerializeField] private AudioClip _windSFX;
 
     public static AudioClip RockSFX => Instance._rockSFX;
     public static AudioClip SpearSFX => Instance._spearSFX;
@@ -60,14 +64,21 @@ public class SoundBank : PersistentSingleton<SoundBank>
     public static AudioClip SniperRifleSFX => Instance._sniperRifleSFX;
     public static AudioClip RailgunSFX => Instance._railgunSFX;
     public static AudioClip ProjectilHitSFX => Instance._projectileHitSFX;
+    
     public static AudioClip MenuButonsSFX => Instance._menuButonsSFX;
     public static AudioClip BuyingSFX => Instance._buyingItemsSFX;
     public static AudioClip MergingSFX => Instance._mergingSFX;
+    public static AudioClip GeraUpSFX => Instance._gearUpSFX;
+    
     public static AudioClip UpgradeSFX => Instance._upgradeSFX;
     public static AudioClip WaveSFX => Instance._waveIncomingSFX;
     public static AudioClip MobDeathSFX => Instance._mobDeathSFX;
     public static AudioClip CoinSFX => Instance._coinSFX;
+    
     public static AudioClip WallHitSFX => Instance._wallHitSFX;
     public static AudioClip WallColapsingSFX => Instance._wallColapsingSFX;
+    
     public static AudioClip InGame => Instance._Ingame;
+
+    public static AudioClip WindSFX => Instance._windSFX;
 }
