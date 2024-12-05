@@ -8745,6 +8745,19 @@ MonoBehaviour:
   - items:
     - {fileID: 11400000, guid: 6a256b3563b97d34396684f25d578f5f, type: 2}
     - {fileID: 11400000, guid: 57e17d0acc3685d4184852df6344dc92, type: 2}
+  - items:
+    - {fileID: 11400000, guid: 57e17d0acc3685d4184852df6344dc92, type: 2}
+    - {fileID: 11400000, guid: 0551de8fe5c62ec42ae3c0f9e5a67059, type: 2}
+  - items:
+    - {fileID: 11400000, guid: 0551de8fe5c62ec42ae3c0f9e5a67059, type: 2}
+  - items:
+    - {fileID: 11400000, guid: 0551de8fe5c62ec42ae3c0f9e5a67059, type: 2}
+    - {fileID: 11400000, guid: 6dddeaa7d6f5bbc49b6815844b055f83, type: 2}
+  - items:
+    - {fileID: 11400000, guid: 6dddeaa7d6f5bbc49b6815844b055f83, type: 2}
+    - {fileID: 11400000, guid: 6e973925b752e1a4fb69e0de41e1dfd5, type: 2}
+  - items:
+    - {fileID: 11400000, guid: 6e973925b752e1a4fb69e0de41e1dfd5, type: 2}
   m_hearthUpgradeData: {fileID: 11400000, guid: b4de967010ae3544f90c09f814c91aa7, type: 2}
 --- !u!114 &1424835987
 MonoBehaviour:
