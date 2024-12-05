@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_sprite: {fileID: 21300000, guid: ee3dcc0846a35e14dac0058cb1b8877d, type: 3}
   m_outfit: {fileID: 21300000, guid: f68ad44b5935a4444a4e9a3c534e97a8, type: 3}
+  m_shotSFX: {fileID: 8300000, guid: 52fea0d9f3b757f42a3f1f1d54d794fc, type: 3}
   m_projectilePrefab: {fileID: 8114252734412359783, guid: 3abd1d5d483578747af5e1fbb8e9eb51, type: 3}
   m_trajectoryMaxHeight: 0.175
   m_trajectoryAnimationCurve:

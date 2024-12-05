@@ -30,6 +30,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
             // Check if both items are the same
             if (slotItem.ItemData == item.ItemData)
             {
+                SoundManager.Play(SoundBank.MergingSFX, 0.1f, 0.1f);
                 var nextItemTier = slotItem.ItemData.NextItemTier;
 
                 if (nextItemTier != null)

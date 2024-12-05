@@ -9,6 +9,7 @@ public class PauseMenuUI : MonoBehaviour
 
     private void Start()
     {
+        SoundManager.Play(SoundBank.MenuButonsSFX, 0.1f, 0.1f);
         m_pauseMenu.alpha = 0f;
         m_pauseMenu.interactable = false;
         m_pauseMenu.blocksRaycasts = false;
@@ -17,6 +18,7 @@ public class PauseMenuUI : MonoBehaviour
 
     public void OpenSettingsMenu()
     {
+        SoundManager.Play(SoundBank.MenuButonsSFX, 0.1f, 0.1f);
         m_settingsMenu.alpha = 1f;
         m_settingsMenu.interactable = true;
         m_settingsMenu.blocksRaycasts = true;
@@ -25,6 +27,7 @@ public class PauseMenuUI : MonoBehaviour
 
     public void CloseSettingsMenu()
     {
+        SoundManager.Play(SoundBank.MenuButonsSFX, 0.1f, 0.1f);
         m_settingsMenu.alpha = 0f;
         m_settingsMenu.interactable = false;
         m_settingsMenu.blocksRaycasts = false;
@@ -33,6 +36,7 @@ public class PauseMenuUI : MonoBehaviour
 
     public void OpenPauseMenu()
     {
+        SoundManager.Play(SoundBank.MenuButonsSFX, 0.1f, 0.1f);
         m_pauseMenu.alpha = 1f;
         m_pauseMenu.interactable = true;
         m_pauseMenu.blocksRaycasts = true;
@@ -43,6 +47,7 @@ public class PauseMenuUI : MonoBehaviour
 
     public void ClosePauseMenu()
     {
+        SoundManager.Play(SoundBank.MenuButonsSFX, 0.1f, 0.1f);
         m_pauseMenu.alpha = 0f;
         m_pauseMenu.interactable = false;
         m_pauseMenu.blocksRaycasts = false;
@@ -53,7 +58,6 @@ public class PauseMenuUI : MonoBehaviour
 
     public void Quit()
     {
-        CloseSettingsMenu();
         ClosePauseMenu();
         Time.timeScale = 1f;
 

@@ -48,6 +48,7 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        SoundManager.Play(SoundBank.MenuButonsSFX, 0.1f, 0.1f);
         transform.SetParent(m_parentAfterDrag);
         m_image.raycastTarget = true;
     }

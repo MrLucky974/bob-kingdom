@@ -56,7 +56,7 @@ public class Upgrade
                 return false;
             }
         }
-
+        SoundManager.Play(SoundBank.UpgradeSFX, 0.1f, 0.1f);
         CurrentLevel++;
         UpgradeLevelUp?.Invoke();
 

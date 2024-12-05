@@ -8,7 +8,7 @@ namespace LBB.BRA1NFvCK
         [SerializeField] private UIMenuManager<EMenuScreenType> m_menuManager;
         [SerializeField] private EMenuScreenType m_menuScreenType;
 
-        public void ChangeScreen()
+        public virtual void ChangeScreen()
         {
             m_menuManager.ChangeScreen(m_menuScreenType); // Change to the specified screen
         }
