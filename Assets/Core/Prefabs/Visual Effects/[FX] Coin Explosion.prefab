@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_particleSystem: {fileID: 2867073705805010432}
+  m_timedAudioEvents: []
 --- !u!1 &7323124288252044772
 GameObject:
   m_ObjectHideFlags: 0
