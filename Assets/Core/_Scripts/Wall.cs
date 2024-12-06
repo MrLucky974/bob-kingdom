@@ -29,7 +29,7 @@ public class Wall : MonoBehaviour
     public float HealthRatio => (float)m_currentHealth / m_maxHealth;
 
     public Action HealthChanged;
-
+    public Action WallDeath;
 
     private void Start()
     {
@@ -121,12 +121,13 @@ public class Wall : MonoBehaviour
     {
         Debug.Log("GAME OVER !");
         SoundManager.Play(SoundBank.WallColapsingSFX, 0.1f, 0.1f);
+        WallDeath?.Invoke();
         StartCoroutine(nameof(Defeat));
     }
 
     private IEnumerator Defeat()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         SceneTransitionManager.Load("GameOverScene");
         enabled = false;
     }

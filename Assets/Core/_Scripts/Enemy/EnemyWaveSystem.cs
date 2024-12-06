@@ -47,6 +47,8 @@ public class EnemyWaveSystem : MonoBehaviour
     private float m_remainingCooldownTime; // Temps restant avant le début de la prochaine vague.
     public float RemainingCooldownTime => m_remainingCooldownTime; // Accès en lecture au temps restant avant la prochaine vague.
 
+    private Wall m_wall;
+
     private void Awake()
     {
         // Si aucun spawner n'est assigné depuis l'éditeur, on essaie d'en trouver un dans la scène.
@@ -55,6 +57,14 @@ public class EnemyWaveSystem : MonoBehaviour
 
         // Affiche un message d'erreur si aucun spawner n'a été trouvé.
         Debug.Assert(m_enemySpawner != null, $"Impossible de trouver un objet de type {nameof(EnemySpawner)}", this);
+
+        m_wall = SceneReferences.wall;
+        m_wall.WallDeath += OnWallDeath;
+    }
+
+    private void OnWallDeath()
+    {
+        ScoreTracker.Instance.SetScore(m_currentWaveIndex + 1);
     }
 
     private void Start()
@@ -78,6 +88,7 @@ public class EnemyWaveSystem : MonoBehaviour
     private void OnDestroy()
     {
         StopAllCoroutines();
+        m_wall.WallDeath -= OnWallDeath;
     }
 
     /// <summary>

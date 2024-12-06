@@ -4521,7 +4521,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Wave Encountered :'
+  m_text: 'You survived until wave :'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cf816dd42fef6b34cb832a16d2186998, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 8a2fdef1f08800d418688dd126cc6a93, type: 2}
@@ -14147,6 +14147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0edf54c53f558bd4c88ec17e4f11749d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_waveScoreText: {fileID: 1556308643}
 --- !u!4 &1950781441
 Transform:
   m_ObjectHideFlags: 0

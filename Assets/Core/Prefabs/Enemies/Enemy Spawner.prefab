@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77e871befa690ab40ad145d8965fc10b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_enemySpawner: {fileID: 0}
+  m_enemySpawner: {fileID: 1599532438434281095}
   m_autoStart: 1
   m_initialWaveIndex: 0
   m_waveCooldownTime: 10

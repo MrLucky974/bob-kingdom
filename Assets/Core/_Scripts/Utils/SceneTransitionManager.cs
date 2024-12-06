@@ -1,4 +1,5 @@
 using LuckiusDev.Utils;
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,6 +12,9 @@ namespace LuckiusDev.Experiments
         [SerializeField] private Image m_image;
         [SerializeField] private float m_transitionDuration = 0.6f;
 
+        public Action TransitionStarted;
+        public Action TransitionEnded;
+
         private bool m_isActive = false;
 
         private void Start()
@@ -22,13 +26,14 @@ namespace LuckiusDev.Experiments
         {
             if (Instance.m_isActive)
                 return;
-            
+
             Instance.StartCoroutine(Instance.LoadScene(sceneName));
         }
 
         private IEnumerator LoadScene(string sceneName)
         {
             m_isActive = true;
+            TransitionStarted?.Invoke();
 
             m_image.materialForRendering.SetFloat("_Amount", 0f); // Set the material property to zero on start
 
@@ -61,6 +66,8 @@ namespace LuckiusDev.Experiments
             }
 
             m_image.materialForRendering.SetFloat("_Amount", 0f); // Set the material property to zero
+
+            TransitionEnded?.Invoke();
             m_isActive = false;
         }
     }
