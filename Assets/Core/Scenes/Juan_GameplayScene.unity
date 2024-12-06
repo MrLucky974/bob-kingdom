@@ -381,8 +381,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 500, y: -152.005}
-  m_SizeDelta: {x: 820, y: 0}
+  m_AnchoredPosition: {x: 500, y: -70}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &10231529
 MonoBehaviour:
@@ -3165,7 +3165,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 195, y: -0}
-  m_SizeDelta: {x: 252, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &419198765
 MonoBehaviour:
@@ -3281,8 +3281,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 500, y: -336.015}
-  m_SizeDelta: {x: 820, y: 0}
+  m_AnchoredPosition: {x: 500, y: -90}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &426683575
 MonoBehaviour:
@@ -3634,7 +3634,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 195, y: -289.118}
-  m_SizeDelta: {x: 366.93, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &462179762
 MonoBehaviour:
@@ -3712,7 +3712,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 195, y: -984.118}
-  m_SizeDelta: {x: 402.93, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &495650093
 MonoBehaviour:
@@ -9324,6 +9324,7 @@ MonoBehaviour:
   m_enemyWaveSystem: {fileID: 1762305472}
   m_draggableItemPrefab: {fileID: 8561713397174620303, guid: 33b6fb0ff9e21b3439c1189c1b54a515, type: 3}
   m_coinExplosionPrefab: {fileID: 3876757435205021094, guid: f1ebc49b29a7bb740a8bea5c3dd0a17f, type: 3}
+  m_damageIndicatorPrefab: {fileID: 7689778997740652947, guid: 8ef2f62e06ae55a479e4f5f7991b3b46, type: 3}
   m_vampirismUpgradeData: {fileID: 11400000, guid: 8b147929c3eba664ea0193665f406d20, type: 2}
   m_gunpowderUpgradeData: {fileID: 11400000, guid: 3d0be8d7c296c254aa01d35a05491302, type: 2}
   m_midasTouchUpgradeData: {fileID: 11400000, guid: def7d5e8fc304b240a441077439267e7, type: 2}
@@ -11682,7 +11683,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 500, y: -520.025}
+  m_AnchoredPosition: {x: 500, y: -110}
   m_SizeDelta: {x: 820, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1781184475
