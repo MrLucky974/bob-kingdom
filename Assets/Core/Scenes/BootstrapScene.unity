@@ -122,6 +122,62 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &390062366
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 390062368}
+  - component: {fileID: 390062367}
+  m_Layer: 0
+  m_Name: '[VFX MANAGER]'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &390062367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 390062366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a1cfd9062b7c7842ba1ba009a13a4d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bombExplosionVFX: {fileID: 4574575104019493829, guid: 5258e56bb00f16149a969a0a77f49d64, type: 3}
+  _dynamiteExplosionVFX: {fileID: 8637197713385919046, guid: 36e7720e14cf1af40ba15aaf294e8178, type: 3}
+  _grenadeExplosionVFX: {fileID: 4882544218604125640, guid: 2cab8aa9688ff86449acb516c35fdce7, type: 3}
+  _arrowImpacteVFX: {fileID: 6155157791332932241, guid: af033ab8d2372f143a5f85cf53b2234a, type: 3}
+  _armoredArrowImpacteVFX: {fileID: 8988658070757073716, guid: dfbad5b641877de48a0c1cf8b491eff0, type: 3}
+  _spearImpacteVFX: {fileID: 87844171785174272, guid: 653d21bc029554047b88d5d399c4d1c5, type: 3}
+  _shotImpacteVFX: {fileID: 5998937214503356008, guid: e0bcd2509bf7ba7469b18ec96b36d566, type: 3}
+  _RailImpacteVFX: {fileID: 1158374252512309166, guid: 62977d175d76c59409f3fe319c2078a4, type: 3}
+  _shootFireVFX: {fileID: 3483736507828904805, guid: 272b7e332a89241419294ba4e71dac5c, type: 3}
+  _shootRailVFX: {fileID: 5362492656031125600, guid: 15010131f116c23448f364dcbf7d58ab, type: 3}
+  _shootJetVFX: {fileID: 1197589806452276953, guid: c1dffa823b61a1b47b7634171e484dfe, type: 3}
+  _shootArrowVFX: {fileID: 1041356228907581997, guid: bd27c707c8ed8fb4f82c2fcea2b8a193, type: 3}
+--- !u!4 &390062368
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 390062366}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.6088684, y: 0.17654574, z: -0.012894995}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &535164661
 GameObject:
   m_ObjectHideFlags: 0
@@ -520,3 +576,4 @@ SceneRoots:
   m_Roots:
   - {fileID: 1647760832}
   - {fileID: 1391085082}
+  - {fileID: 390062368}
