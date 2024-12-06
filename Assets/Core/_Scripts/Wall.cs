@@ -83,7 +83,7 @@ public class Wall : MonoBehaviour
     private void HandleHealUpgrade()
     {
         Debug.Log($"[{name}] Healing wall!", this);
-        const int healAmount = 5;
+        const int healAmount = 20;
         Heal(healAmount);
     }
 
