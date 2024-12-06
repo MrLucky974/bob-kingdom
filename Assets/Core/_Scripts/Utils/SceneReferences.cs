@@ -35,7 +35,7 @@ public class SceneReferences : Singleton<SceneReferences>
 
     [SerializeField] private UpgradeData m_godHandUpgradeData;
     public static UpgradeData godHandUpgradeData => Instance.m_godHandUpgradeData;
-    
+
     [Header("VFX")]
     [SerializeField] private GameObject m_jet;
     public static GameObject Jet => Instance.m_jet;
@@ -51,7 +51,4 @@ public class SceneReferences : Singleton<SceneReferences>
 
     [SerializeField] private GameObject m_impact;
     public static GameObject Impact => Instance.m_impact;
-
-    [SerializeField] private GameObject m_explosion;
-    public static GameObject Explosion => Instance.m_explosion;
 }
