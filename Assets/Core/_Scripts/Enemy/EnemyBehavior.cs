@@ -97,8 +97,14 @@ public class EnemyBehavior : MonoBehaviour
 
         if (hit.transform == transform)
         {
-            Debug.Log($"Clicked on object: {hit.collider.gameObject.name}");
-            Damage(1);
+            var upgrade = UpgradeManager.Instance.GetUpgrade(SceneReferences.godHandUpgradeData);
+            int[] damageValues = { 0, 1, 3, 5 };
+
+            if (upgrade.CurrentLevel > 0)
+            {
+                int damageIndex = upgrade != null ? upgrade.CurrentLevel : 0;
+                Damage(damageValues[damageIndex]);
+            }
         }
     }
 
@@ -136,8 +142,8 @@ public class EnemyBehavior : MonoBehaviour
 
     private void Death()
     {
-        SoundManager.Play(SoundBank.MobDeathSFX,0.1f,0.1f);
-        SoundManager.Play(SoundBank.CoinSFX,0.1f,0.1f);
+        SoundManager.Play(SoundBank.MobDeathSFX, 0.1f, 0.1f);
+        SoundManager.Play(SoundBank.CoinSFX, 0.1f, 0.1f);
         Instantiate(SceneReferences.coinExplosionPrefab, transform.position, Quaternion.identity);
         GiveCoins();
         ApplyVampirism();

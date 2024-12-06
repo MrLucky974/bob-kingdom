@@ -29,4 +29,7 @@ public class SceneReferences : Singleton<SceneReferences>
 
     [SerializeField] private UpgradeData m_midasTouchUpgradeData;
     public static UpgradeData midasTouchUpgradeData => Instance.m_midasTouchUpgradeData;
+
+    [SerializeField] private UpgradeData m_godHandUpgradeData;
+    public static UpgradeData godHandUpgradeData => Instance.m_godHandUpgradeData;
 }
