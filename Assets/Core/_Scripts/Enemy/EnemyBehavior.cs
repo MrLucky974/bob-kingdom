@@ -112,6 +112,7 @@ public class EnemyBehavior : MonoBehaviour
     {
         m_health -= amount;
         m_hitRotationOscillator.Play(1000f);
+        SceneReferences.damageIndicatorPrefab.Create(amount, Color.red, transform);
         Flash();
     }
 

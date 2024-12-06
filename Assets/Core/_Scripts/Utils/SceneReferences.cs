@@ -20,6 +20,9 @@ public class SceneReferences : Singleton<SceneReferences>
     [SerializeField] private FX m_coinExplosionPrefab;
     public static FX coinExplosionPrefab => Instance.m_coinExplosionPrefab;
 
+    [SerializeField] private DamageIndicator m_damageIndicatorPrefab;
+    public static DamageIndicator damageIndicatorPrefab => Instance.m_damageIndicatorPrefab;
+
     [Header("Upgrades")]
     [SerializeField] private UpgradeData m_vampirismUpgradeData;
     public static UpgradeData vampirismUpgradeData => Instance.m_vampirismUpgradeData;
