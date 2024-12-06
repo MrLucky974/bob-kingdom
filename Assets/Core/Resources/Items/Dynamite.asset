@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Dynamite
   m_EditorClassIdentifier: 
   m_sprite: {fileID: 21300000, guid: 3868b9c1dfb981847b75a0279dbca3b4, type: 3}
-  m_outfit: {fileID: 0}
+  m_outfit: {fileID: 21300000, guid: 1f1b0628fecf82d4fad1f4f8c549b6cc, type: 3}
   m_shootVFX: {fileID: 1197589806452276953, guid: c1dffa823b61a1b47b7634171e484dfe, type: 3}
   m_impactVFX: {fileID: 8637197713385919046, guid: 36e7720e14cf1af40ba15aaf294e8178, type: 3}
   m_shotSFX: {fileID: 8300000, guid: e52974fb51978904a9144c7ad40affbf, type: 3}

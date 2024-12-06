@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Flintlock
   m_EditorClassIdentifier: 
   m_sprite: {fileID: 21300000, guid: 4225a86a13d0caa4389a6d6f457956f8, type: 3}
-  m_outfit: {fileID: 21300000, guid: c5818def7e75d5b4c8310c26a12e906f, type: 3}
+  m_outfit: {fileID: 21300000, guid: 768e51104dbd33941bd328246d89deb8, type: 3}
   m_shootVFX: {fileID: 3483736507828904805, guid: 272b7e332a89241419294ba4e71dac5c, type: 3}
   m_impactVFX: {fileID: 5998937214503356008, guid: e0bcd2509bf7ba7469b18ec96b36d566, type: 3}
   m_shotSFX: {fileID: 8300000, guid: 599579eda8b494244b64618136e6e84b, type: 3}
