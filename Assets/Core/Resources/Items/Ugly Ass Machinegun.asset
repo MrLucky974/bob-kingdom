@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Ugly Ass Machinegun
   m_EditorClassIdentifier: 
   m_sprite: {fileID: 21300000, guid: 149d6314b68ed6646b2c972c6a33c070, type: 3}
-  m_outfit: {fileID: 0}
+  m_outfit: {fileID: 21300000, guid: 844222d9fa2cf7c47a8744ec575a9c76, type: 3}
   m_shootVFX: {fileID: 3483736507828904805, guid: 272b7e332a89241419294ba4e71dac5c, type: 3}
-  m_impactVFX: {fileID: 5998937214503356008, guid: e0bcd2509bf7ba7469b18ec96b36d566, type: 3}
+  m_impactVFX: {fileID: 5998937214503356008, guid: f262a6091a5d18040982d918686f3da6, type: 3}
   m_shotSFX: {fileID: 8300000, guid: 58df4671cb4c65440a13094c202b259f, type: 3}
-  m_projectilePrefab: {fileID: 8114252734412359783, guid: f9bc0360bd2034b489af0061d1a88925, type: 3}
+  m_projectilePrefab: {fileID: 8114252734412359783, guid: 3d31dee15f36e1b4996e12361aa1f2a1, type: 3}
   m_trajectoryMaxHeight: 0
   m_trajectoryAnimationCurve:
     serializedVersion: 2
