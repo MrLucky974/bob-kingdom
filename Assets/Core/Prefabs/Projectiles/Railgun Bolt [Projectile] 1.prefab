@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 8114252734412359783}
   - component: {fileID: 9008206235861254494}
   m_Layer: 0
-  m_Name: Railgun Bolt [Projectile]
+  m_Name: Railgun Bolt [Projectile] 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

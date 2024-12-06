@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4205379682212331973}
   - component: {fileID: 11944603226202025}
   - component: {fileID: 8561713397174620303}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,4 +89,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_image: {fileID: 11944603226202025}
-  m_data: {fileID: 0}
+  m_data: {fileID: 11400000, guid: 9cf4d48803f8b0a47b6005a2328bd348, type: 2}
