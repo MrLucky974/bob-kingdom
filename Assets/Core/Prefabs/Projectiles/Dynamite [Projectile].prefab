@@ -134,6 +134,7 @@ MonoBehaviour:
   m_visual: {fileID: 9008206235861254494}
   m_hasBlastRadius: 1
   m_blastRadius: 2
+  m_impacteVFX: {fileID: 8637197713385919046, guid: 36e7720e14cf1af40ba15aaf294e8178, type: 3}
 --- !u!114 &9008206235861254494
 MonoBehaviour:
   m_ObjectHideFlags: 0

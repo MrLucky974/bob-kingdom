@@ -9,7 +9,13 @@ public class ItemData : ScriptableObject
 
     [SerializeField] private Sprite m_outfit;
     public Sprite Outfit => m_outfit;
-    
+
+    [SerializeField] private GameObject m_shootVFX;
+    public GameObject ShootVFX => m_shootVFX;
+
+    [SerializeField] private GameObject m_impactVFX;
+    public GameObject ImpactVFX => m_impactVFX;
+
     [Header("Sounds")]
     [SerializeField] private AudioClip m_shotSFX;
     public AudioClip ShotSFX => m_shotSFX;

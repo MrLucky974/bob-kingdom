@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_sprite: {fileID: 21300000, guid: 315d9de28518c0d4d844a10fa1d3a156, type: 3}
   m_outfit: {fileID: 0}
+  m_shootVFX: {fileID: 3483736507828904805, guid: 272b7e332a89241419294ba4e71dac5c, type: 3}
+  m_impactVFX: {fileID: 5998937214503356008, guid: e0bcd2509bf7ba7469b18ec96b36d566, type: 3}
   m_shotSFX: {fileID: 8300000, guid: 8834910751b26144b9ed790a351489fc, type: 3}
   m_projectilePrefab: {fileID: 8114252734412359783, guid: f9bc0360bd2034b489af0061d1a88925, type: 3}
-  m_trajectoryMaxHeight: 1
+  m_trajectoryMaxHeight: 0
   m_trajectoryAnimationCurve:
     serializedVersion: 2
     m_Curve:
@@ -89,7 +91,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_attackDamage: 15
-  m_range: 7
+  m_attackDamage: 25
+  m_range: 10
   m_fireRate: 1.5
-  m_nextItemTier: {fileID: 11400000, guid: acc7a14a4367f6348b6ddb9ba23dd6af, type: 2}
+  m_nextItemTier: {fileID: 11400000, guid: 0f53494a09bc322499eea07e35844066, type: 2}

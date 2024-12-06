@@ -132,6 +132,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_visual: {fileID: 9008206235861254494}
+  m_hasBlastRadius: 0
+  m_blastRadius: 1
+  m_impacteVFX: {fileID: 5998937214503356008, guid: e0bcd2509bf7ba7469b18ec96b36d566, type: 3}
 --- !u!114 &9008206235861254494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,9 +147,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0558422ce61e1c4b845e8aa0d593c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_projectile: {fileID: 8114252734412359783}
   m_projectileVisual: {fileID: 5135278685361205157}
   m_projectileShadow: {fileID: 6153584501643578898}
-  m_projectile: {fileID: 8114252734412359783}
 --- !u!1 &7137458339013534203
 GameObject:
   m_ObjectHideFlags: 0
