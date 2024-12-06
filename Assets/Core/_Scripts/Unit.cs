@@ -23,6 +23,8 @@ public class Unit : MonoBehaviour, IDropHandler, IPointerDownHandler
 
     private float m_nextAttackTime;
 
+    private GameObject m_vfx;
+
     private void Start()
     {
         UpdateWeaponSprite();
@@ -54,7 +56,10 @@ public class Unit : MonoBehaviour, IDropHandler, IPointerDownHandler
         {
             //Debug.Log($"[{name}]: Shoot", this);
             SoundManager.Play(m_heldItem.ShotSFX,0.1f,0.1f);
-            var projectile = Instantiate(m_heldItem.ProjectilePrefab, transform.position, Quaternion.identity);
+            var rota = (m_target.position - transform.position).normalized;
+            float angle = Mathf.Atan2(rota.y,rota.x)*Mathf.Rad2Deg;
+            var fx = Instantiate(m_heldItem.ShootVFX, transform.position + new Vector3(1, 0, 0),Quaternion.Euler(0,0,angle));
+            var projectile = Instantiate(m_heldItem.ProjectilePrefab, transform.position + new Vector3(1, 0, 0), Quaternion.identity);
             var data = new Projectile.ProjectileData()
             {
                 target = m_target,

@@ -28,6 +28,8 @@ public class Projectile : MonoBehaviour
     [SerializeField] private bool m_hasBlastRadius;
     [SerializeField] private float m_blastRadius = 1f;
 
+    [SerializeField] private GameObject m_impacteVFX;
+
     private Transform m_target;
     private Transform m_virtualTarget;
 
@@ -99,13 +101,13 @@ public class Projectile : MonoBehaviour
             {
                 Explode();
             }
-
             KillProjectile();
         }
     }
 
     private void Explode()
     {
+        SoundManager.Play(SoundBank.ExplosionSFX, 0.1f, 0.1f);
         var gunpowderUpgrade = UpgradeManager.Instance.GetUpgrade(SceneReferences.gunpowderUpgradeData);
         float[] values = new float[3] { 0f, 0.2f, 0.4f };
 
@@ -131,13 +133,12 @@ public class Projectile : MonoBehaviour
                 }
             }
         }
-        SoundManager.Play(SoundBank.ExplosionSFX, 0.1f, 0.1f);
     }
 
     private void KillProjectile()
     {
         SoundManager.Play(SoundBank.ProjectilHitSFX, 0.1f, 0.1f);
-        // TODO : Add particle effects here
+        Instantiate(m_impacteVFX, transform.position, Quaternion.identity);
         Destroy(m_virtualTarget.gameObject);
         Destroy(gameObject);
     }

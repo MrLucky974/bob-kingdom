@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_sprite: {fileID: 21300000, guid: f98d0a95255bc344d854141f523ec013, type: 3}
   m_outfit: {fileID: 21300000, guid: abc8fd242294c2747b3f96318aa0e172, type: 3}
+  m_shootVFX: {fileID: 1197589806452276953, guid: c1dffa823b61a1b47b7634171e484dfe, type: 3}
+  m_impactVFX: {fileID: 5998937214503356008, guid: e0bcd2509bf7ba7469b18ec96b36d566, type: 3}
   m_shotSFX: {fileID: 8300000, guid: e52974fb51978904a9144c7ad40affbf, type: 3}
   m_projectilePrefab: {fileID: 8114252734412359783, guid: 59674eee02161b549a64887f82d8fbd6, type: 3}
   m_trajectoryMaxHeight: 0.2
