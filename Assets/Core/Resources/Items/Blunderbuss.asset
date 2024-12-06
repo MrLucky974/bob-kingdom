@@ -91,5 +91,5 @@ MonoBehaviour:
     m_RotationOrder: 4
   m_attackDamage: 30
   m_range: 12
-  m_fireRate: 0.5
+  m_fireRate: 1
   m_nextItemTier: {fileID: 11400000, guid: 81f0ca786eb841242a5032d9936e9e89, type: 2}

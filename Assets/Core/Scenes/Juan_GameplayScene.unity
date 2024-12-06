@@ -9325,6 +9325,12 @@ MonoBehaviour:
   m_vampirismUpgradeData: {fileID: 11400000, guid: 8b147929c3eba664ea0193665f406d20, type: 2}
   m_gunpowderUpgradeData: {fileID: 11400000, guid: 3d0be8d7c296c254aa01d35a05491302, type: 2}
   m_midasTouchUpgradeData: {fileID: 11400000, guid: def7d5e8fc304b240a441077439267e7, type: 2}
+  m_jet: {fileID: 1197589806452276953, guid: c1dffa823b61a1b47b7634171e484dfe, type: 3}
+  m_feu: {fileID: 3483736507828904805, guid: 272b7e332a89241419294ba4e71dac5c, type: 3}
+  m_rail: {fileID: 5362492656031125600, guid: 15010131f116c23448f364dcbf7d58ab, type: 3}
+  m_arrow: {fileID: 1041356228907581997, guid: bd27c707c8ed8fb4f82c2fcea2b8a193, type: 3}
+  m_impact: {fileID: 5998937214503356008, guid: e0bcd2509bf7ba7469b18ec96b36d566, type: 3}
+  m_explosion: {fileID: 6909013530281641765, guid: fbdd6ccc52756eb43b7e1c3b69c9116d, type: 3}
 --- !u!114 &1424835989
 MonoBehaviour:
   m_ObjectHideFlags: 0

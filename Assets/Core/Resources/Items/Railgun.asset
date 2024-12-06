@@ -12,30 +12,84 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 447db553d22e1bf4797611792b91d3dc, type: 3}
   m_Name: Railgun
   m_EditorClassIdentifier: 
-  m_sprite: {fileID: 21300000, guid: d9d8ccae23d4e874887f09b713d4a6b5, type: 3}
+  m_sprite: {fileID: 21300000, guid: 04a820003b58ebc47a9a8196fc5caf01, type: 3}
   m_outfit: {fileID: 0}
   m_shotSFX: {fileID: 8300000, guid: 096432ca49418d74fa86874824244461, type: 3}
   m_projectilePrefab: {fileID: 8114252734412359783, guid: 3d31dee15f36e1b4996e12361aa1f2a1, type: 3}
   m_trajectoryMaxHeight: 1
   m_trajectoryAnimationCurve:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.05070755
+      inSlope: -0.05070755
+      outSlope: -0.05070755
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.05070755
+      outSlope: -0.05070755
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   m_axisCorrectionAnimationCurve:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   m_speedAnimationCurve:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 4
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 4
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_attackDamage: 0
-  m_range: 0
-  m_fireRate: 0
+  m_attackDamage: 200
+  m_range: 15
+  m_fireRate: 20
   m_nextItemTier: {fileID: 0}

@@ -89,7 +89,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_attackDamage: 30
+  m_attackDamage: 50
   m_range: 13
-  m_fireRate: 1
-  m_nextItemTier: {fileID: 11400000, guid: 67138632a63271743bdc80159e57b5cd, type: 2}
+  m_fireRate: 2
+  m_nextItemTier: {fileID: 11400000, guid: acc7a14a4367f6348b6ddb9ba23dd6af, type: 2}
